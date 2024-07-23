@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->foreignId('service_provider_id')->constrained('users');
             $table->string('address');
             $table->string('phone');
-            $table->boolean('status')->default('pending');
+            $table->boolean('status')->default(false);
             $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
