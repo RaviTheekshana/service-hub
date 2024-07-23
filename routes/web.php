@@ -15,3 +15,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+use App\Http\Controllers\BookingController;
+
+Route::get('bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store');

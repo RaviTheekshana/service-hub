@@ -17,6 +17,7 @@ return [
         'guard' => env('AUTH_GUARD', 'web'),
         'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
+    // Add a new default guard for service providers
 
     /*
     |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ return [
         ],
     ],
 
+
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -63,6 +65,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        // Add a new provider for service providers
+        'service_providers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ServiceProvider::class,
         ],
 
         // 'users' => [
