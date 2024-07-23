@@ -38,6 +38,8 @@ class UserResource extends Resource
                 //Phone Number Add
                 TextInput::make('phone')
                     ->required(),
+                TextInput::make('password')
+                    ->required(),
 
                 Forms\Components\Select::make('role')
                     ->options([

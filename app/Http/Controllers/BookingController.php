@@ -16,15 +16,19 @@ class BookingController extends Controller
         $request->validate([
             'Service_date' => 'required|date',
             'Provider' => 'required|string|max:255',
+            'address' => 'required|string',
+            'phone' => 'required|string',
             'Status' => 'required|string',
             'Description' => 'required|string',
         ]);
 
         Booking::create([
-            'Service_Date' => $request->Service_date,
-            'Service_Provider' => $request->Provider,
-            'Status' => $request->Status,
-            'Description' => $request->Description,
+            'service_date' => $request->Service_date,
+            'service_Provider' => $request->Provider,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'status' => $request->Status,
+            'description' => $request->Description,
         ]);
 
         return redirect()->route('bookings.create')->with('success', 'Booking created successfully.');

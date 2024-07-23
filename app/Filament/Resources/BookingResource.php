@@ -45,6 +45,9 @@ class BookingResource extends Resource
                 Select::make('service_provider_id')
                     ->relationship('service_provider', 'name')
                     ->required(),
+                //Add Logged User details to the Booking
+                TextInput::make('address'),
+                TextInput::make('phone'),
 
                 // Selector Dropdown to choose the status of the booking
                 Select::make('status')
@@ -76,18 +79,17 @@ class BookingResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id'),
-
                 TextColumn::make('created_at')
                     ->date(),
 
-                TextColumn::make('Service_Date')
+                TextColumn::make('service_date')
                     ->date(),
 
                 TextColumn::make('service_provider.name'),
 
-                TextColumn::make('Status'),
+                TextColumn::make('status'),
 
-                TextColumn::make('Description'),
+                TextColumn::make('description'),
             ])
             ->filters([
                 TrashedFilter::make(),

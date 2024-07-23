@@ -58,11 +58,21 @@
             <input type="date" name="Service_date" id="Service_date" class="form-control" value="{{ old('Service_date') }}" required>
         </div>
 
-        <div class="form-group">
-            <label for="Provider">Service Provider</label>
-            <input type="text" name="Provider" id="Provider" class="form-control" value="{{ old('Provider') }}" required>
+        <div class="mt-4" id="service-provider-category" style="display: none;">
+            <x-label for="service_provider_id" value="{{ __('Service Provider') }}" />
+            <select id="service_provider_id" name="service_provider_id" class="block mt-1 w-full">
+                <option value="">Select Service Provider</option>
+            </select>
         </div>
 
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" class="form-control" value="{{ old('address') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone') }}" required>
+        </div>
         <div class="form-group">
             <label for="Status">Status</label>
             <select name="Status" id="Status" class="form-control" required>

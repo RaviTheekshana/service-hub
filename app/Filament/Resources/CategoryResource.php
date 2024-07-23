@@ -64,7 +64,6 @@ class CategoryResource extends Resource
 
                 TextColumn::make('sort_order'),
 
-                TextColumn::make('status'),
             ])
             ->filters([
                 TrashedFilter::make(),
