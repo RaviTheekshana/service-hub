@@ -66,7 +66,7 @@
             </div>
              <div class="mt-4">
                 <x-label for="phone" value="{{ __('Phone') }}" />
-                <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" />
+                <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" maxlength="9" />
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
@@ -106,3 +106,11 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 mt-5">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 ServiceHub. All rights reserved.</p>
+            <p>Contact us: info@servicehub.com | +94123456789</p>
+        </div>
+    </footer>
+</nav>

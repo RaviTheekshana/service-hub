@@ -22,11 +22,15 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        if (!str_starts_with($input['phone'], '+94')) {
+            $input['phone'] = '+94' . $input['phone'];
+        }
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'max:20'],
+            'name' => ['required', 'string', 'max:50'],
+            'role' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+            'phone' => ['required', 'string', 'max:12'],
+            'category_id' => $input['role'] === 'service_provider' ? ['required'] : ['nullable'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
