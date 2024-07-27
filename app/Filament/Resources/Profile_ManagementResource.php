@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Models\Category;
+use App\Filament\Resources\Profile_ManagementResource\Pages;
+use App\Models\Profile_Management;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -22,35 +23,47 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+class Profile_ManagementResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Profile_Management::class;
 
-    protected static ?string $slug = 'categories';
+    protected static ?string $slug = 'profile_-managements';
 
-    protected static ?string $navigationIcon = 'heroicon-o-squares-plus';
+    protected static ?string $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-
-                TextInput::make('sort_order')
+                TextInput::make('service_provider_id')
                     ->required()
                     ->integer(),
 
-                TextInput::make('status')
+                TextInput::make('service_description')
                     ->required(),
+
+                TextInput::make('work_details')
+                    ->required(),
+                FileUpload::make('project_images')
+                    ->image()
+                    ->directory('project_images')
+                    ->multiple(),
+
+                TextInput::make('experience_years')
+                    ->required()
+                    ->integer(),
+
+                TextInput::make('hourly_rate')
+                    ->required()
+                    ->numeric(),
 
                 Placeholder::make('created_at')
                     ->label('Created Date')
-                    ->content(fn(?Category $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Profile_Management $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
                     ->label('Last Modified Date')
-                    ->content(fn(?Category $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Profile_Management $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -58,12 +71,15 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
+                TextColumn::make('service_provider_id'),
 
-                TextColumn::make('sort_order'),
+                TextColumn::make('service_description'),
 
+                TextColumn::make('work_details'),
+
+                TextColumn::make('experience_years'),
+
+                TextColumn::make('hourly_rate'),
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -86,9 +102,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListProfile_Managements::route('/'),
+            'create' => Pages\CreateProfile_Management::route('/create'),
+            'edit' => Pages\EditProfile_Management::route('/{record}/edit'),
         ];
     }
 
@@ -102,6 +118,6 @@ class CategoryResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['name'];
+        return [];
     }
 }

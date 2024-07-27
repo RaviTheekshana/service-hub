@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::table('users', function (Blueprint $table) {
         // Check if Customer or Service Provider
             $table->string('role')->default('customer');
-            $table->foreignId('category_id')->nullable()->constrained('categories');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
         });
     }
 

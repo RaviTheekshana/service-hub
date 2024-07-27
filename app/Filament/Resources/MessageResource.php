@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Models\Category;
+use App\Filament\Resources\MessageResource\Pages;
+use App\Models\Message;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -22,35 +23,36 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+class MessageResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Message::class;
 
-    protected static ?string $slug = 'categories';
+    protected static ?string $slug = 'messages';
 
-    protected static ?string $navigationIcon = 'heroicon-o-squares-plus';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-
-                TextInput::make('sort_order')
+                TextInput::make('sender_user_Id')
                     ->required()
                     ->integer(),
 
-                TextInput::make('status')
+                TextInput::make('receiver_user_Id')
+                    ->required()
+                    ->integer(),
+
+                MarkdownEditor::make('message_content')
                     ->required(),
 
                 Placeholder::make('created_at')
                     ->label('Created Date')
-                    ->content(fn(?Category $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Message $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
                     ->label('Last Modified Date')
-                    ->content(fn(?Category $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Message $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -58,12 +60,14 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('sender_user_Id'),
+
+                TextColumn::make('receiver_user_Id'),
+
+                TextColumn::make('message_content')
+                    ->wrap()
                     ->searchable()
                     ->sortable(),
-
-                TextColumn::make('sort_order'),
-
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -86,9 +90,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListMessages::route('/'),
+            'create' => Pages\CreateMessage::route('/create'),
+            'edit' => Pages\EditMessage::route('/{record}/edit'),
         ];
     }
 
@@ -102,6 +106,6 @@ class CategoryResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['name'];
+        return [];
     }
 }

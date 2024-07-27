@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Models\Category;
+use App\Filament\Resources\FeedbackResource\Pages;
+use App\Models\Feedback;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -22,35 +22,36 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+class FeedbackResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Feedback::class;
 
-    protected static ?string $slug = 'categories';
+    protected static ?string $slug = 'feedback';
 
-    protected static ?string $navigationIcon = 'heroicon-o-squares-plus';
+    protected static ?string $navigationIcon = 'heroicon-o-star';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-
-                TextInput::make('sort_order')
+                TextInput::make('service_provider_id')
                     ->required()
                     ->integer(),
 
-                TextInput::make('status')
+                TextInput::make('rate')
+                    ->required()
+                    ->integer(),
+
+                TextInput::make('comment')
                     ->required(),
 
                 Placeholder::make('created_at')
                     ->label('Created Date')
-                    ->content(fn(?Category $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Feedback $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
                     ->label('Last Modified Date')
-                    ->content(fn(?Category $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Feedback $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -58,12 +59,11 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
+                TextColumn::make('service_provider_id'),
 
-                TextColumn::make('sort_order'),
+                TextColumn::make('rate'),
 
+                TextColumn::make('comment'),
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -86,9 +86,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListFeedbacks::route('/'),
+            'create' => Pages\CreateFeedback::route('/create'),
+            'edit' => Pages\EditFeedback::route('/{record}/edit'),
         ];
     }
 
@@ -102,6 +102,6 @@ class CategoryResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['name'];
+        return [];
     }
 }

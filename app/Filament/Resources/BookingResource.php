@@ -9,6 +9,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
@@ -32,7 +33,7 @@ class BookingResource extends Resource
 
     protected static ?string $slug = 'bookings';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     public static function form(Form $form): Form
     {
@@ -40,13 +41,16 @@ class BookingResource extends Resource
             ->schema([
 
                 DatePicker::make('service_date'),
-
+                //Service Time
+                TimePicker::make('service_time')
+                    ->required(),
 
                 Select::make('service_provider_id')
                     ->relationship('service_provider', 'name')
                     ->required(),
                 //Add Logged User details to the Booking
                 TextInput::make('address'),
+                TextInput::make('city'),
                 TextInput::make('phone'),
 
                 // Selector Dropdown to choose the status of the booking
@@ -87,8 +91,14 @@ class BookingResource extends Resource
 
                 TextColumn::make('service_provider.name'),
 
-                TextColumn::make('status'),
-
+                TextColumn::make('status')
+            ->badge()
+            ->color(fn (string $state): string => match ($state) {
+                'Pending' => 'gray',
+                'Confirmed' => 'warning',
+                'Completed' => 'success',
+                'Cancelled' => 'danger',
+            }),
                 TextColumn::make('description'),
             ])
             ->filters([

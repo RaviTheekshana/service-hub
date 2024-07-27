@@ -24,7 +24,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -47,11 +47,16 @@ class UserResource extends Resource
                         'user' => 'User',
                         'service_provider' => 'Service Provider',
                     ])
-                    ->required(),
-
+                    ->required()
+            ->afterStateUpdated(function ($state, $set) {
+                if ($state === 'admin' || $state === 'user') {
+                    $set('category_id', null);
+                }
+            }),
                 Select::make('category_id')
                     ->relationship('category', 'name')
-                    ->required(),
+                    ->required(fn ($get) => $get('role') === 'service_provider')
+                    ->reactive()
             ]);
     }
 

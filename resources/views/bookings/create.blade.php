@@ -1,39 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Create Booking</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
-            background-color: #f8f9fa;
+        .booking-form {
+            max-width: 800px;
+            margin: auto;
         }
-        .container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-top: 50px;
-            max-width: 600px;
+        .booking-form h1 {
+            margin-bottom: 30px;
         }
         .form-group label {
             font-weight: bold;
         }
-        .alert-success, .alert-danger {
-            margin-top: 20px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+        .alert ul {
+            margin-bottom: 0;
         }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <h1 class="mb-4">Create Booking</h1>
+<div class="container booking-form">
+    <h1>Create Booking</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -53,47 +43,60 @@
 
     <form action="{{ route('bookings.store') }}" method="POST">
         @csrf
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Service_date">{{ __('Service Date') }}</label>
+                    <input id="Service_date" type="date" name="Service_date" class="form-control" value="{{ old('Service_date') }}" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="Service_time">{{ __('Service Time') }}</label>
+                    <input id="Service_time" type="time" name="Service_time" class="form-control" value="{{ old('Service_time') }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="service_provider_id">{{ __('Service Provider') }}</label>
+                    <select id="service_provider_id" name="service_provider_id" class="form-control">
+                        <option value="">{{ __('Select') }}</option>
+                        @foreach(get_service_providers() as $service_provider)
+                            <option value="{{ $service_provider->id }}">{{ ucfirst($service_provider->name) }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">{{ __('Phone') }}</label>
+                    <input id="phone" type="text" name="phone" class="form-control" value="{{ old('phone') }}" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="address">{{ __('Address') }}</label>
+                    <input id="address" type="text" name="address" class="form-control" value="{{ old('address') }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">{{ __('City') }}</label>
+                    <input id="city" type="text" name="city" class="form-control" value="{{ old('city') }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="Service_description">{{ __('Service Description') }}</label>
+                    <input id="Service_description" type="text" name="Service_description" class="form-control" value="{{ old('Service_description') }}" required>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
-            <label for="Service_date">Service Date</label>
-            <input type="date" name="Service_date" id="Service_date" class="form-control" value="{{ old('Service_date') }}" required>
+            <button type="submit" class="btn btn-primary btn-block">{{ __('Create Booking') }}</button>
         </div>
-
-        <div class="mt-4" id="service-provider-category" style="display: none;">
-            <x-label for="service_provider_id" value="{{ __('Service Provider') }}" />
-            <select id="service_provider_id" name="service_provider_id" class="block mt-1 w-full">
-                <option value="">Select Service Provider</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" name="address" id="address" class="form-control" value="{{ old('address') }}" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone') }}" required>
-        </div>
-        <div class="form-group">
-            <label for="Status">Status</label>
-            <select name="Status" id="Status" class="form-control" required>
-                <option value="Pending" {{ old('Status') == 'Pending' ? 'selected' : '' }}>Pending</option>
-                <option value="Confirmed" {{ old('Status') == 'Confirmed' ? 'selected' : '' }}>Confirmed</option>
-                <option value="Cancelled" {{ old('Status') == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
-                <option value="Completed" {{ old('Status') == 'Completed' ? 'selected' : '' }}>Completed</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="Description">Description</label>
-            <textarea name="Description" id="Description" class="form-control" rows="4" required>{{ old('Description') }}</textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-block">Create Booking</button>
     </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-6 mt-5">
+    <div class="container mx-auto text-center">
+        <p>&copy; 2024 ServiceHub. All rights reserved.</p>
+        <p>Contact us: info@servicehub.com | +94123456789</p>
+    </div>
+</footer>
 </html>
