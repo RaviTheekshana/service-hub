@@ -9,7 +9,7 @@ class AdminAuthMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        //chech if the user has the role as admin
+        //check if the user has the role as admin
         if (!auth()->user() || auth()->user()->role !== 'admin') {
             abort(403, 'You are not authorized to access this page!!');
         }
