@@ -6,32 +6,58 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    public function ourService()
+    {
+        return view('bookings.our-service');
+    }
+
+    public function showReview()
+    {
+        return view('bookings.review');
+    }
+
     public function create()
     {
         return view('bookings.create');
     }
 
-    public function store(Request $request)
+    public function bookForm()
     {
-        $request->validate([
-            'Service_date' => 'required|date',
-            'Provider' => 'required|string|max:255',
-            'address' => 'required|string',
-            'phone' => 'required|string',
-            'Status' => 'required|string',
-            'Description' => 'required|string',
-        ]);
-
-        Booking::create([
-            'service_date' => $request->Service_date,
-            'service_Provider' => $request->Provider,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'status' => $request->Status,
-            'description' => $request->Description,
-        ]);
-
-        return redirect()->route('bookings.create')->with('success', 'Booking created successfully.');
+        return view('bookings.book');
     }
+    public function success()
+    {
+        return view('bookings.success');
+    }
+    public function store(Request $request)
+        {
+            $request->validate([
+                'service_date' => 'required|date',
+                'service_time' => 'required',
+                'category_id' => 'required|exists:categories,id',
+                'service_provider_id' => 'required|exists:users,id',
+                'address' => 'required|string|max:255',
+                'city' => 'required|string|max:100',
+                'phone' => 'required|string|max:12',
+                'email' => 'required|email|max:255',
+                'description' => 'required|string',
+            ]);
+
+            Booking::create([
+                'service_date' => $request->input('service_date'),
+                'service_time' => $request->input('service_time'),
+                'category_id' => $request->input('category_id'),
+                'service_provider_id' => $request->input('service_provider_id'),
+                'address' => $request->input('address'),
+                'city' => $request->input('city'),
+                'phone' => $request->input('phone'),
+                'phone_two' => $request->input('phone_two'),
+                'email' => $request->input('email'),
+                'description' => $request->input('description'),
+            ]);
+
+            return redirect()->route('bookings.success')->with('success', 'Booking successfully created!');
+        }
 }
+
 

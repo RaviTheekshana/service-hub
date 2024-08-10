@@ -11,11 +11,14 @@ return new class extends Migration {
             $table->id();
             $table->dateTime('service_date');
             $table->time('service_time');
+            $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('service_provider_id')->constrained('users');
             $table->string('address');
             $table->string('city');
             $table->string('phone');
-            $table->boolean('status')->default(false);
+            $table->string('phone_two');
+            $table->string('email');
+            $table->enum('status', ['Pending', 'Confirmed', 'Completed', 'Cancelled'])->default('Pending');
             $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();

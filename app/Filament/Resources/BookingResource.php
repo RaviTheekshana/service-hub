@@ -40,14 +40,26 @@ class BookingResource extends Resource
         return $form
             ->schema([
 
-                DatePicker::make('service_date'),
+                DatePicker::make('service_date')
+                    ->rule('after_or_equal:today'),
                 //Service Time
                 TimePicker::make('service_time')
-                    ->required(),
+                    ->required()
+                    ->datalist([
+                        '09:00',
+                        '10:00',
+                        '11:00',
+                        '12:00',
+                        '13:00',
+                        '14:00',
+                        '15:00',
+                        '16:00',
+                ]),
 
                 Select::make('service_provider_id')
                     ->relationship('service_provider', 'name')
                     ->required(),
+
                 //Add Logged User details to the Booking
                 TextInput::make('address'),
                 TextInput::make('city'),
@@ -88,6 +100,7 @@ class BookingResource extends Resource
 
                 TextColumn::make('service_date')
                     ->date(),
+                TextColumn::make('service_time'),
 
                 TextColumn::make('service_provider.name'),
 
