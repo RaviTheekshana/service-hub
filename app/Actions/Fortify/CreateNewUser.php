@@ -4,7 +4,6 @@ namespace App\Actions\Fortify;
 
 use App\Models\Team;
 use App\Models\User;
-use App\Models\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -22,14 +21,11 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        if (!str_starts_with($input['phone'], '+94')) {
-            $input['phone'] = '+94' . $input['phone'];
-        }
         Validator::make($input, [
             'name' => ['required', 'string', 'max:50'],
             'role' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'phone' => ['required', 'string', 'max:12'],
+            'phone' => ['required', 'string', 'max:20'],
             'category_id' => $input['role'] === 'service_provider' ? ['required'] : ['nullable'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
@@ -41,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'phone' => $input['phone'],
                 'password' => Hash::make($input['password']),
-                'role' => $input['role'] ?? 'customer',
+                'role' => $input['role'] ?? 'user',
                 'category_id' => $input['category_id'] ?? null,
             ]), function (User $user) {
                 $this->createTeam($user);

@@ -16,4 +16,14 @@ class Profile_Management extends Model
         'experience_years',
         'hourly_rate',
     ];
+    public function service_provider()
+    {
+        return $this
+            ->belongsTo(User::class, 'service_provider_id')
+            ->where('role', 'service_provider');
+    }
+    public function format()
+    {
+
+    }
 }

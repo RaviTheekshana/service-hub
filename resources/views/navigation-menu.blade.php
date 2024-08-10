@@ -1,80 +1,15 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-24">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="{{asset('images/logo2.jpg')}}" width="80px">
-                    </a>
-                    <!-- Navigation Links -->
-                    <a href="{{ url('/') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Home</a>
-                    <a href="{{ url('/our-service') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Our Service</a>
-                    <a href="{{ url('/bookings/create') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Booking</a>
-                    <a href="{{ url('/service-providers') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Service Providers</a>
-                    <a href="{{ url('/reviews') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Reviews</a>
-                    <a href="{{ url('/about-us') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">About Us</a>
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Login</a>
-                        <a href="{{ route('register') }}" class="text-gray-700 hover:text-gray-900 font-medium mx-4">Register</a>
-                    @endauth
-                </div>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <!-- Teams Dropdown -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="ms-3 relative">
-                        <x-dropdown align="right" width="60">
-                            <x-slot name="trigger">
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                        {{ Auth::user()->currentTeam->name }}
-
-                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <div class="w-60">
-                                    <!-- Team Management -->
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Manage Team') }}
-                                    </div>
-
-                                    <!-- Team Settings -->
-                                    <x-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                        {{ __('Team Settings') }}
-                                    </x-dropdown-link>
-
-                                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                        <x-dropdown-link href="{{ route('teams.create') }}">
-                                            {{ __('Create New Team') }}
-                                        </x-dropdown-link>
-                                    @endcan
-
-                                    <!-- Team Switcher -->
-                                    @if (Auth::user()->allTeams()->count() > 1)
-                                        <div class="border-t border-gray-200"></div>
-
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
-                                            {{ __('Switch Teams') }}
-                                        </div>
-
-                                        @foreach (Auth::user()->allTeams() as $team)
-                                            <x-switchable-team :team="$team" />
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </x-slot>
-                        </x-dropdown>
-                    </div>
-                @endif
+                <button type="button" class="size-[32px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-b text-gray-800 hover:bg-black focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white bg-black/50 dark:focus:bg-neutral-700">
+                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                    <span class="sr-only">Notifications</span>
+                </button>
 
                 <!-- Settings Dropdown -->
                 <div class="ms-3 relative">

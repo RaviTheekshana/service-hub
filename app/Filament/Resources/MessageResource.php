@@ -6,6 +6,7 @@ use App\Filament\Resources\MessageResource\Pages;
 use App\Models\Message;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -35,13 +36,13 @@ class MessageResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('sender_user_Id')
-                    ->required()
-                    ->integer(),
+                Select::make('sender_user_Id')
+                    ->relationship('user', 'name')
+                    ->required(),
 
-                TextInput::make('receiver_user_Id')
-                    ->required()
-                    ->integer(),
+                Select::make('receiver_user_Id')
+                    ->relationship('service_provider', 'name')
+                    ->required(),
 
                 MarkdownEditor::make('message_content')
                     ->required(),
@@ -60,7 +61,10 @@ class MessageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('sender_user_Id'),
+                //Show the senders name
+                TextColumn::make('sender_user_Id')
+                    ->searchable()
+                    ->sortable(),
 
                 TextColumn::make('receiver_user_Id'),
 

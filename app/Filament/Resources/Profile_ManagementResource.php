@@ -6,6 +6,7 @@ use App\Filament\Resources\Profile_ManagementResource\Pages;
 use App\Models\Profile_Management;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,11 +18,13 @@ use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use function Laravel\Prompts\select;
 
 class Profile_ManagementResource extends Resource
 {
@@ -35,9 +38,9 @@ class Profile_ManagementResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('service_provider_id')
-                    ->required()
-                    ->integer(),
+                Select::make('service_provider_id')
+                    ->relationship('service_provider', 'name')
+                    ->required(),
 
                 TextInput::make('service_description')
                     ->required(),
@@ -76,6 +79,12 @@ class Profile_ManagementResource extends Resource
                 TextColumn::make('service_description'),
 
                 TextColumn::make('work_details'),
+
+                //Show the uploaded images in the table
+                ImageColumn::make('project_images')
+                    ->disk('public/project_images')
+                    ->circular()
+                    ->stacked(),
 
                 TextColumn::make('experience_years'),
 

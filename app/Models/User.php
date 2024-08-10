@@ -70,12 +70,12 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-    public function category()
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@admin.com') && $this->hasVerifiedEmail();
+        return str_ends_with($this->email, 'theekshanaalwis@gmail.com') && $this->hasVerifiedEmail();
     }
 }

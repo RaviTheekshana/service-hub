@@ -9,6 +9,10 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        'node_modules/preline/dist/*.js',
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
     ],
 
     theme: {
@@ -19,5 +23,5 @@ export default {
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [forms, require('preline/plugin'),typography],
 };

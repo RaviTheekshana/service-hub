@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ServiceProviderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,12 +13,34 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
 use App\Http\Controllers\BookingController;
 
 Route::get('bookings/create', [BookingController::class, 'create'])->name('bookings.create');
-Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store');
+Route::get('bookings/our-service', [BookingController::class, 'ourService'])->name('bookings.our-service');
+Route::get('bookings/review', [BookingController::class, 'showReview'])->name('bookings.review');
+Route::get('bookings/book', [BookingController::class, 'bookForm'])->name('bookings.book');
+Route::post('/booking/book', [BookingController::class, 'store'])->name('bookings.store');
+Route::get('/bookings/success', [BookingController::class, 'success'])->name('bookings.success');
+
+Route::get('/bookings/portfolio', [ServiceProviderController::class, 'showProfile'])->name('portfolio');
+
+use App\Http\Controllers\DashboardController;
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/provider-dashboard', [DashboardController::class, 'providerDashboard'])->middleware('auth')->name('provider-dashboard');
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+//Review
+use App\Http\Controllers\ReviewController;
+
+Route::post('review', [ReviewController::class, 'store'])->name('review.store');
+
+
