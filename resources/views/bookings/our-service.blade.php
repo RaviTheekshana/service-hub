@@ -81,3 +81,4 @@
     </div>
     <!-- End Card Blog -->
 </x-layout>
+<x-footer/>

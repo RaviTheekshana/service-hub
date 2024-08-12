@@ -48,12 +48,44 @@
                                     <input type="time" name="service_time" id="service_time" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
+{{--                            <div class="w-full lg:w-6/12 px-4">--}}
+{{--                                <div class="relative w-full mb-3" x-data="serviceProviderDropdown">--}}
+{{--                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="category_id">--}}
+{{--                                        Category--}}
+{{--                                    </label>--}}
+{{--                                    <select id="category" x-model="category" name="category_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required @change="fetchProviders">--}}
+{{--                                        <option value="">Select</option>--}}
+{{--                                        @foreach(get_categories() as $category)--}}
+{{--                                            <option value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="w-full lg:w-6/12 px-4" x-data="serviceProviderDropdown">--}}
+{{--                                <div class="relative w-full mb-3">--}}
+{{--                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_provider_id">--}}
+{{--                                        Provider Name--}}
+{{--                                    </label>--}}
+{{--                                    <select name="service_provider_id" id="service_provider_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>--}}
+{{--                                        <option value="">Select</option>--}}
+{{--                                        <template x-for="provider in providers" :key="provider.id">--}}
+{{--                                            <option  :value="provider.id" x-text="provider.name"></option>--}}
+{{--                                        </template>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
                             <div class="w-full lg:w-6/12 px-4">
-                                <div class="relative w-full mb-3">
+                                <div class="relative w-full mb-3" x-show="role === 'service_provider'">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="category_id">
                                         Category
                                     </label>
-                                    <input type="text" name="category_id" id="category_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                    <select id="category" x-model="category" name="category_id" id="category_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                        <option value="">Select</option>
+                                        @foreach(get_categories() as $category)
+                                            <option value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
@@ -61,11 +93,15 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_provider_id">
                                         Provider Name
                                     </label>
-                                    <input type="text" name="service_provider_id" id="service_provider_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                    <select name="service_provider_id" id="service_provider_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                        <option value="">Select</option>
+                                        @foreach(get_service_providers() as $provider)
+                                            <option value="{{ $provider->id }}">{{ ucfirst($provider->name) }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
-
                         <hr class="mt-6 border-b-1 border-blueGray-300">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
@@ -142,5 +178,48 @@
                 </div>
             </div>
         </div>
+{{--        <script>--}}
+{{--            document.addEventListener('alpine:init', () => {--}}
+{{--                Alpine.data('serviceProviderDropdown', () => ({--}}
+{{--                    category: '',--}}
+{{--                    providers: [],--}}
+
+{{--                    init() {--}}
+{{--                        console.log('Alpine component initialized.');--}}
+{{--                        this.$watch('category', (value) => {--}}
+{{--                            if (value) {--}}
+{{--                                console.log('Category selected:', value);--}}
+{{--                                this.fetchProviders();--}}
+{{--                            }--}}
+{{--                        });--}}
+{{--                    },--}}
+
+{{--                    fetchProviders() {--}}
+{{--                        if (!this.category) {--}}
+{{--                            console.error('No category selected');--}}
+{{--                            return;--}}
+{{--                        }--}}
+
+{{--                        console.log('Fetching providers for category:', this.category);--}}
+{{--                        fetch(`/api/users/${this.category}`)--}}
+{{--                            .then(response => {--}}
+{{--                                if (!response.ok) {--}}
+{{--                                    throw new Error('Network response was not ok');--}}
+{{--                                }--}}
+{{--                                return response.json();--}}
+{{--                            })--}}
+{{--                            .then(data => {--}}
+{{--                                console.log('Data received:', data);--}}
+{{--                                this.providers = data;--}}
+{{--                                console.log('Providers updated:', this.providers);  // Debug log--}}
+{{--                            })--}}
+{{--                            .catch(error => {--}}
+{{--                                console.error('Error fetching providers:', error.message);--}}
+{{--                            });--}}
+{{--                    }--}}
+{{--                }));--}}
+{{--            });--}}
+
+{{--        </script>--}}
     </section>
 </x-layout>

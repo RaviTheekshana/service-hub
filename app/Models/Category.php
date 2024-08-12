@@ -22,3 +22,4 @@ class Category extends Model
         'status',
     ];
 }
+

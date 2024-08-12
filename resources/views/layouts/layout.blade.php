@@ -21,6 +21,10 @@
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
@@ -69,11 +73,4 @@
         {{ $slot }}
     </div>
     </body>
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-6">
-    <div class="container mx-auto text-center">
-        <p>&copy; 2024 ServiceHub. All rights reserved.</p>
-        <p>Contact us: info@servicehub.com | +94123456789</p>
-    </div>
-</footer>
 </html>

@@ -46,3 +46,4 @@
     <!-- End Comment Form -->
 
 </x-layout>
+<x-footer/>

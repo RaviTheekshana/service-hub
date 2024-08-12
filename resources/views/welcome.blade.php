@@ -186,27 +186,27 @@
             <div class="row gy-4">
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="{{asset('assets/img/about-company-1.jpg')}}x" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/about-company-1.jpg')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/client-2.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/client-3.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/client-4.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/client-5.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/client-6.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
             </div>
@@ -275,17 +275,19 @@
                     <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
                         <div class="tab-pane fade active show" id="features-tab-1">
-                            <img src="assets/img/tabs-1.jpg" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/tabs-1.jpg')}}" alt="" class="img-fluid">
                         </div><!-- End Tab Content Item -->
 
                         <div class="tab-pane fade" id="features-tab-2">
-                            <img src="assets/img/tabs-2.jpg" alt="" class="img-fluid">
+                            <img src="{{ asset('assets/img/tabs-2.jpg') }}" alt="" class="img-fluid">
                         </div><!-- End Tab Content Item -->
 
                         <div class="tab-pane fade" id="features-tab-3">
-                            <img src="assets/img/tabs-3.jpg" alt="" class="img-fluid">
+                            <img src="{{ asset('assets/img/tabs-3.jpg') }}" alt="" class="img-fluid">
                         </div><!-- End Tab Content Item -->
+
                     </div>
+
 
                 </div>
 
@@ -483,7 +485,7 @@
                 </div>
 
                 <div class="features-image col-lg-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-                    <img src="assets/img/features-3.jpg" alt="">
+                    <img src="{{asset('assets/img/features-3.jpg')}}" alt="">
                 </div>
 
             </div>
@@ -691,7 +693,7 @@
                                 Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
                             </p>
                             <div class="profile mt-auto">
-                                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                                <img src="{{asset('assets/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
                                 <h3>Saul Goodman</h3>
                                 <h4>Ceo &amp; Founder</h4>
                             </div>
@@ -707,7 +709,7 @@
                                 Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
                             </p>
                             <div class="profile mt-auto">
-                                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                                <img src="{{asset('assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
                                 <h3>Sara Wilsson</h3>
                                 <h4>Designer</h4>
                             </div>
@@ -723,7 +725,7 @@
                                 Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
                             </p>
                             <div class="profile mt-auto">
-                                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                                <img src="{{asset('assets/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
                                 <h3>Jena Karlis</h3>
                                 <h4>Store Owner</h4>
                             </div>
@@ -739,7 +741,7 @@
                                 Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
                             </p>
                             <div class="profile mt-auto">
-                                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                                <img src="{{asset('assets/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
                                 <h3>Matt Brandon</h3>
                                 <h4>Freelancer</h4>
                             </div>
@@ -755,7 +757,7 @@
                                 Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
                             </p>
                             <div class="profile mt-auto">
-                                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                                <img src="{{asset('assets/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
                                 <h3>John Larson</h3>
                                 <h4>Entrepreneur</h4>
                             </div>
@@ -811,11 +813,11 @@
 
             <div class="row gy-4 mt-1">
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div><!-- End Google Maps -->
 
                 <div class="col-lg-6">
-                    <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
+                    <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
                         <div class="row gy-4">
 
                             <div class="col-md-6">
@@ -912,7 +914,7 @@
         </div>
     </div>
 
-    <div class="container copyright text-center mt-4">
+    <div class="container copyright text-center mt-4c py-6">
         <p>© <span>Copyright</span> <strong class="px-1 sitename">2024 ServiceHub</strong><span>All Rights Reserved</span></p>
     </div>
 </footer>

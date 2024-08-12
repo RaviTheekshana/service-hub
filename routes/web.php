@@ -43,4 +43,6 @@ use App\Http\Controllers\ReviewController;
 
 Route::post('review', [ReviewController::class, 'store'])->name('review.store');
 
+Route::get('/api/users/{category_id}', [ServiceProviderController::class, 'getUsersByCategory'])->name('get-service-providers');
+
 

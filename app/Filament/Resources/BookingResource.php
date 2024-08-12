@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BookingResource\Pages;
 use App\Models\Booking;
+use App\Models\Category;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
@@ -55,6 +56,9 @@ class BookingResource extends Resource
                         '15:00',
                         '16:00',
                 ]),
+                Select::make('category_id')
+                    ->relationship('category', 'name')
+                    ->required(),
 
                 Select::make('service_provider_id')
                     ->relationship('service_provider', 'name')
@@ -103,6 +107,7 @@ class BookingResource extends Resource
                 TextColumn::make('service_time'),
 
                 TextColumn::make('service_provider.name'),
+                TextColumn::make('category.name'),
 
                 TextColumn::make('status')
             ->badge()

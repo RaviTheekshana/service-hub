@@ -4,11 +4,22 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center font-semibold">
+                    <a href="{{ url('/') }}">
+                        Home >
+                    </a>
+                    <a><label class="text-gray-800 text-lg font-semibold">Hi, {{ Auth::user()->name }}</label></a>
+                </div>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <button type="button" class="size-[32px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-b text-gray-800 hover:bg-black focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white bg-black/50 dark:focus:bg-neutral-700">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-                    <span class="sr-only">Notifications</span>
+                    <span class="flex absolute top-0 end-0 -mt-2 -me-2">
+                    <span class="animate-ping absolute inline-flex size-3.5 rounded-full bg-red-400 opacity-75 dark:bg-red-600"></span>
+                    <span class="relative inline-flex text-xs bg-red-500 text-white rounded-full py-0.5 px-0.5">
+                      9+
+                    </span>
+                    </span>
                 </button>
 
                 <!-- Settings Dropdown -->

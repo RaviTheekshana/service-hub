@@ -36,4 +36,8 @@ class Booking extends Model
             ->belongsTo(User::class, 'service_provider_id')
             ->where('role', 'service_provider');
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
