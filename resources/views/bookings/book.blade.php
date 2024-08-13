@@ -1,4 +1,6 @@
 <x-layout>
+@include('components.guestvisibility')
+    @auth
     <!-- component -->
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -17,7 +19,9 @@
                     </div>
                 </div>
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form id="booking-form" action="{{ route('bookings.store') }}" method="POST">
+                    <form id="booking-form" action="{{ route('bookings.store') }}" method="POST" x-data="{
+                        category : null
+                    }">
                         @csrf
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                             Booking Information
@@ -76,7 +80,7 @@
 {{--                            </div>--}}
 
                             <div class="w-full lg:w-6/12 px-4">
-                                <div class="relative w-full mb-3" x-show="role === 'service_provider'">
+                                <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="category_id">
                                         Category
                                     </label>
@@ -96,7 +100,7 @@
                                     <select name="service_provider_id" id="service_provider_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                         <option value="">Select</option>
                                         @foreach(get_service_providers() as $provider)
-                                            <option value="{{ $provider->id }}">{{ ucfirst($provider->name) }}</option>
+                                            <option value="{{ $provider->id }}" x-show="category == {{ $provider->category_id }}">{{ ucfirst($provider->name) }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -222,4 +226,5 @@
 
 {{--        </script>--}}
     </section>
+    @endauth
 </x-layout>

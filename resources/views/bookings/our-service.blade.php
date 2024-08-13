@@ -13,7 +13,7 @@
             <!-- Card -->
             <a class="group flex flex-col focus:outline-none" href="#">
                 <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-                    <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80" alt="Blog Image">
+                    <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="{{asset('images/Electrician.jpg')}}" alt="Blog Image">
                     <span class="absolute top-0 end-0 rounded-se-xl rounded-es-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3">
           Sponsored
         </span>
@@ -21,7 +21,7 @@
 
                 <div class="mt-7">
                     <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
-                        Studio by Preline
+                        Electrician
                     </h3>
                     <p class="mt-3 text-gray-800">
                         Produce professional, reliable streams easily leveraging Preline's innovative broadcast studio
@@ -37,12 +37,12 @@
             <!-- Card -->
             <a class="group flex flex-col focus:outline-none" href="#">
                 <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-                    <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="https://images.unsplash.com/photo-1542125387-c71274d94f0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80" alt="Blog Image">
+                    <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="{{asset('images/Plumber.jpg')}}" alt="Blog Image">
                 </div>
 
                 <div class="mt-7">
                     <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
-                        Onsite
+                       Plumber
                     </h3>
                     <p class="mt-3 text-gray-800">
                         Optimize your in-person experience with best-in-class capabilities like badge printing and lead retrieval
@@ -57,12 +57,12 @@
             <!-- Card -->
             <a class="group flex flex-col focus:outline-none" href="#">
                 <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-                    <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="https://images.unsplash.com/photo-1542125387-c71274d94f0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80" alt="Blog Image">
+                    <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="{{asset('images/gardener.jpg')}}" alt="">
                 </div>
 
                 <div class="mt-7">
                     <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600">
-                        Onsite
+                        Gardener
                     </h3>
                     <p class="mt-3 text-gray-800">
                         Optimize your in-person experience with best-in-class capabilities like badge printing and lead retrieval

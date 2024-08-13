@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ServiceProviderController;
@@ -8,6 +9,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/chat', ChatController::class);
+
+Route::get('/chat/{chat}/messages', [ChatController::class, 'messages']);
 
 Route::middleware([
     'auth:sanctum',
@@ -44,5 +49,13 @@ use App\Http\Controllers\ReviewController;
 Route::post('review', [ReviewController::class, 'store'])->name('review.store');
 
 Route::get('/api/users/{category_id}', [ServiceProviderController::class, 'getUsersByCategory'])->name('get-service-providers');
+
+//Booking
+Route::get('/provider-booking', function () {
+    return view('Provider-Dashboard.provider-booking');
+})->name('provider-booking');
+Route::get('provider-profile', function () {
+    return view('Provider-Dashboard.provider-profile');
+})->name('provider-profile');
 
 

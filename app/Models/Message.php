@@ -10,20 +10,14 @@ class Message extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'sender_user_Id',
-        'receiver_user_Id',
+        'sender_user_id',
+        'is_read',
+        'chat_id',
         'message_content',
     ];
-    public function service_provider()
+
+    public function sender()
     {
-        return $this
-            ->belongsTo(User::class, 'receiver_user_Id')
-            ->where('role', 'service_provider');
-    }
-    public function user()
-    {
-        return $this
-            ->belongsTo(User::class, 'sender_user_Id')
-            ->where('role', 'user');
+        return $this->belongsTo(User::class, 'sender_user_id');
     }
 }
