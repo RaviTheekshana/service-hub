@@ -11,10 +11,12 @@ class Profile_Management extends Model
 
     protected $fillable = [
         'service_provider_id',
-        'service_description',
-        'work_details',
         'experience_years',
         'hourly_rate',
+        'certificate_path',
+        'personal_summary',
+        'work_experience',
+        'category_id',
     ];
     public function service_provider()
     {

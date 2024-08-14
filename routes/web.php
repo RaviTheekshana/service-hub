@@ -54,8 +54,11 @@ Route::get('/api/users/{category_id}', [ServiceProviderController::class, 'getUs
 Route::get('/provider-booking', function () {
     return view('Provider-Dashboard.provider-booking');
 })->name('provider-booking');
-Route::get('provider-profile', function () {
-    return view('Provider-Dashboard.provider-profile');
-})->name('provider-profile');
+//Route::get('provider-profile', function () {
+//    return view('Provider-Dashboard.provider-profile');
+//})->name('provider-profile');
+
+use App\Http\Controllers\Profile_ManagementController;
+Route::resource('profile_management', Profile_ManagementController::class);
 
 

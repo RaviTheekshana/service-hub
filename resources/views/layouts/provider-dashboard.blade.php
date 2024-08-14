@@ -14,13 +14,68 @@
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
             </button>
+            <div class="ms-3 relative">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <button
+                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                <img class="h-10 w-10 rounded-full object-cover"
+                                     src="{{ Auth::user()->profile_photo_url }}"
+                                     alt="{{ Auth::user()->name }}"/>
+                            </button>
+                        @else
+                            <span class="inline-flex rounded-md">
+                                    <button type="button"
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                        {{ Auth::user()->name }}
+
+                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                        </svg>
+                                    </button>
+                                </span>
+                        @endif
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <!-- Account Management -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Manage Account') }}
+                        </div>
+
+                        <x-dropdown-link href="{{ route('profile.show') }}">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
+
+                        @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                            <x-dropdown-link href="{{ route('api-tokens.index') }}">
+                                {{ __('API Tokens') }}
+                            </x-dropdown-link>
+                        @endif
+
+                        <div class="border-t border-gray-200"></div>
+
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+
+                            <x-dropdown-link href="{{ route('logout') }}"
+                                             @click.prevent="$root.submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            </div>
 
             <!-- Hidden Logout Form -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
         </div>
-
         <!-- Features -->
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <!-- Grid -->
@@ -76,15 +131,15 @@
         <!-- Profile -->
         <div class="flex items-center gap-x-3">
             <div class="shrink-0">
-                <img class="shrink-0 size-16 rounded-full" src="https://images.unsplash.com/photo-1510706019500-d23a509eecd4?q=80&w=2667&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar">
+                <img class="shrink-0 size-16 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="Avatar">
             </div>
 
             <div class="grow">
                 <h1 class="text-lg font-medium text-gray-800">
-                    Eliana Garcia
+                    {{ auth()->user()->name }}
                 </h1>
                 <p class="text-sm text-gray-600">
-                    Graphic Designer, Web designer/developer
+                    {{ ucfirst(get_categories()->where('id', auth()->user()->category_id)->first()->name)}}
                 </p>
             </div>
         </div>
@@ -93,7 +148,7 @@
         <!-- About -->
         <div class="mt-8">
             <p class="text-sm text-gray-600">
-                I am a seasoned graphic designer with over 14 years of experience in creating visually appealing and user-centric designs. My expertise spans across UI design, design systems, and custom illustrations, helping clients bring their digital visions to life.
+                Hi, I'm Eliana Garcia, a freelance designer based in New York City. I specialize in creating clean, elegant, and functional designs that help businesses succeed. I've designed a variety of websites and user interfaces for companies and individuals over the past 10 years.
             </p>
 
             <p class="mt-3 text-sm text-gray-600">
