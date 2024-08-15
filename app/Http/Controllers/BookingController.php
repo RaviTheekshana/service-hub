@@ -39,6 +39,7 @@ class BookingController extends Controller
                 'address' => 'required|string|max:255',
                 'city' => 'required|string|max:100',
                 'phone' => 'required|string|max:12',
+                'phone_two' => 'required|string|max:12',
                 'email' => 'required|email|max:255',
                 'description' => 'required|string',
             ]);
