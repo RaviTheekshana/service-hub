@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Profile_Management;
 use App\Models\User;
 
 
@@ -11,8 +12,8 @@ class ServiceProviderController extends Controller
         // You can retrieve data from the database or other sources if needed
         // For example:
         // $serviceProviders = ServiceProvider::all();
-
-        return view('bookings.profile'); // Adjust the view path as needed
+        $profile = Profile_Management::all();
+        return view('bookings.profile', compact('profile'));// Adjust the view path as needed
     }
     public function getUsersByCategory($category_id)
     {
