@@ -61,4 +61,10 @@ Route::get('/provider-booking', function () {
 use App\Http\Controllers\Profile_ManagementController;
 Route::resource('profile_management', Profile_ManagementController::class);
 
+//Portfolio
+Route::get('/portfolio', function () {
+    return view('Provider-Dashboard.portfolio');
+})->name('portfolio');
+
+
 

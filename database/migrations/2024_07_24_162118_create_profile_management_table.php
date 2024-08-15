@@ -10,7 +10,7 @@ class CreateProfileManagementTable extends Migration
     {
         Schema::create('profile__management', function (Blueprint $table) {
             $table->id();
-            $table->integer('service_provider_id');
+            $table->foreignId('service_provider_id')->constrained('users');
             $table->integer('experience_years');
             $table->double('hourly_rate');
             $table->string('certificate_path')->nullable();
