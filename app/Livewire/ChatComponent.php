@@ -4,13 +4,12 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Chat;
-use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 
 class ChatComponent extends Component
 {
     public $chat;
-    public $messageContent;
+    public $messageContent = '';
 
     protected $listeners = ['messageReceived' => 'refreshMessages'];
 
@@ -27,7 +26,6 @@ class ChatComponent extends Component
         ]);
 
         $this->messageContent = '';
-
         // Emit an event to refresh messages for all users
     }
 
