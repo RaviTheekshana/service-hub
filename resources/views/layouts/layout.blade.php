@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -8,7 +10,6 @@
 
     <!-- Favicons -->
     <link href="{{asset('images/favicon.ico')}}" rel="icon">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -24,6 +25,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 
@@ -33,11 +35,13 @@
 </head>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <title>ServiceHub</title>
+    <body>
 <header id="header" class="header d-flex align-items-center fixed-top mb-4">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-        <a href="#" class="logo d-flex align-items-center me-auto">
-            <img src="{{asset('images/logo2.jpg')}}" alt="">
+        <a>
+            <img src="{{asset('images/logo2.jpg')}}" width="80" alt="">
+        </a>
+        <a href="#" class=" logo d-flex align-items-center me-auto">
             <h1 class="sitename">Service Hub</h1>
         </a>
 
@@ -68,11 +72,20 @@
         @endauth
     </div>
 </header>
-    <body>
+
     <!-- Page Content -->
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>
     @livewireScripts
+<!-- Vendor JS Files -->
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+<script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+<!-- Main JS File -->
+<script src="{{ asset('assets/js/main.js') }}"></script>
     </body>
 </html>
