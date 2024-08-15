@@ -24,7 +24,8 @@
                         Electrician
                     </h3>
                     <p class="mt-3 text-gray-800">
-                        Produce professional, reliable streams easily leveraging Preline's innovative broadcast studio
+                        Ensure your home or business is safe and well-lit with our professional electrician services. Our licensed electricians are experts in installing, repairing, and maintaining electrical systems. Whether you need new wiring, lighting
+                        installation, or troubleshooting of electrical issues, we provide reliable and efficient solutions. We prioritize safety and quality in every job, ensuring that your electrical systems operate smoothly and comply with all regulations. Trust us for all your electrical needs, from minor repairs to major installations.
                     </p>
                     <p class="mt-5 inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 group-hover:underline group-focus:underline font-medium">
                         Read more
@@ -45,7 +46,8 @@
                        Plumber
                     </h3>
                     <p class="mt-3 text-gray-800">
-                        Optimize your in-person experience with best-in-class capabilities like badge printing and lead retrieval
+                        Keep your plumbing systems running smoothly with our expert plumbing services. Our skilled plumbers are equipped to handle everything from routine maintenance to emergency repairs. Whether it's a leaking faucet, a clogged drain, or a major pipe installation, we offer fast and efficient service to ensure your water systems are functioning at their best. We use the latest tools and techniques to diagnose and resolve plumbing issues quickly, saving you time and money. Count on us for
+                        and dependable plumbing services that you can trust.
                     </p>
                     <p class="mt-5 inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 group-hover:underline group-focus:underline font-medium">
                         Read more
@@ -65,7 +67,8 @@
                         Gardener
                     </h3>
                     <p class="mt-3 text-gray-800">
-                        Optimize your in-person experience with best-in-class capabilities like badge printing and lead retrieval
+                        Transform your outdoor space into a beautiful and thriving garden with our professional gardening services. Our experienced gardeners are passionate about creating and maintaining lush, green landscapes that enhance the beauty of your home or business. From lawn care and planting to pruning and landscape design, we offer a full range of gardening services tailored to your specific needs. Whether you're looking to maintain a healthy garden or create a new outdoor oasis, our team is here to bring your vision to life.
+                        Enjoy a well-maintained garden all year round with our expert care.
                     </p>
                     <p class="mt-5 inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 group-hover:underline group-focus:underline font-medium">
                         Read more

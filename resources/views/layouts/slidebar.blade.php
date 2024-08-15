@@ -82,12 +82,6 @@
                         {{ __('Profile') }}
                     </x-dropdown-link>
 
-                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                        <x-dropdown-link href="{{ route('api-tokens.index') }}">
-                            {{ __('API Tokens') }}
-                        </x-dropdown-link>
-                    @endif
-
                     <div class="border-t border-gray-200"></div>
 
                     <!-- Authentication -->

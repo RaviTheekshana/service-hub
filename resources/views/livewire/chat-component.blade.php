@@ -33,11 +33,11 @@
             </div>
         </div>
         <!-- Chat Input -->
-        <div class="flex flex-row items-center h-16 rounded-xl bg-white w-full pr-4">
-            <form wire:submit.prevent="sendMessage" class="flex flex-row items-center w-full">
+        <div x-data="{ messageContent: ''}" class="flex flex-row items-center h-16 rounded-xl bg-white w-full pr-4">
+            <form @submit.prevent="$wire.sendMessage().then(() => { messageContent = '' })" class="flex flex-row items-center w-full">
             <div class="flex-grow ml-4">
                 <div class="relative w-full">
-                    <input wire:model="messageContent" type="text" class="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10" placeholder="Type a message..."/>
+                    <input x-model="messageContent" wire:model.defer="messageContent" type="text" class="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10" placeholder="Type a message..."/>
                 </div>
             </div>
             <div class="ml-4">
