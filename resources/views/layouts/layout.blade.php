@@ -57,7 +57,7 @@
                         <li><a href="#">Welder</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ url('/bookings/create') }}">Booking</a></li>
+                <li><a href="{{ url('/blog') }}">Booking</a></li>
                 <li><a href="{{ url('/bookings/portfolio') }}">Service Providers</a></li>
                 <li><a href="{{ url('/bookings/review') }}">Reviews</a></li>
                 <li><a href="{{ url('/contact') }}">Contact Us</a></li>

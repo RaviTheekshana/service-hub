@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\ServiceProviderController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +27,7 @@ Route::middleware([
 
 use App\Http\Controllers\BookingController;
 
-Route::get('bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+//Route::get('bookings/create', [BookingController::class, 'create'])->name('bookings.create');
 Route::get('bookings/our-service', [BookingController::class, 'ourService'])->name('bookings.our-service');
 Route::get('bookings/review', [BookingController::class, 'showReview'])->name('bookings.review');
 Route::get('bookings/book', [BookingController::class, 'bookForm'])->name('bookings.book');
@@ -62,9 +62,11 @@ use App\Http\Controllers\Profile_ManagementController;
 Route::resource('profile_management', Profile_ManagementController::class);
 
 //Portfolio
-Route::get('/portfolio', function () {
-    return view('Provider-Dashboard.portfolio');
-})->name('portfolio');
+//Route::get('/portfolio', function () {
+//    return view('Provider-Dashboard.portfolio');
+//})->name('portfolio');
 
+Route::post('/blog', [BlogPostController::class, 'store'])->name('blog.store');
+Route::get('/blog', [BlogPostController::class, 'index'])->name('blog.index');
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chat;
 use App\Models\Profile_Management;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -38,6 +39,7 @@ class Profile_ManagementController extends Controller
             'certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
             'personal_summary' => 'nullable|string|max:1000',
             'work_experience' => 'nullable|string|max:1000',
+            'status' => 'nullable|in:pending,approved,rejected'
         ]);
         //Check if the users service provider profile already exists
         $profile = Profile_Management::where('service_provider_id', auth()->id())->first();
@@ -69,8 +71,31 @@ class Profile_ManagementController extends Controller
     }
 
 
-    public function show(Profile_Management $profile_Management)
+    public function show(Profile_Management $profile_management)
     {
+       //Get Selected Profile detail from All Profiles
+        $portfolio = Profile_Management::where('id', $profile_management->id)->first();
+        if (!$portfolio) {
+            // Handle the case where the profile isn't found
+            return redirect()->route('profile_management.index')->with('error', 'Profile not found.');
+        }
+        // Load the chats where the authenticated user is the customer
+        $chats = Chat::where('customer_id', auth()->id())
+            ->where('provider_id', $portfolio->service_provider_id)
+            ->get();
+        // If no chat exists, create a new one
+        if ($chats->isEmpty()) {
+            $newChat = Chat::create([
+                'customer_id' => auth()->id(),
+                'provider_id' => $portfolio->service_provider_id,
+                'status' => true,
+                // Add any other necessary fields for the Chat model
+            ]);
+
+            // Pass the new chat to the view
+            $chats = collect([$newChat]);
+        }
+        return view('Provider-Dashboard.portfolio', compact('chats','portfolio'));
     }
 
     public function edit(Profile_Management $profile_Management)

@@ -17,6 +17,7 @@ class CreateProfileManagementTable extends Migration
             $table->longText('personal_summary');
             $table->longText('work_experience');
             $table->foreignId('category_id')->constrained('categories');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->softDeletes();
             $table->timestamps();
         });

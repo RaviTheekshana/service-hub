@@ -42,23 +42,30 @@ class Profile_ManagementResource extends Resource
                     ->relationship('service_provider', 'name')
                     ->required(),
 
-                TextInput::make('service_description')
-                    ->required(),
-
-                TextInput::make('work_details')
-                    ->required(),
-                FileUpload::make('project_images')
-                    ->image()
-                    ->directory('project_images')
-                    ->multiple(),
-
-                TextInput::make('experience_years')
-                    ->required()
-                    ->integer(),
-
-                TextInput::make('hourly_rate')
-                    ->required()
-                    ->numeric(),
+//                TextInput::make('service_description')
+//                    ->required(),
+//
+//                TextInput::make('work_details')
+//                    ->required(),
+//                FileUpload::make('project_images')
+//                    ->image()
+//                    ->directory('project_images')
+//                    ->multiple(),
+//
+//                TextInput::make('experience_years')
+//                    ->required()
+//                    ->integer(),
+//
+//                TextInput::make('hourly_rate')
+//                    ->required()
+//                    ->numeric(),
+                Select::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'approved' => 'Approved',
+                        'rejected' => 'Rejected',
+                    ])
+                    ->default('pending'),
 
                 Placeholder::make('created_at')
                     ->label('Created Date')

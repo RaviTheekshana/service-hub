@@ -17,6 +17,7 @@ class Profile_Management extends Model
         'personal_summary',
         'work_experience',
         'category_id',
+        'status'
     ];
     public function service_provider()
     {
