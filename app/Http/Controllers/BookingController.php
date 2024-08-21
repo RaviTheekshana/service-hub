@@ -45,6 +45,7 @@ class BookingController extends Controller
             ]);
 
             Booking::create([
+                'user_id' => auth()->id(),
                 'service_date' => $request->input('service_date'),
                 'service_time' => $request->input('service_time'),
                 'category_id' => $request->input('category_id'),

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Profile_Management;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Pest\Laravel\get;
 
 
 class DashboardController extends Controller
@@ -23,6 +25,20 @@ class DashboardController extends Controller
         }
         // Render the normal dashboard for regular users
         return view('dashboard');
+    }
+    public function bookingView()
+    {
+        //Get the all booking data from db to the view belongs to the authenticated Service Provider
+        $book = Booking::where('service_provider_id', auth()->user()->id)->get();
+        return view('Provider-Dashboard.provider-booking', compact('book'));
+
+    }
+    public function update()
+    {
+        //Get the booking data from db to the view belongs to the authenticated Service Provider
+        $book = Booking::where('id' , request('booking'))->first();
+        return view('Provider-Dashboard.bookingupdate', compact('book'));
+
     }
 //    public function show()
 //    {

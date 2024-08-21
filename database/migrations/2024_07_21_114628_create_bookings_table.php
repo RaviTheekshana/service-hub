@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->dateTime('service_date');
             $table->time('service_time');
             $table->foreignId('category_id')->constrained('categories');

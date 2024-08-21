@@ -7,9 +7,9 @@
         <!-- Card Blog -->
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-28 mx-auto">
             <!-- Title -->
-            <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-                <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Categories</h2>
-                <p class="mt-1 text-gray-600">See how game-changing companies are making the most of every engagement with Preline.</p>
+            <div class="max-w-2xl mx-auto text-center mb-3 lg:mb-10">
+                <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Jobs !</h2>
+                <p class="mt-1 text-gray-600">First find out if the service you need is here and join with Us</p>
             </div>
             <!-- End Title -->
             <div class="max-w-7xl mx-auto p-5">

@@ -51,9 +51,8 @@ Route::post('review', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/api/users/{category_id}', [ServiceProviderController::class, 'getUsersByCategory'])->name('get-service-providers');
 
 //Booking
-Route::get('/provider-booking', function () {
-    return view('Provider-Dashboard.provider-booking');
-})->name('provider-booking');
+Route::get('/provider-booking', [DashboardController::class, 'bookingView'])->name('provider-booking');
+Route::get('/provider-booking/{booking}', [DashboardController::class, 'update'])->name('provider-booking.update');
 //Route::get('provider-profile', function () {
 //    return view('Provider-Dashboard.provider-profile');
 //})->name('provider-profile');

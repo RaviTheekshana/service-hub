@@ -13,3 +13,9 @@ if(!function_exists('get_service_providers')) {
         return \App\Models\User::where('role', 'service_provider')->get();
     }
 }
+if(!function_exists('get_users')) {
+    function get_users()
+    {
+        return \App\Models\User::where('role', 'user')->get();
+    }
+}

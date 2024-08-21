@@ -77,6 +77,13 @@
                     </span>
                                     </div>
                                 </th>
+                                <th scope="col" class="px-6 py-3 text-start">
+                                    <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                      Rating
+                    </span>
+                                    </div>
+                                </th>
 
                                 <th scope="col" class="px-6 py-3 text-start">
                                     <div class="flex items-center gap-x-2">
@@ -131,6 +138,13 @@
                                     <a class="block p-6" href="#">
                                         <div class="flex gap-x-1 mb-2">
                                             <span class="block text-sm text-gray-500">{{ Str::limit($profiles->personal_summary, 160) }}</span>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td class="size-px whitespace-nowrap align-top">
+                                    <a class="block p-6" href="#">
+                                        <div class="flex gap-x-1 mb-2">
+                                            <span class="block text-sm text-gray-500">No Ratings</span>
                                         </div>
                                     </a>
                                 </td>
