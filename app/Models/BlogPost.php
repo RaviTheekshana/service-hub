@@ -22,7 +22,7 @@ class BlogPost extends Model
     }
     public function approve()
     {
-        return $this->hasMany(approve::class);
+        return $this->hasMany(Approve::class);
     }
 
 }
