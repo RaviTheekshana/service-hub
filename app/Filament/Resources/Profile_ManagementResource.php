@@ -42,23 +42,21 @@ class Profile_ManagementResource extends Resource
                     ->relationship('service_provider', 'name')
                     ->required(),
 
-//                TextInput::make('service_description')
-//                    ->required(),
-//
-//                TextInput::make('work_details')
-//                    ->required(),
-//                FileUpload::make('project_images')
-//                    ->image()
-//                    ->directory('project_images')
-//                    ->multiple(),
-//
-//                TextInput::make('experience_years')
-//                    ->required()
-//                    ->integer(),
-//
-//                TextInput::make('hourly_rate')
-//                    ->required()
-//                    ->numeric(),
+                TextInput::make('personal_summary')
+                    ->required(),
+
+                TextInput::make('experience_years')
+                    ->required()
+                    ->integer(),
+
+                TextInput::make('hourly_rate')
+                    ->required()
+                    ->numeric(),
+                FileUpload::make('certificate_path')
+                    ->downloadable()
+                    ->image()
+                    ->imageEditor(),
+
                 Select::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -83,19 +81,22 @@ class Profile_ManagementResource extends Resource
             ->columns([
                 TextColumn::make('service_provider_id'),
 
-                TextColumn::make('service_description'),
 
-                TextColumn::make('work_details'),
+                TextColumn::make('personal_summary'),
+                TextColumn::make('experience_years'),
+                TextColumn::make('hourly_rate'),
+                TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'gray',
+                        'approved' => 'success',
+                        'rejected' => 'danger',
+                    }),
 
                 //Show the uploaded images in the table
-                ImageColumn::make('project_images')
-                    ->disk('public/project_images')
+                ImageColumn::make('certificate_path')
                     ->circular()
                     ->stacked(),
-
-                TextColumn::make('experience_years'),
-
-                TextColumn::make('hourly_rate'),
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -136,4 +137,5 @@ class Profile_ManagementResource extends Resource
     {
         return [];
     }
+
 }

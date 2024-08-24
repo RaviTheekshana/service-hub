@@ -25,6 +25,7 @@ class Profile_Management extends Model
             ->belongsTo(User::class, 'service_provider_id')
             ->where('role', 'service_provider');
     }
+
     public function format()
     {
 

@@ -18,10 +18,11 @@
                     </div>
                 </div>
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form id="booking-form" action="{{ route('bookings.store') }}" method="POST" x-data="{
+                    <form id="booking-form" action="{{ route('bookings.update', $book->id) }}" method="POST" x-data="{
                         category : null
                     }">
                         @csrf
+                        @method('PUT')
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                             Booking Information
                         </h6>
@@ -32,6 +33,11 @@
                                         <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                <span class="block sm:inline">{{ session('success') }}</span>
                             </div>
                         @endif
                         @php
@@ -59,11 +65,15 @@
 
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="category_id">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="status">
                                         Status
                                     </label>
-                                    <select id="status" x-model="category" name="status" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
-                                        <option value="">Select</option>
+                                    <select id="status" name="status" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                        <option value="" disabled>Select</option>
+                                        <option value="Pending" {{ $book->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="Confirmed" {{ $book->status == 'Confirmed' ? 'selected' : '' }}>Confirmed</option>
+                                        <option value="Completed" {{ $book->status == 'Completed' ? 'selected' : '' }}>Completed</option>
+                                        <option value="Cancelled" {{ $book->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
                                     </select>
                                 </div>
                             </div>

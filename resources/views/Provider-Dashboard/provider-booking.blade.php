@@ -114,7 +114,8 @@
                                 </td>
                                 <td class="h-px w-72 whitespace-nowrap">
                                     <div class="px-6 py-3">
-                                        <span class="block text-sm font-semibold text-gray-800">{{$books->service_date}}</span>
+{{--                                        <span class="block text-sm font-semibold text-gray-800">{{$books->service_date}}</span>--}}
+                                        <span class="block text-sm font-semibold text-gray-800">{{ \Carbon\Carbon::parse($books->service_date)->format('F j, Y') }}</span>
                                         <span class="block text-sm text-gray-500">{{$books->service_time}}</span>
                                     </div>
                                 </td>

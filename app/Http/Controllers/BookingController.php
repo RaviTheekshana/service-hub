@@ -60,6 +60,26 @@ class BookingController extends Controller
 
             return redirect()->route('bookings.success')->with('success', 'Booking successfully created!');
         }
+    public function update(Request $request, $id)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'service_date' => 'required|date',
+            'service_time' => 'required',
+            'status' => 'required|in:Pending,Confirmed,Completed,Cancelled',
+        ]);
+
+        // Find the booking by ID and update its details
+        $book = Booking::findOrFail($id);
+        $book->service_date = \Carbon\Carbon::parse($request->service_date)->timestamp; // Storing as a timestamp
+        $book->service_time = $request->service_time; // Assuming this is in 'H:i' format
+        $book->status = $request->status;
+        $book->save();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Booking updated successfully!');
+    }
+
 }
 
 

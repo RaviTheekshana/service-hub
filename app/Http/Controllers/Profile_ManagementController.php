@@ -119,4 +119,5 @@ class Profile_ManagementController extends Controller
         return redirect()->route('profile_management.index')->with('success', 'Profile deleted successfully.');
     }
 
+
 }
