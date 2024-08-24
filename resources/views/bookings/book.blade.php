@@ -44,15 +44,34 @@
                                     <input type="date" name="service_date" id="service_date" min="{{ \Carbon\Carbon::now()->toDateString() }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
+{{--                            <div class="w-full lg:w-6/12 px-4">--}}
+{{--                                <div class="relative w-full mb-3">--}}
+{{--                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_time">--}}
+{{--                                        Service Time--}}
+{{--                                    </label>--}}
+{{--                                    <input type="time" name="service_time" id="service_time" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_time">
                                         Service Time
                                     </label>
-                                    <input type="time" name="service_time" id="service_time" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                    <select name="service_time" id="service_time" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                        <!-- Options for times between 8 AM and 4 PM -->
+                                        @for ($hour = 8; $hour <= 16; $hour++)
+                                            <option value="{{ sprintf('%02d:00', $hour) }}">
+                                                {{ date('h:i A', strtotime(sprintf('%02d:00', $hour))) }}
+                                            </option>
+{{--                                            @if ($hour < 16)--}}
+{{--                                                <option value="{{ sprintf('%02d:30', $hour) }}">--}}
+{{--                                                    {{ date('h:i A', strtotime(sprintf('%02d:30', $hour))) }}--}}
+{{--                                                </option>--}}
+{{--                                            @endif--}}
+                                        @endfor
+                                    </select>
                                 </div>
                             </div>
-
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="category_id">
@@ -157,17 +176,5 @@
             </div>
         </div>
     </section>
-        <script>
-            document.getElementById('service_time').addEventListener('input', function() {
-                const serviceTime = this.value;
-                const minTime = '08:00';
-                const maxTime = '16:00';
-
-                if (serviceTime < minTime || serviceTime > maxTime) {
-                    alert('Please select a time between 8:00 AM and 4:00 PM.');
-                    this.value = '';
-                }
-            });
-        </script>
     @endauth
 </x-layout>

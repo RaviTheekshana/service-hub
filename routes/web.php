@@ -68,5 +68,6 @@ Route::resource('profile_management', Profile_ManagementController::class);
 
 Route::post('/blog', [BlogPostController::class, 'store'])->name('blog.store');
 Route::get('/blog', [BlogPostController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}', [BlogPostController::class, 'destroy'])->name('blog.destroy');
 
 

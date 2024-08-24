@@ -1,6 +1,6 @@
 <x-guest-layout>
     @include('layouts.slidebar')
-    <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
 
         <form id="profile-form" action="{{route('profile_management.store')}}" method="POST" enctype="multipart/form-data">
             @csrf

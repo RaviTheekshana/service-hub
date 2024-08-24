@@ -1,8 +1,7 @@
-
-    <head>
+<head>
         <title>Booking</title>{{-- ... --}}
         @vite('resources/js/app.js')
-    </head>
+</head>
     <x-layout>
         <!-- Card Blog -->
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-28 mx-auto">
@@ -40,6 +39,8 @@
                                     <h5 class="text-sm text-gray-800">By {{($post->user->name)}}</h5>
                                 </div>
                             </div>
+                            <!-- Include the Livewire LikeButton component -->
+                            @livewire('approve-button', ['post' => $post])
                         </a>
                         <!-- End Card -->
                     @endforeach

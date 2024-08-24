@@ -67,7 +67,9 @@ class Profile_ManagementController extends Controller
                 'category_id' => $request['category_id']
             ]
         );
-        return redirect()->route('profile_management.index')->with('success', 'Profile updated successfully.');
+        return redirect()->route('profile_management.index')
+            ->with('flash.bannerStyle', 'success')
+            ->with('flash.banner', 'Profile created successfully.');
     }
 
 

@@ -1,7 +1,24 @@
 <x-layout>
     <!-- component -->
-    <div class="flex h-screen antialiased text-gray-800 pt-28">
-        <div class="flex flex-row h-full w-[40%] overflow-x-hidden">
+    <div x-data="{ open: false }" class="flex h-screen antialiased text-gray-800 pt-28">
+        <!-- Navigation Toggle -->
+        <button
+            type="button"
+            @click="open = !open"
+            class="size-8 flex justify-center items-center gap-x-2 border border-gray-200 text-gray-800 hover:text-gray-500 rounded-lg focus:outline-none focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none lg:hidden"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="hs-application-sidebar"
+            aria-label="Toggle navigation">
+            <span class="sr-only">Toggle Navigation</span>
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="M15 3v18"/>
+                <path d="m8 9 3 3-3 3"/>
+            </svg>
+        </button>
+        <!-- End Navigation Toggle -->
+        <div :class="{ 'hidden': !open, 'block': open }" class="sticky inset-y-0 left-0 z-50 w-64 bg-white flex-shrink-0 transition-transform transform lg:translate-x-0 lg:static lg:inset-0 lg:flex lg:flex-col py-8 pr-2">
             <div class="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
                 <div class="flex flex-row items-center justify-center h-12 w-full">
                     <div

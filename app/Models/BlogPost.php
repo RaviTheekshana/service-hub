@@ -12,6 +12,7 @@ class BlogPost extends Model
     protected $fillable = [
         'user_id',
         'title',
+        'category_id',
         'description',
         'image_path',
     ];
@@ -19,4 +20,9 @@ class BlogPost extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function approve()
+    {
+        return $this->hasMany(approve::class);
+    }
+
 }

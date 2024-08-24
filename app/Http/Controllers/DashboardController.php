@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPost;
 use App\Models\Booking;
 use App\Models\Profile_Management;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ class DashboardController extends Controller
             return view('layouts.provider-dashboard');
         }
         // Render the normal dashboard for regular users
-        return view('dashboard');
+        //Pass the Blogpost data to the view
+        $blog = Blogpost::where('user_id', auth()->user()->id)->get();
+        return view('dashboard', compact('blog'));
     }
     public function bookingView()
     {

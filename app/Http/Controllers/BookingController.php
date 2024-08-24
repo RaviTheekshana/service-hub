@@ -39,7 +39,7 @@ class BookingController extends Controller
                 'address' => 'required|string|max:255',
                 'city' => 'required|string|max:100',
                 'phone' => 'required|string|max:12',
-                'phone_two' => 'required|string|max:12',
+                'phone_two' => 'required|string|max:12|different:phone',
                 'email' => 'required|email|max:255',
                 'description' => 'required|string',
             ]);
@@ -71,7 +71,7 @@ class BookingController extends Controller
 
         // Find the booking by ID and update its details
         $book = Booking::findOrFail($id);
-        $book->service_date = \Carbon\Carbon::parse($request->service_date)->timestamp; // Storing as a timestamp
+        $book->service_date = $request->service_date; // Storing as a timestamp
         $book->service_time = $request->service_time; // Assuming this is in 'H:i' format
         $book->status = $request->status;
         $book->save();
