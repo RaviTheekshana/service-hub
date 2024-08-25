@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\approve;
+use App\Models\Approve;
 use App\Models\BlogPost;
 use App\Models\Booking;
 use App\Models\Profile_Management;
