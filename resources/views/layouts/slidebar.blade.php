@@ -1,4 +1,7 @@
-<x-banner /><!-- ========== MAIN CONTENT ========== -->
+<div class="w-full lg:ps-72">
+<x-banner />
+</div>
+    <!-- ========== MAIN CONTENT ========== -->
 <!-- Breadcrumb -->
 <div class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 lg:px-8 lg:hidden">
     <div class="flex items-center py-2">

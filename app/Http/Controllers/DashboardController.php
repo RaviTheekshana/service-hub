@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\approve;
 use App\Models\BlogPost;
 use App\Models\Booking;
 use App\Models\Profile_Management;
@@ -27,7 +28,9 @@ class DashboardController extends Controller
         // Render the normal dashboard for regular users
         //Pass the Blogpost data to the view
         $blog = Blogpost::where('user_id', auth()->user()->id)->get();
-        return view('dashboard', compact('blog'));
+        $blogIds = $blog->pluck('id')->toArray();
+        $approves = Approve::whereIn('blog_post_id', $blogIds)->get();
+        return view('dashboard', compact('blog', 'approves'));
     }
     public function bookingView()
     {

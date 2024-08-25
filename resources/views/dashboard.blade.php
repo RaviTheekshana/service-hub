@@ -27,7 +27,7 @@
                                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Category</th>
                                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Description</th>
                                         <th scope="col" class="px-3 py-3 text-start text-xs font-medium text-gray-500 uppercase">Image</th>
-                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Status</th>
+                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Approved</th>
                                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Actions</th>
                                     </tr>
                                     </thead>
@@ -38,7 +38,20 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ucfirst(get_categories()->where('id', $blogs->category_id)->first()->name)}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{$blogs->description}}</td>
                                         <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-800"><img class="size-20" src="{{ asset('storage/' . $blogs->image_path) }}" alt="{{ $blogs->title }}"></td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">View All</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                            <select class="block w-full text-sm text-gray-800 rounded-4 border-blue-500" onchange="redirectToPortfolio(this)">
+                                                <option value="">Select a Service Provider</option>
+                                                @foreach($approves->where('blog_post_id', $blogs->id) as $approve)
+                                                    @php
+                                                        $serviceProvider = get_service_providers()->where('id', $approve->user_id)->first();
+                                                        $profile = \App\Models\Profile_Management::where('service_provider_id', $approve->user_id)->first();
+                                                    @endphp
+                                                    <option value="{{ $profile->id }}">
+                                                        {{ $serviceProvider->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                             <a href="{{route('blog.destroy', $blogs->id)}}" class="p-1 bg-white inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</a>
                                         </td>
@@ -701,6 +714,12 @@
         </button>
     </a>
             <script>
+                function redirectToPortfolio(selectElement) {
+                    var profileId = selectElement.value;
+                    if (profileId) {
+                        window.location.href = `/profile_management/${profileId}`;
+                    }
+                }
                 function handleImageUpload(event) {
                     const file = event.target.files[0];
                     if (file) {
