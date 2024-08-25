@@ -51,7 +51,6 @@
                 <li class="dropdown"><a href="{{ url('/bookings/our-service') }}"><span>Our Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="#">Electrician</a></li>
-                        {{--<ul> <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>--}}
                         <li><a href="#">Plumber</a></li>
                         <li><a href="#">Gardner</a></li>
                         <li><a href="#">Welder</a></li>
@@ -72,12 +71,12 @@
         @endauth
     </div>
 </header>
-
     <!-- Page Content -->
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>
-    @livewireScripts
+@stack('modals')
+@livewireScripts
 <!-- Vendor JS Files -->
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>

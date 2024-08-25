@@ -7,6 +7,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\BelongsToSelect;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -78,6 +79,7 @@ class UserResource extends Resource
                 TextColumn::make('role')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\ImageColumn::make('profile_photo_path'),
 
                 TextColumn::make('category.name')
 
