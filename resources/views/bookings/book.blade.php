@@ -8,12 +8,12 @@
     <section class="pt-32 bg-blueGray-50">
         <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-                <div class="rounded-t bg-white mb-0 px-6 py-6">
+                <div class="rounded-2xl bg-white mb-0 px-6 py-6">
                     <div class="text-center flex justify-between">
-                        <h6 class="text-blueGray-700 text-xl font-bold">
+                        <h6 class="text-blueGray-800 text-3xl font-bold">
                             Booking Form
                         </h6>
-                        <button form="booking-form" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="submit">
+                        <button form="booking-form" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="submit">
                             Confirm
                         </button>
                     </div>
