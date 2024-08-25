@@ -37,7 +37,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{$blogs->title}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ucfirst(get_categories()->where('id', $blogs->category_id)->first()->name)}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{$blogs->description}}</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-800"><img class="size-24" alt="blog-image" src="{{$blogs->image_path}}"></td>
+                                        <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-800"><img class="size-20" src="{{ asset('storage/' . $blogs->image_path) }}" alt="{{ $blogs->title }}"></td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">View All</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                             <a href="{{route('blog.destroy', $blogs->id)}}" class="p-1 bg-white inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</a>
