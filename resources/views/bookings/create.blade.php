@@ -4,7 +4,7 @@
 </head>
     <x-layout>
         <!-- Card Blog -->
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-28 mx-auto">
+        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-2 mx-auto">
             <!-- Title -->
             <div class="max-w-2xl mx-auto text-center mb-3 lg:mb-10">
                 <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Jobs !</h2>
@@ -20,16 +20,19 @@
                         <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5" href="#">
                             <div class="aspect-w-16 aspect-h-11">
                                 @if($post->image_path)
-                                    <img class="w-full object-cover rounded-xl" src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
+                                    <img class="size-fit object-cover rounded-xl" src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
                                 @else
                                     <img class="w-full object-cover rounded-xl" src="https://via.placeholder.com/560x315.png?text=No+Image" alt="{{ $post->title }}">
                                 @endif
                             </div>
                             <div class="my-6">
-                                <h3 class="text-xl font-semibold text-gray-800">
+                                <h1 class="text-xl font-semibold text-gray-800">
                                     {{ $post->title }}
+                                </h1>
+                                <h3 class="text-sm font-semibold text-gray-500">
+                                    {{ ucfirst(get_categories()->where('id', $post->category_id)->first()->name) }}
                                 </h3>
-                                <p class="mt-5 text-gray-600">
+                                <p class="mt-4 text-gray-600">
                                     {{ Str::limit($post->description, 75) }}
                                 </p>
                             </div>
@@ -66,4 +69,3 @@
         </div>
 
     </x-layout>
-<x-footer/>
