@@ -10,18 +10,18 @@
     <x-slot name="form">
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
+            <div id="profile-photo" x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
                 <input type="file" id="photo" class="hidden"
                             wire:model.live="photo"
-                            x-ref="photo"
+                            x-ref="profilePhoto"
                             x-on:change="
-                                    photoName = $refs.photo.files[0].name;
+                                    photoName = $refs.profilePhoto.files[0].name;
                                     const reader = new FileReader();
                                     reader.onload = (e) => {
                                         photoPreview = e.target.result;
                                     };
-                                    reader.readAsDataURL($refs.photo.files[0]);
+                                    reader.readAsDataURL($refs.profilePhoto.files[0]);
                             " />
 
                 <x-label for="photo" value="{{ __('Photo') }}" />
@@ -38,7 +38,7 @@
                     </span>
                 </div>
 
-                <x-secondary-button class="mt-2 me-2" type="button" x-on:click.prevent="$refs.photo.click()">
+                <x-secondary-button class="mt-2 me-2" type="button" x-on:click.prevent="$refs.profilePhoto.click()">
                     {{ __('Select A New Photo') }}
                 </x-secondary-button>
 

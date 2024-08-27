@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -14,7 +13,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -22,8 +23,6 @@
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -33,9 +32,7 @@
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
 </head>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <title>ServiceHub</title>
-    <body>
+<body>
 <header id="header" class="header d-flex align-items-center fixed-top mb-4">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
         <a>
@@ -48,7 +45,8 @@
         <nav id="navmenu" class="navmenu">
             <ul>
                 <li><a href="{{ url('/') }}" class="active">Home</a></li>
-                <li class="dropdown"><a href="{{ url('/bookings/our-service') }}"><span>Our Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <li class="dropdown"><a href="{{ url('/bookings/our-service') }}"><span>Our Services</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="#">Electrician</a></li>
                         <li><a href="#">Plumber</a></li>
@@ -71,13 +69,23 @@
         @endauth
     </div>
 </header>
-    <!-- Page Content -->
-    <div class="font-sans text-gray-900 antialiased">
-        {{ $slot }}
-    </div>
+@livewire('navigation-menu')
+
+<!-- Page Heading -->
+@if (isset($header))
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            {{ $header }}
+        </div>
+    </header>
+@endif
+<!-- Page Content -->
+<div class="font-sans text-gray-900 antialiased">
+    {{ $slot }}
+</div>
+<x-footer />
 @stack('modals')
-@livewireScripts
-<!-- Vendor JS Files -->
+{{--<!-- Vendor JS Files -->--}}
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
 <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
@@ -86,5 +94,6 @@
 
 <!-- Main JS File -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
-    </body>
+@livewireScripts
+</body>
 </html>
