@@ -1,6 +1,6 @@
 <x-layout>
     <!-- Comment Form -->
-    <div class="max-w-[85rem] px-4 py-28 sm:px-6 lg:px-8 lg:py-28 mx-auto">
+    <div class="max-w-[85rem] px-4 py-28 sm:px-6 lg:px-8 lg:py-10 mx-auto">
         <div class="mx-auto max-w-2xl">
             <div class="text-center">
                 <h2 class="text-xl text-gray-800 font-bold sm:text-3xl">
@@ -455,6 +455,4 @@
             </div>
         </div>
     </section>
-
 </x-layout>
-<x-footer/>

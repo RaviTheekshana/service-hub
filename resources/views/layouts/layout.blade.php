@@ -69,8 +69,13 @@
         @endauth
     </div>
 </header>
+@auth()
 @livewire('navigation-menu')
-
+@endauth
+@guest()
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-28">
+    </div>
+@endguest
 <!-- Page Heading -->
 @if (isset($header))
     <header class="bg-white shadow">
@@ -83,7 +88,6 @@
 <div class="font-sans text-gray-900 antialiased">
     {{ $slot }}
 </div>
-<x-footer />
 @stack('modals')
 {{--<!-- Vendor JS Files -->--}}
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -96,4 +100,5 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 @livewireScripts
 </body>
+<x-footer />
 </html>

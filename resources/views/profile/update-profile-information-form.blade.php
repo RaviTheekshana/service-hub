@@ -12,7 +12,6 @@
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div id="profile-photo" x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
-                @csrf
                 <input type="file" id="photo" class="hidden"
                             wire:model.live="photo"
                             x-ref="profilePhoto"

@@ -1,6 +1,6 @@
 <x-layout>
     <!-- Contact Us -->
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-28 mx-auto">
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-10 mx-auto">
         <div class="max-w-2xl lg:max-w-5xl mx-auto">
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-gray-800 sm:text-4xl">
@@ -295,4 +295,3 @@
 </div>
 <!-- End Card Section -->
 </x-layout>
-<x-footer/>

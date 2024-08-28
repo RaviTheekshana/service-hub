@@ -1,5 +1,4 @@
 <x-layout>
-
     <x-banner/>
     <nav class="relative z-0 flex border rounded-xl overflow-hidden" aria-label="Tabs" role="tablist"
          aria-orientation="horizontal">
@@ -25,11 +24,11 @@
 
     <div>
         <div id="bar-with-underline-1" role="tabpanel" aria-labelledby="bar-with-underline-item-1">
-            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto min-h-screen">
                 <div class="flex flex-col">
                     <div class="-m-1.5 overflow-x-auto">
                         <div class="p-1.5 min-w-full inline-block align-middle">
-                            <div class="border rounded-lg overflow-hidden">
+                            <div class="border rounded-lg overflow-hidden drop-shadow-md">
                                 <table class="bg-white min-w-full divide-y divide-gray-200">
                                     <thead>
                                     <tr>
@@ -60,6 +59,15 @@
                                     </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200">
+                                    @if($blog !== null)
+                                        <tr>
+                                            <td class="size-px whitespace-nowrap">
+                                                <div class="pl-3 py-3">
+                                                    <span class="text-md-center font-semibold text-gray-600">No Job post found</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                     @foreach($blog as $blogs)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{$blogs->title}}</td>
@@ -99,7 +107,7 @@
             </div>
         </div>
         <div id="bar-with-underline-2" class="hidden" role="tabpanel" aria-labelledby="bar-with-underline-item-2">
-            <div class="max-w-[50rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div class="max-w-[35rem] px-4 py-8 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 @if (session('success'))
                     <div class="bg-green-500 text-white p-4 rounded mb-4">
                         {{ session('success') }}
@@ -109,7 +117,7 @@
                 <form action="{{ route('job.store') }}" method="POST" enctype="multipart/form-data"
                       x-data="{ title: '', description: '', image: null, imagePreview: '' }">
                     @csrf
-                    <h2 class="text-2xl font-semibold text-gray-700 text-center">Create a Job Post</h2>
+                    <h2 class="text-2xl font-bold text-gray-700 text-center">Create a Job Post</h2>
                     <!-- Title Field -->
                     <div class="mb-5">
                         <label for="title" class="block text-sm font-medium text-gray-700">Post Title</label>
@@ -161,7 +169,7 @@
         </div>
         <div id="bar-with-underline-3" class="hidden" role="tabpanel" aria-labelledby="bar-with-underline-item-3">
             <!-- Table Section -->
-            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto min-h-screen-75">
                 <!-- Card -->
                 <div class="flex flex-col">
                     <div class="-m-1.5 overflow-x-auto">
@@ -171,7 +179,7 @@
                                 <div
                                     class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200">
                                     <div>
-                                        <h2 class="text-xl font-bold text-gray-900">
+                                        <h2 class="text-2xl font-bold text-gray-900">
                                             Booking
                                         </h2>
                                         <p class="text-lg text-gray-700">
@@ -270,6 +278,15 @@
                                     </thead>
 
                                     <tbody class="divide-y divide-gray-200">
+                                    @if($book !== null)
+                                        <tr>
+                                            <td class="size-px whitespace-nowrap">
+                                                <div class="pl-3 py-3">
+                                                    <span class="text-md-center font-semibold text-gray-600">No bookings found</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                     @foreach($book as $books)
                                         <tr>
                                             <td class="size-px whitespace-nowrap">
@@ -414,7 +431,6 @@
                 window.location.href = `/profile_management/${profileId}`;
             }
         }
-
         function handleImageUpload(event) {
             const file = event.target.files[0];
             if (file) {
@@ -427,5 +443,4 @@
             }
         }
     </script>
-
 </x-layout>

@@ -1,6 +1,6 @@
 <x-layout>
     <!-- Card Blog -->
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-28 mx-auto">
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-2 mx-auto">
         <!-- Title -->
         <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
             <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Our Service</h2>
@@ -84,4 +84,3 @@
     </div>
     <!-- End Card Blog -->
 </x-layout>
-<x-footer/>
