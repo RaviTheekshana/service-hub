@@ -59,7 +59,7 @@
                                     </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200">
-                                    @if($blog !== null)
+                                    @if($blog->isEmpty())
                                         <tr>
                                             <td class="size-px whitespace-nowrap">
                                                 <div class="pl-3 py-3">
@@ -278,7 +278,7 @@
                                     </thead>
 
                                     <tbody class="divide-y divide-gray-200">
-                                    @if($book !== null)
+                                    @if($book->isEmpty())
                                         <tr>
                                             <td class="size-px whitespace-nowrap">
                                                 <div class="pl-3 py-3">
