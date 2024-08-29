@@ -107,7 +107,7 @@
             </div>
         </div>
         <div id="bar-with-underline-2" class="hidden" role="tabpanel" aria-labelledby="bar-with-underline-item-2">
-            <div class="max-w-4xl px-4 py-8 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
                 <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-neutral-800">
                 @if (session('success'))
                     <div class="bg-green-500 text-white p-4 rounded mb-4">

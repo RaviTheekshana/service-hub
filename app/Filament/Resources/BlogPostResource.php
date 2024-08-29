@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\MessageResource\Pages;
-use App\Models\Message;
-use Filament\Forms\Components\MarkdownEditor;
+use App\Filament\Resources\BlogPostResource\Pages;
+use App\Models\BlogPost;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -18,41 +17,50 @@ use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MessageResource extends Resource
+class BlogPostResource extends Resource
 {
-    protected static ?string $model = Message::class;
+    protected static ?string $model = BlogPost::class;
 
-    protected static ?string $slug = 'messages';
+    protected static ?string $slug = 'blog-posts';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('sender_user_Id')
-                    ->label('Sender User Id')
+                Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->searchable()
                     ->required(),
-                TextInput::make('chat_id')
-                    ->label('Chat Id')
+
+                TextInput::make('title')
                     ->required(),
-                MarkdownEditor::make('message_content')
-                    ->label('Message Content')
+
+                Select::make('category_id')
+                    ->relationship('category', 'name')
                     ->required(),
+
+                TextInput::make('description')
+                    ->required(),
+
+                TextInput::make('image_path'),
 
                 Placeholder::make('created_at')
                     ->label('Created Date')
-                    ->content(fn(?Message $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?BlogPost $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
                     ->label('Last Modified Date')
-                    ->content(fn(?Message $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?BlogPost $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -60,19 +68,19 @@ class MessageResource extends Resource
     {
         return $table
             ->columns([
-                //Show the senders name
-                TextColumn::make('sender_user_id')
-                    ->label('Sender')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('chat_id')
+                TextColumn::make('user.name')
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('message_content')
-                    ->wrap()
+                TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
+
+                TextColumn::make('category.name'),
+
+                TextColumn::make('description'),
+
+                ImageColumn::make('image_path'),
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -95,9 +103,9 @@ class MessageResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMessages::route('/'),
-            'create' => Pages\CreateMessage::route('/create'),
-            'edit' => Pages\EditMessage::route('/{record}/edit'),
+            'index' => Pages\ListBlogPosts::route('/'),
+            'create' => Pages\CreateBlogPost::route('/create'),
+            'edit' => Pages\EditBlogPost::route('/{record}/edit'),
         ];
     }
 
@@ -109,8 +117,24 @@ class MessageResource extends Resource
             ]);
     }
 
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->with(['user']);
+    }
+
     public static function getGloballySearchableAttributes(): array
     {
-        return [];
+        return ['title', 'user.name'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = [];
+
+        if ($record->user) {
+            $details['User'] = $record->user->name;
+        }
+
+        return $details;
     }
 }

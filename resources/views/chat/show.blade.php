@@ -1,6 +1,6 @@
 <x-layout>
     <!-- component -->
-    <div x-data="{ open: false }" class="flex h-screen antialiased text-gray-800 pt-28">
+    <div x-data="{ open: false }" class="flex h-screen antialiased text-gray-800 pt-8">
         <!-- Navigation Toggle -->
         <button
             type="button"
@@ -18,8 +18,8 @@
             </svg>
         </button>
         <!-- End Navigation Toggle -->
-        <div :class="{ 'hidden': !open, 'block': open }" class="sticky inset-y-0 left-0 z-50 w-64 bg-white flex-shrink-0 transition-transform transform lg:translate-x-0 lg:static lg:inset-0 lg:flex lg:flex-col py-8 pr-2">
-            <div class="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
+        <div :class="{ 'hidden': !open, 'block': open }" class="sticky inset-y-0 left-0 z-50 w-64 bg-white flex-shrink-0 transition-transform transform lg:translate-x-0 lg:static lg:inset-0 lg:flex lg:flex-col py-2 pr-2">
+            <div class="flex flex-col pb-2 pl-6 pr-2 w-64 bg-white flex-shrink-0">
                 <div class="flex flex-row items-center justify-center h-12 w-full">
                     <div
                         class="flex items-center justify-center rounded-2xl text-indigo-700 bg-indigo-100 h-10 w-10">

@@ -13,5 +13,6 @@ class review extends Model
         'name',
         'email',
         'comment',
+        'rating'
     ];
 }

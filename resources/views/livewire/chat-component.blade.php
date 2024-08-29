@@ -1,6 +1,6 @@
 {{--Chat Area--}}
-<div class="flex w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
-    <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
+<div class="flex w-full pt-18 px-4 sm:px-6 md:px-8 lg:ps-72">
+    <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 max-h-screen p-4">
         <div class="flex flex-col h-full overflow-x-auto mb-4">
             <div class="flex flex-col h-full">
                 <div class="grid grid-cols-12 gap-y-2" wire:poll.500ms="refreshMessages">
