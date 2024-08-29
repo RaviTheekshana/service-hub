@@ -10,8 +10,10 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('service_provider_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('booking_id')->constrained()->onDelete('cascade');
+            $table->integer('rating');
             $table->longText('comment');
             $table->softDeletes();
             $table->timestamps();

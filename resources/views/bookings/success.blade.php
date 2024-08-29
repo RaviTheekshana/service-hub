@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="pt-32 bg-blueGray-50 min-h-screen flex items-center justify-center">
+    <div class="py-8 min-h-screen-75 bg-blueGray-50 flex items-center justify-center">
         <div class="bg-white p-6 rounded-lg shadow-lg">
             <h2 class="text-xl font-bold text-green-600">Booking Successful!</h2>
             <p class="mt-2 text-blueGray-600">Thank you for your booking. You will receive a confirmation email shortly.</p>

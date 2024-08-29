@@ -53,7 +53,7 @@
                 </li>
                 <li><a href="{{ url('/job') }}">Booking</a></li>
                 <li><a href="{{ url('/bookings/portfolio') }}">Service Providers</a></li>
-                <li><a href="{{ url('/bookings/review') }}">Reviews</a></li>
+                <li><a href="{{ url('/review') }}">Reviews</a></li>
                 <li><a href="{{ url('/contact') }}">Contact Us</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

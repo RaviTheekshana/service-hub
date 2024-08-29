@@ -31,11 +31,11 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 //Review
 use App\Http\Controllers\ReviewController;
 Route::post('review', [ReviewController::class, 'store'])->name('review.store');
+Route::get('/review', [ReviewController::class, 'showReview'])->name('bookings.review');
 
 //Booking
 use App\Http\Controllers\BookingController;
 Route::get('bookings/our-service', [BookingController::class, 'ourService'])->name('bookings.our-service');
-Route::get('bookings/review', [BookingController::class, 'showReview'])->name('bookings.review');
 Route::get('bookings/book', [BookingController::class, 'bookForm'])->name('bookings.book');
 Route::post('/booking/book', [BookingController::class, 'store'])->name('bookings.store');
 Route::get('/bookings/success', [BookingController::class, 'success'])->name('bookings.success');

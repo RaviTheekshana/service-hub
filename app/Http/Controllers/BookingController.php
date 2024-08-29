@@ -11,11 +11,6 @@ class BookingController extends Controller
         return view('bookings.our-service');
     }
 
-    public function showReview()
-    {
-        return view('bookings.review');
-    }
-
     public function create()
     {
         return view('bookings.create');
