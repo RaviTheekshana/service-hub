@@ -1,7 +1,7 @@
 <x-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <img src="{{asset('images/logo2.jpg')}}" width="135px" alt="ServiceHub" class="pt-10 mb-0">
+            <img src="{{asset('images/logo2.jpg')}}" width="135px" alt="ServiceHub" class="mb-0">
         </x-slot>
 
         <x-validation-errors class="mb-3" />
@@ -79,10 +79,3 @@
         </form>
     </x-authentication-card>
 </x-layout>
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6 mt-5">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 ServiceHub. All rights reserved.</p>
-            <p>Contact us: info@servicehub.com | +94123456789</p>
-        </div>
-    </footer>

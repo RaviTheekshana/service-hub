@@ -107,7 +107,8 @@
             </div>
         </div>
         <div id="bar-with-underline-2" class="hidden" role="tabpanel" aria-labelledby="bar-with-underline-item-2">
-            <div class="max-w-[35rem] px-4 py-8 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <div class="max-w-[40rem] px-4 py-8 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-neutral-800">
                 @if (session('success'))
                     <div class="bg-green-500 text-white p-4 rounded mb-4">
                         {{ session('success') }}
@@ -119,13 +120,13 @@
                     @csrf
                     <h2 class="text-2xl font-bold text-gray-700 text-center">Create a Job Post</h2>
                     <!-- Title Field -->
-                    <div class="mb-5">
+                    <div class="mb-3">
                         <label for="title" class="block text-sm font-medium text-gray-700">Post Title</label>
                         <input type="text" id="title" name="title" x-model="title"
                                class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Enter your post title" required>
                     </div>
-                    <div class="mb-5" x-data="{category: '{{ old('category_id', '') }}',}">
+                    <div class="mb-3" x-data="{category: '{{ old('category_id', '') }}',}">
                         <label for="title" class="block text-sm font-medium text-gray-700">Category</label>
                         <select id="category" x-model="category" name="category_id"
                                 class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
@@ -136,7 +137,7 @@
                         </select>
                     </div>
                     <!-- Description Field -->
-                    <div class="mb-5">
+                    <div class="mb-3">
                         <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                         <textarea id="description" name="description" x-model="description"
                                   class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
@@ -144,7 +145,7 @@
                     </div>
 
                     <!-- Image Upload Field -->
-                    <div class="mb-5">
+                    <div class="mb-3">
                         <label for="image" class="block text-sm font-medium text-gray-700">Upload Image</label>
                         <input type="file" id="image" name="image" @change="handleImageUpload"
                                class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
@@ -158,13 +159,14 @@
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="mt-5">
+                    <div class="mt-3">
                         <button type="submit"
                                 class="w-full bg-blue-600 text-white py-3 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                             Post
                         </button>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
         <div id="bar-with-underline-3" class="hidden" role="tabpanel" aria-labelledby="bar-with-underline-item-3">
