@@ -22,9 +22,9 @@
 
             <!-- Button Text -->
             @if($hasApproved)
-                <span>Approved</span>
+                <span>Interested</span>
             @else
-                <span>Approve</span>
+                <span>Interest</span>
             @endif
 
             <!-- Approve Count -->

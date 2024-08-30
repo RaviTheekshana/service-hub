@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Approve;
 use App\Models\BlogPost;
 use App\Models\Booking;
+use App\Models\review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function Pest\Laravel\get;
@@ -42,9 +43,21 @@ class DashboardController extends Controller
     }
     public function update()
     {
-        //Get the booking data from db to the view belongs to the authenticated Service Provider
-        $book = Booking::where('id' , request('booking'))->first();
-        return view('Provider-Dashboard.bookingupdate', compact('book'));
+        if (auth()->user()->role === 'service_provider') {
+            //Get the booking data from db to the view belongs to the authenticated Service Provider
+            $book = Booking::where('id', request('booking'))->first();
+            return view('Provider-Dashboard.bookingupdate', compact('book'));
+        }
+        return view('components.uservisibility');
+
+    }
+    public function review()
+    {
+        if (auth()->user()->role === 'service_provider') {
+            $review = review::where('service_provider_id', auth()->user()->id)->get();
+            return view('Provider-Dashboard.provider-review', compact('review'));
+        }
+        return view('components.uservisibility');
 
     }
 }

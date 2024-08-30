@@ -31,7 +31,8 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 //Review
 use App\Http\Controllers\ReviewController;
 Route::post('review', [ReviewController::class, 'store'])->name('review.store');
-Route::get('/review', [ReviewController::class, 'showReview'])->name('bookings.review');
+Route::get('/review/{id}', [ReviewController::class, 'showReview'])->name('bookings.review');
+Route::get('/review-page', [ReviewController::class, 'show'])->name('review-page');
 
 //Booking
 use App\Http\Controllers\BookingController;
@@ -46,6 +47,7 @@ Route::get('/bookings/portfolio', [ServiceProviderController::class, 'showProfil
 Route::get('/provider-dashboard', [DashboardController::class, 'providerDashboard'])->middleware('auth')->name('provider-dashboard');
 Route::get('/provider-booking', [DashboardController::class, 'bookingView'])->name('provider-booking');
 Route::get('/provider-booking/{booking}', [DashboardController::class, 'update'])->name('provider-booking.update');
+Route::get('/provider-review', [DashboardController::class, 'review'])->name('provider-review');
 
 //Profile Management
 use App\Http\Controllers\Profile_ManagementController;

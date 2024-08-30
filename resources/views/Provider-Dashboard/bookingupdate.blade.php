@@ -1,4 +1,6 @@
 <x-guest-layout>
+    @include('components.guestvisibility')
+    @auth
     @include('layouts.slidebar')
     <!-- component -->
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
@@ -84,4 +86,5 @@
             </div>
         </div>
     </section>
+    @endauth
 </x-guest-layout>

@@ -8,13 +8,17 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function showReview()
+    public function showReview(Request $request, $id)
     {
-        if(!Booking::where('user_id', auth()->user()->id)->where('status', 'Completed')->exists()){
-            return redirect('dashboard')->with('flash.bannerStyle', 'danger')->with('flash.banner', 'You have no completed bookings to review');
+        $booking_id = Booking::findOrFail($id);
+        $service_provider_id = Booking::where('id', $id)->first()->service_provider_id;
+        //Check if the user already reviewed the service provider and booking status is Completed
+        if (review::where('user_id', auth()->user()->id)->where('service_provider_id', $service_provider_id)->where('booking_id', $id)->exists()) {
+            return redirect('dashboard')->with('flash.bannerStyle', 'danger')->with('flash.banner', 'You have already reviewed this service provider');
         }
-        $booking_id = Booking::where('user_id', auth()->user()->id)->where('status', 'Completed')->first()->id;
-        $service_provider_id = Booking::where('id', $booking_id)->first()->service_provider_id;
+        if (Booking::where('id', $id)->where('status', 'Completed')->doesntExist()) {
+            return redirect('dashboard')->with('flash.bannerStyle', 'danger')->with('flash.banner', 'You can only review a service provider after the booking is completed');
+        }
         return view('bookings.review', compact('booking_id', 'service_provider_id'));
     }
     public function store(Request $request)
@@ -38,6 +42,10 @@ class ReviewController extends Controller
         ]);
 
 // Redirect back with a success message
-        return redirect()->back()->with('flash.bannerStyle', 'success')->with('flash.banner', 'Review submitted successfully');
+        return redirect('dashboard')->with('flash.bannerStyle', 'success')->with('flash.banner', 'Review submitted successfully');
+    }
+    public function show()
+    {
+        return view('review-page');
     }
 }

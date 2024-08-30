@@ -332,6 +332,7 @@
                                                 </div>
                                             </td>
                                             <td class="size-px whitespace-nowrap">
+                                                <a href="{{route('bookings.review', ['id' => $books->id])}}">
                                                 <div class="px-6 py-3">
                                                     @php
                                                         $statusClasses = [
@@ -342,14 +343,14 @@
                                                         ];
                                                     @endphp
 
-                                                    <span
-                                                        class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-full {{ $statusClasses[$books->status] }}">
+                                                    <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-full {{ $statusClasses[$books->status] }}">
             <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                  viewBox="0 0 16 16">
                 <path
                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>{{ $books->status }}</span>
                                                 </div>
+                                                </a>
                                             </td>
                                             <td class="size-px whitespace-nowrap">
                                                 <div class="px-6 py-3">
@@ -422,7 +423,7 @@
     </div>
     <a href="{{route('chat.index')}}">
         <button type="submit"
-                class="py-2.5 px-3.5 inline-flex items-center gap-x-2 bg-blue-500 text-sm font-weight-bold rounded-2xl border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 fixed bottom-4 right-4 z-50">
+                class="py-2.5 px-3.5 inline-flex items-center gap-x-2 bg-blue-500 text-sm font-weight-bold rounded-2xl border-0 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 fixed bottom-4 right-4 z-50">
             Message
         </button>
     </a>

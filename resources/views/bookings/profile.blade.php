@@ -116,7 +116,7 @@
                                 <td class="size-px whitespace-nowrap align-top">
                                     <a class="block p-6" href="{{route('profile_management.show', ['profile_management' => $profiles->id])}}">
                                         <div class="flex items-center gap-x-4">
-                                            <img class="shrink-0 size-[50px] rounded-lg" src="{{ ucfirst(get_service_providers()->where('id', $profiles->service_provider_id)->first()->profile_photo_url)}}" alt="Product Image">
+                                            <img class="shrink-0 size-[50px] rounded-lg" src="{{ get_service_providers()->where('id', $profiles->service_provider_id)->first()->profile_photo_url}}" alt="Product Image">
                                             <div>
                                                 <span class="block text-sm font-semibold text-gray-800">{{ ucfirst(get_service_providers()->where('id', $profiles->service_provider_id)->first()->name)}}</span>
                                                 <span class="block text-sm text-gray-500">{{ ucfirst(get_service_providers()->where('id', $profiles->service_provider_id)->first()->email)}}</span>
