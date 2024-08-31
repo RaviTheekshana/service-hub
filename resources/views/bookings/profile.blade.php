@@ -1,6 +1,6 @@
 <x-layout>
     <!-- Table Section -->
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-2 mx-auto">
+    <div class="max-w-[85rem] min-h-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-2 mx-auto">
         <!-- Card -->
         <div class="flex flex-col">
             <div class="-m-1.5 overflow-x-auto">
@@ -126,7 +126,7 @@
                                 </td>
                                 <td class="size-px whitespace-nowrap align-top">
                                     <a class="block p-6" href="#">
-                                        <div class="flex items-center gap-x-3">
+                                        <div class="flex items-center gap-x-3 mt-2">
                                             <div class="grow">
                                                 <span class="block text-sm font-semibold text-gray-800">{{ ucfirst(get_categories()->where('id', $profiles->category_id)->first()->name)}}</span>
 
@@ -134,19 +134,39 @@
                                         </div>
                                     </a>
                                 </td>
-                                <td class="h-px w-72 min-w-72 align-top">
+                                <td class="size-px whitespace-nowrap align-top">
                                     <a class="block p-6" href="#">
-                                        <div class="flex gap-x-1 mb-2">
+                                        <div class="flex gap-x-1 mt-1 mb-2">
                                             <span class="block text-sm text-gray-500">{{ Str::limit($profiles->personal_summary, 160) }}</span>
                                         </div>
                                     </a>
                                 </td>
                                 <td class="size-px whitespace-nowrap align-top">
-                                    <a class="block p-6" href="#">
-                                        <div class="flex gap-x-1 mb-2">
-                                            <span class="block text-sm text-gray-500">No Ratings</span>
+                                        <div class="flex block p-6 gap-x-1 mb-2">
+                                            @php
+                                                $rate= number_format(get_reviews('service_provider_id', $profiles->service_provider_id), 1) ?? 'No reviews yet'
+                                            @endphp
+                                            <p class="text-2xl">
+                                                @php
+                                                    $fullStars = floor($rate); // Number of full stars
+                                                    $halfStar = ($rate - $fullStars) >= 0.5; // Determine if there should be a half star
+                                                    $emptyStars = 5 - $fullStars - $halfStar; // Remaining empty stars
+                                                @endphp
+
+                                                @for ($i = 1; $i <= $fullStars; $i++)
+                                                    <span class="text-yellow-400">&#9733;</span> <!-- Full star -->
+                                                @endfor
+
+                                                @if ($halfStar)
+                                                    <span class="text-yellow-400">&#9734;</span> <!-- Half star -->
+                                                @endif
+
+                                                @for ($i = 1; $i <= $emptyStars; $i++)
+                                                    <span class="text-gray-300">&#9733;</span> <!-- Empty star -->
+                                                @endfor
+                                                <span class="text-md-center text-gray-500">{{$rate}}</span>
+                                            </p>
                                         </div>
-                                    </a>
                                 </td>
                                 <td class="size-px whitespace-nowrap align-top">
                                     <a class="block p-6" href="#">

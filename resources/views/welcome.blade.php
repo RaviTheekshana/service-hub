@@ -99,8 +99,9 @@
                     <div class="service-item d-flex">
                         <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
                         <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <h4 class="title"><a href="#" class="stretched-link">Reliable Professionals</a></h4>
+                            <p class="description">Our platform is home to a wide range of verified and trusted service providers.
+                                From electricians to gardeners, we connect you with the best in the business</p>
                         </div>
                     </div>
                 </div>
@@ -110,8 +111,9 @@
                     <div class="service-item d-flex">
                         <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
                         <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
-                            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exa</p>
+                            <h4 class="title"><a href="#" class="stretched-link">Convenient Booking</a></h4>
+                            <p class="description">Booking a service has never been easier. With our user-friendly interface,
+                                you can schedule an appointment at a time that suits you.</p>
                         </div>
                     </div>
                 </div><!-- End Service Item -->
@@ -120,8 +122,8 @@
                     <div class="service-item d-flex">
                         <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
                         <div>
-                            <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a></h4>
-                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+                            <h4 class="title"><a href="#" class="stretched-link">Affordable Services </a></h4>
+                            <p class="description">We work with providers who deliver exceptional value for your money, ensuring you get the best deal every time.</p>
                         </div>
                     </div>
                 </div><!-- End Service Item -->
@@ -141,15 +143,16 @@
 
                 <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
                     <p class="who-we-are">Who We Are</p>
-                    <h3>Unleashing Potential with Creative Strategy</h3>
+                    <h3>Connecting People with Trusted Services</h3>
                     <p class="fst-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
+                        At Service Hub, we understand the challenges of managing a household or business while balancing a busy schedule.
+                        That's why we created a platform that seamlessly connects homeowners,
+                        business owners, and individuals with skilled service providers who can take care of their daily tasks.
                     </p>
                     <ul>
-                        <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                        <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                        <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>Whether you need a gardener to maintain your lawn</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>A plumber to fix a leak</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>An electrician to ensure your wiring is safe, Service Hub is your go-to solution.</span></li>
                     </ul>
                     <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                 </div>
@@ -157,15 +160,15 @@
                 <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
                     <div class="row gy-4">
                         <div class="col-lg-6">
-                            <img src="{{asset('assets/img/about-company-1.jpg')}}" class="img-fluid" alt="">
+                            <img src="{{asset('assets/img/about-1.jpg')}}" class="img-fluid" alt="">
                         </div>
                         <div class="col-lg-6">
                             <div class="row gy-4">
                                 <div class="col-lg-12">
-                                    <img src="{{asset('assets/img/about-company-2.jpg')}}" class="img-fluid" alt="">
+                                    <img src="{{asset('assets/img/about-3.jpg')}}" class="img-fluid" alt="">
                                 </div>
                                 <div class="col-lg-12">
-                                    <img src="{{asset('assets/img/about-company-3.jpg')}}" class="img-fluid" alt="">
+                                    <img src="{{asset('assets/img/about-2.jpg')}}" class="img-fluid" alt="">
                                 </div>
                             </div>
                         </div>
@@ -186,27 +189,27 @@
             <div class="row gy-4">
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="{{asset('assets/img/about-company-1.jpg')}}" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/c1.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="{{asset('assets/img/clients/client-2.png')}}" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/c2.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="{{asset('assets/img/clients/client-3.png')}}" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/c3.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="{{asset('assets/img/clients/client-4.png')}}" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/c4.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="{{asset('assets/img/clients/client-5.png')}}" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/c-5.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
                 <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="{{asset('assets/img/clients/client-6.png')}}" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/clients/c6.png')}}" class="img-fluid" alt="">
                 </div><!-- End Client Item -->
 
             </div>
@@ -221,7 +224,7 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Features</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>We bring you a platform designed with convenience and reliability at its core, offering features that make finding and booking services simpler than ever</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -234,10 +237,9 @@
                             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
                                 <i class="bi bi-binoculars"></i>
                                 <div>
-                                    <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
+                                    <h4 class="d-none d-lg-block">Verified Service Providers</h4>
                                     <p>
-                                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                        velit esse cillum dolore eu fugiat nulla pariatur
+                                        At Service Hub, We prioritize your safety and satisfaction. That's why every service provider We check qualifications, experience and reviews
                                     </p>
                                 </div>
                             </a>
@@ -246,22 +248,22 @@
                             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
                                 <i class="bi bi-box-seam"></i>
                                 <div>
-                                    <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
+                                    <h4 class="d-none d-lg-block">Detailed Portfolios</h4>
                                     <p>
-                                        Recusandae atque nihil. Delectus vitae non similique magnam molestiae sapiente similique
-                                        tenetur aut voluptates sed voluptas ipsum voluptas
+                                        We believe in transparency and helping you make informed decisions. Each service provider has a comprehensive portfolio showcasing their skills,
+                                        past projects, and customer reviews.
                                     </p>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+                            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
                                 <i class="bi bi-brightness-high"></i>
                                 <div>
-                                    <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
+                                    <h4 class="d-none d-lg-block">Convenient Messaging System</h4>
                                     <p>
-                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                                        Debitis nulla est maxime voluptas dolor aut
+                                        Effective communication is key to a successful service experience. Our platform offers a seamless messaging system that allows you to discuss details, ask questions,
+                                        and clarify any concerns with your chosen service provider.
                                     </p>
                                 </div>
                             </a>
@@ -282,8 +284,8 @@
                             <img src="{{ asset('assets/img/tabs-2.jpg') }}" alt="" class="img-fluid">
                         </div><!-- End Tab Content Item -->
 
-                        <div class="tab-pane fade" id="features-tab-3">
-                            <img src="{{ asset('assets/img/tabs-3.jpg') }}" alt="" class="img-fluid">
+                        <div class="tab-pane fade" id="features-tab-4">
+                            <img src="{{ asset('assets/img/tabs-3.png') }}" alt="" class="img-fluid">
                         </div><!-- End Tab Content Item -->
 
                     </div>
@@ -305,12 +307,20 @@
             <div class="row gy-4 justify-content-between features-item">
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{asset('images/Electrician.jpg')}}" class="img-fluid" alt="">
+                    <img src="{{asset('assets/img/about-1.jpg')}}" width="400" class="img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="content">
                         <h3>Electrician</h3>
+                        <p>
+                            Certified electricians for safe and efficient electrical work
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-lightning-fill flex-shrink-0"></i>Installation of new electrical systems and components</li>
+                            <li><i class="bi bi-plug-fill flex-shrink-0"></i>Expert troubleshooting and repairs for electrical faults</li>
+                            <li><i class="bi bi-lightbulb-fill flex-shrink-0"></i>Upgrading lighting systems for energy efficiency</li>
+                        </ul>
                         <p>
                             Reliable and certified electricians for all your electrical needs
                         </p>
@@ -327,14 +337,15 @@
                     <div class="content">
                         <h3>Plumber</h3>
                         <p>
-                            Expert plumbers for installations, repairs, and maintenance.
+                            Expert Plumbers for installations, repairs, and maintenance
                         </p>
                         <ul>
-                            <li><i class="bi bi-easel flex-shrink-0"></i> Et corporis ea eveniet ducimus.</li>
-                            <li><i class="bi bi-patch-check flex-shrink-0"></i> Exercitationem dolorem sapiente.</li>
-                            <li><i class="bi bi-brightness-high flex-shrink-0"></i> Veniam quia modi magnam.</li>
+                            <li><i class="bi bi-droplet-half flex-shrink-0"></i>💧 Ensuring efficient water systems in your home or office</li>
+                            <li><i class="bi bi-water flex-shrink-0"></i>🌊 Handling emergency leaks and pipe bursts with care.</li>
+                            <li><i class="bi bi-tools flex-shrink-0"></i>🛠 Reliable solutions for any plumbing needs.</li>
                         </ul>
-                        <p></p>
+                        <p>Count on us for
+                            and dependable plumbing services that you can trust</p>
                         <a href="#" class="btn more-btn">Learn More</a>
                     </div>
 
@@ -345,7 +356,55 @@
                 </div>
 
             </div><!-- Features Item -->
+            <div class="row gy-4 justify-content-between features-item">
 
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <img src="{{asset('images/gardener.jpg')}}" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="content">
+                        <h3>Gardener</h3>
+                        <p>
+                            Professional gardeners for beautiful and well-maintained gardens
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-yelp flex-shrink-0"></i>🌿 Regular maintenance and seasonal planting</li>
+                            <li><i class="bi bi-flower3 flex-shrink-0"></i>🌳 Tree pruning and lawn care services</li>
+                            <li><i class="bi bi-tree-fill flex-shrink-0"></i>🌸 Creating and maintaining stunning garden landscapes</li>
+                        </ul>
+                        <p>Enjoy a well-maintained garden all year round with our expert care</p>
+                        <a href="#" class="btn more-btn">Learn More</a>
+                    </div>
+                </div>
+
+            </div><!-- Features Item -->
+            <div class="row gy-4 justify-content-between features-item">
+
+                <div class="col-lg-5 d-flex align-items-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="content">
+                        <h3>Welder</h3>
+                        <p>
+                            Skilled welders for strong and durable metalwork
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-tools flex-shrink-0"></i>🔧 Precision welding for custom fabrication projects</li>
+                            <li><i class="bi bi-bar-chart-steps flex-shrink-0"></i>🏗 Structural repairs and installations with high-quality materials</li>
+                            <li><i class="bi bi-ev-front flex-shrink-0"></i>🚧 Mobile welding services available for on-site jobs</li>
+                        </ul>
+                        <p>Count on us for
+                            and dependable plumbing services that you can trust</p>
+                        <a href="#" class="btn more-btn">Learn More</a>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
+                    <img src="{{asset('images/welder.jpg')}}" class="img-fluid" alt="">
+                </div>
+
+            </div><!-- Features Item -->
         </div>
 
     </section><!-- /Features Details Section -->
@@ -356,7 +415,8 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Services</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Electric gardening plumbing services ensure efficient water management and electrical safety in garden maintenance,
+                combining expertise in irrigation systems, lighting, and power tools for optimal garden care.</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -365,10 +425,10 @@
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-item item-cyan position-relative">
-                        <i class="bi bi-activity icon"></i>
+                        <i class="bi bi-lightning-charge-fill icon"></i>
                         <div>
-                            <h3>Nesciunt Mete</h3>
-                            <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+                            <h3>Home Wiring & Rewiring</h3>
+                            <p>Our experienced electricians handle all types of home wiring and rewiring projects, ensuring your electrical systems are safe, efficient, and up to code</p>
                             <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -376,10 +436,10 @@
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-item item-orange position-relative">
-                        <i class="bi bi-broadcast icon"></i>
+                        <i class="bi bi-lightbulb-fill icon"></i>
                         <div>
-                            <h3>Eosle Commodi</h3>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+                            <h3>Lighting Installation & Upgrades</h3>
+                            <p>Upgrade your home’s lighting with our expert installation services. Whether it’s indoor lighting, outdoor lighting, or smart home lighting systems, we’ve got you covered</p>
                             <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -387,10 +447,10 @@
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-item item-teal position-relative">
-                        <i class="bi bi-easel icon"></i>
+                        <i class="bi bi-droplet-half icon"></i>
                         <div>
-                            <h3>Ledo Markt</h3>
-                            <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+                            <h3>Emergency Leak Repairs</h3>
+                            <p>Our skilled plumbers are available 24/7 for emergency leak repairs. Whether it’s a burst pipe or a dripping faucet, we’ll fix it promptly to prevent further damage</p>
                             <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -398,10 +458,10 @@
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-item item-red position-relative">
-                        <i class="bi bi-bounding-box-circles icon"></i>
+                        <i class="bi bi-tools icon"></i>
                         <div>
-                            <h3>Asperiores Commodi</h3>
-                            <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+                            <h3>Bathroom & Kitchen Installations</h3>
+                            <p>From installing new sinks and toilets to full bathroom and kitchen plumbing systems, our plumbers ensure all installations are done to the highest standards</p>
                             <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -409,10 +469,10 @@
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="service-item item-indigo position-relative">
-                        <i class="bi bi-calendar4-week icon"></i>
+                        <i class="bi bi-flower3 icon"></i>
                         <div>
-                            <h3>Velit Doloremque.</h3>
-                            <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+                            <h3>Planting & Landscaping</h3>
+                            <p>Transform your outdoor space with our expert planting and landscaping services. Whether you need a complete garden redesign or seasonal planting, our gardeners have you covered</p>
                             <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -420,10 +480,10 @@
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
                     <div class="service-item item-pink position-relative">
-                        <i class="bi bi-chat-square-text icon"></i>
+                        <i class="bi bi-tree-fill icon"></i>
                         <div>
-                            <h3>Dolori Architecto</h3>
-                            <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+                            <h3>Lawn Care & Maintenance</h3>
+                            <p>Our professional gardeners provide comprehensive lawn care services, including mowing, trimming, and fertilization, ensuring your garden remains lush and healthy year-round</p>
                             <a href="#" class="read-more stretched-link">Learn More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -443,40 +503,40 @@
             <div class="row justify-content-around gy-4">
 
                 <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Enim quis est voluptatibus aliquid consequatur</h3>
-                    <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
+                    <h3>Your All-in-One Service Hub</h3>
+                    <p>Streamline your business operations with our comprehensive service hub platform designed to meet all your needs</p>
 
                     <div class="row">
 
                         <div class="col-lg-6 icon-box d-flex">
-                            <i class="bi bi-easel flex-shrink-0"></i>
+                            <i class="bi bi-sliders flex-shrink-0"></i>
                             <div>
-                                <h4>Lorem Ipsum</h4>
-                                <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias </p>
+                                <h4>🖥 Unified Dashboard</h4>
+                                <p>Access all your essential tools and services from a single, intuitive interface, simplifying the management of your business operations</p>
                             </div>
                         </div><!-- End Icon Box -->
 
                         <div class="col-lg-6 icon-box d-flex">
-                            <i class="bi bi-patch-check flex-shrink-0"></i>
+                            <i class="bi bi-database-lock flex-shrink-0"></i>
                             <div>
-                                <h4>Nemo Enim</h4>
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiise</p>
+                                <h4>🔒 Robust Security Measures</h4>
+                                <p>Protect your business and customer data with state-of-the-art security protocols, including encryption, multi-factor authentication, and regular security audits</p>
                             </div>
                         </div><!-- End Icon Box -->
 
                         <div class="col-lg-6 icon-box d-flex">
-                            <i class="bi bi-brightness-high flex-shrink-0"></i>
+                            <i class="bi bi-chat-left-text flex-shrink-0"></i>
                             <div>
-                                <h4>Dine Pad</h4>
-                                <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit</p>
+                                <h4>💬 Integrated Communication</h4>
+                                <p>Facilitate seamless communication within your team and with clients using built-in messaging, video conferencing, and file-sharing features</p>
                             </div>
                         </div><!-- End Icon Box -->
 
                         <div class="col-lg-6 icon-box d-flex">
-                            <i class="bi bi-brightness-high flex-shrink-0"></i>
+                            <i class="bi bi-telephone-outbound-fill flex-shrink-0"></i>
                             <div>
-                                <h4>Tride clov</h4>
-                                <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit</p>
+                                <h4>📞 24/7 Support Access</h4>
+                                <p>Offer round-the-clock support to your customers through various channels, including live chat, email, and phone, ensuring their needs are always met</p>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -485,7 +545,7 @@
                 </div>
 
                 <div class="features-image col-lg-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{asset('assets/img/features-3.jpg')}}" alt="">
+                    <img src="{{asset('images/servicehub.jpg')}}" alt="">
                 </div>
 
             </div>
@@ -493,83 +553,6 @@
         </div>
 
     </section><!-- /More Features Section -->
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Pricing</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-            <div class="row gy-4">
-
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="pricing-item">
-                        <h3>Free Plan</h3>
-                        <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-                        <h4><sup>$</sup>0<span> / month</span></h4>
-                        <a href="#" class="cta-btn">Start a free trial</a>
-                        <p class="text-center small">No credit card required</p>
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-                        </ul>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="pricing-item featured">
-                        <p class="popular">Popular</p>
-                        <h3>Business Plan</h3>
-                        <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-                        <h4><sup>$</sup>29<span> / month</span></h4>
-                        <a href="#" class="cta-btn">Start a free trial</a>
-                        <p class="text-center small">No credit card required</p>
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                            <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                            <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                            <li><i class="bi bi-check"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-                        </ul>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="pricing-item">
-                        <h3>Developer Plan</h3>
-                        <p class="description">Ullam mollitia quasi nobis soluta in voluptatum et sint palora dex strater</p>
-                        <h4><sup>$</sup>49<span> / month</span></h4>
-                        <a href="#" class="cta-btn">Start a free trial</a>
-                        <p class="text-center small">No credit card required</p>
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                            <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                            <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                            <li><i class="bi bi-check"></i> <span>Voluptate id voluptas qui sed aperiam rerum</span></li>
-                            <li><i class="bi bi-check"></i> <span>Iure nihil dolores recusandae odit voluptatibus</span></li>
-                        </ul>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-            </div>
-
-        </div>
-
-    </section><!-- /Pricing Section -->
 
     <!-- Faq Section -->
     <section id="faq" class="faq section">
@@ -588,49 +571,49 @@
                     <div class="faq-container">
 
                         <div class="faq-item faq-active">
-                            <h3>Non consectetur a erat nam at lectus urna duis?</h3>
+                            <h3>Why should I hire a professional electrician instead of doing the work myself?</h3>
                             <div class="faq-content">
-                                <p>Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</p>
+                                <p>Hiring a professional electrician ensures that electrical work is done safely and meets all regulatory standards. DIY electrical work can be dangerous and may lead to serious hazards such as fires or electrocution if not handled correctly.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
+                            <h3>When should I call a plumber for a leaking pipe?</h3>
                             <div class="faq-content">
-                                <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                                <p>It's essential to call a plumber as soon as you notice a leak to prevent water damage, mold growth, and increased water bills. A professional plumber can quickly identify and repair the source of the leak.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
+                            <h3>How often should I schedule gardening maintenance for my lawn and plants?</h3>
                             <div class="faq-content">
-                                <p>Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis</p>
+                                <p>Regular gardening maintenance, ideally on a weekly or bi-weekly basis, is important to keep your lawn and plants healthy. Professional gardeners can provide tailored care based on the specific needs of your garden, ensuring it thrives year-round.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h3>
+                            <h3>What are the benefits of hiring a professional welder for my project?</h3>
                             <div class="faq-content">
-                                <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.</p>
+                                <p>Professional welders have the expertise to ensure strong, durable, and precise welds. They use specialized equipment and techniques to handle various materials and complex projects, providing a safe and reliable outcome that meets industry standards.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Tempus quam pellentesque nec nam aliquam sem et tortor?</h3>
+                            <h3>What are the signs that my home needs an electrical inspection?</h3>
                             <div class="faq-content">
-                                <p>Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in</p>
+                                <p>If you notice flickering lights, frequently tripped breakers, or outlets that are warm to the touch, it's time for an electrical inspection. Regular inspections ensure your home’s electrical system is safe and up to code.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item">
-                            <h3>Perspiciatis quod quo quos nulla quo illum ullam?</h3>
+                            <h3>Can regular plumbing maintenance help prevent major issues?</h3>
                             <div class="faq-content">
-                                <p>Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</p>
+                                <p>Yes, regular plumbing maintenance can identify potential problems before they become major issues, saving you from costly repairs and inconvenience. Routine checks and cleaning keep your plumbing system in good working order.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
@@ -644,6 +627,7 @@
         </div>
 
     </section><!-- /Faq Section -->
+
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section light-background">
@@ -662,7 +646,7 @@
                       "loop": true,
                       "speed": 600,
                       "autoplay": {
-                        "delay": 5000
+                        "delay": 4000
                       },
                       "slidesPerView": "auto",
                       "pagination": {
@@ -813,7 +797,7 @@
 
             <div class="row gy-4 mt-1">
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.765612991609!2d79.85865397558716!3d6.918600618444676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2596d3cb8fe07%3A0x2b0ae2edd563a661!2sAsia%20Pacific%20Institute%20of%20Information%20Technology%20(APIIT)!5e0!3m2!1sen!2slk!4v1725131579511!5m2!1sen!2slk" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div><!-- End Google Maps -->
 
                 <div class="col-lg-6">

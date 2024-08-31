@@ -1,11 +1,11 @@
 <x-layout>
-    <section class="py-24 relative">
+    <section class="relative py-10">
         <div class="w-full max-w-7xl px-4 md:px-5 lg:px-6 mx-auto">
             <div class="">
                 <h2 class="font-manrope font-bold text-3xl sm:text-4xl leading-10 text-black mb-8 text-center">
-                    Customer reviews &
-                    rating</h2>
-                <div class="grid grid-cols-12 mb-11">
+                    Customer Reviews &
+                    Feedback</h2>
+                <div class="grid grid-cols-12">
 
                     <div class="col-span-12 xl:col-span-4 flex items-center">
                         <div class="box flex flex-col gap-y-4 w-full max-xl:max-w-3xl mx-auto">
@@ -276,139 +276,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="pb-8 border-b border-gray-200 max-xl:max-w-3xl max-xl:mx-auto">
-                    <h4 class="font-manrope font-semibold text-3xl leading-10 text-black mb-6">Most helpful positive
-                        review</h4>
-                    <div class="flex sm:items-center flex-col sm:flex-row justify-between  mb-4">
-                        <div class="flex items-center gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
-                                 fill="none">
-                                <g clip-path="url(#clip0_13624_2974)">
-                                    <path
-                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                        fill="#FBBF24" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_13624_2974">
-                                        <rect width="30" height="30" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
-                                 fill="none">
-                                <g clip-path="url(#clip0_13624_2974)">
-                                    <path
-                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                        fill="#FBBF24" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_13624_2974">
-                                        <rect width="30" height="30" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
-                                 fill="none">
-                                <g clip-path="url(#clip0_13624_2974)">
-                                    <path
-                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                        fill="#FBBF24" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_13624_2974">
-                                        <rect width="30" height="30" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
-                                 fill="none">
-                                <g clip-path="url(#clip0_13624_2974)">
-                                    <path
-                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                        fill="#FBBF24" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_13624_2974">
-                                        <rect width="30" height="30" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
-                                 fill="none">
-                                <g clip-path="url(#clip0_13624_2974)">
-                                    <path
-                                        d="M14.1033 2.56698C14.4701 1.82374 15.5299 1.82374 15.8967 2.56699L19.1757 9.21093C19.3214 9.50607 19.6029 9.71064 19.9287 9.75797L27.2607 10.8234C28.0809 10.9426 28.4084 11.9505 27.8149 12.5291L22.5094 17.7007C22.2737 17.9304 22.1662 18.2614 22.2218 18.5858L23.4743 25.8882C23.6144 26.7051 22.7569 27.3281 22.0233 26.9424L15.4653 23.4946C15.174 23.3415 14.826 23.3415 14.5347 23.4946L7.9767 26.9424C7.24307 27.3281 6.38563 26.7051 6.52574 25.8882L7.7782 18.5858C7.83384 18.2614 7.72629 17.9304 7.49061 17.7007L2.1851 12.5291C1.59159 11.9505 1.91909 10.9426 2.73931 10.8234L10.0713 9.75797C10.3971 9.71064 10.6786 9.50607 10.8243 9.21093L14.1033 2.56698Z"
-                                        fill="#FBBF24" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_13624_2974">
-                                        <rect width="30" height="30" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <h6 class="font-semibold text-lg leading-8 text-black">@john.doe</h6>
-                            <p class="font-medium text-base leading-7 text-gray-400">Nov 01, 2023</p>
-                        </div>
-                    </div>
-
-                    <p class="font-normal text-lg leading-8 text-gray-500 ">
-                        I recently had the opportunity to explore Pagedone's UI design system, and it left a lasting
-                        impression on my workflow. The system seamlessly blends user-friendly features with a robust set
-                        of design components, making it a go-to for creating visually stunning and consistent
-                        interfaces.
-                    </p>
-
-                </div>
-                <div
-                    class="flex flex-col sm:flex-row items-center justify-between pt-8  max-xl:max-w-3xl max-xl:mx-auto">
-                    <p class="font-normal text-lg py-[1px] text-black">46 reviews</p>
-                    <form>
-                        <div class="flex">
-
-                            <div class="relative ">
-                                <div class=" absolute -left-0 px-2 top-0 py-2">
-                                    <p class="font-normal text-lg leading-8 text-gray-500">Sort by:</p>
-
-                                </div>
-                                <input type="text"
-                                       class="block w-60 h-11 pr-4 pl-20 py-2.5 text-lg leading-8 font-medium rounded-full cursor-pointer shadow-xs text-black bg-transparent placeholder-black focus:outline-gray-200 "
-                                       placeholder="Most Relevant">
-                                <div id="dropdown-button" data-target="dropdown"
-                                     class="dropdown-toggle flex-shrink-0 cursor-pointer z-10 inline-flex items-center py-2.5 px-4 text-base font-medium text-center text-gray-900 bg-transparent absolute right-0 top-2 pl-2 "
-                                     type="button"><svg class="ml-2" width="12" height="7" viewBox="0 0 12 7" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1 1.5L4.58578 5.08578C5.25245 5.75245 5.58579 6.08579 6 6.08579C6.41421 6.08579 6.74755 5.75245 7.41421 5.08579L11 1.5"
-                                            stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                </div>
-                                <div id="dropdown"
-                                     class="absolute top-9 right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                        aria-labelledby="dropdown-button">
-                                        <li>
-                                            <a href="#"
-                                               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Most Relevant</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">last week</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                               class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">oldest</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </section>
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mr-2">
+        @foreach($review as $reviews)
+    <div class="p-4 border-0 rounded-lg dark:border-neutral-700">
+        <div class="relative px-2 flex w-full max-w-[30rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow">
+            <div class="relative flex items-center gap-4 pt-0 pb-2 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
+            <img src="{{get_service_providers()->where('id', $reviews->service_provider_id)->first()->profile_photo_url}}" alt=""
+                class="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center" />
+            <div class="flex w-full flex-col">
+                <div class="flex items-center justify-between">
+                    <h5 class="block text-xl font-semibold leading-snug tracking-normal text-blue-gray-900">
+                        {{get_service_providers()->where('id', $reviews->service_provider_id)->first()->name}}
+                    </h5>
+                    <div class="flex items-center gap-0.5">
+                        <p class="mt-1 text-lg text-gray-600">
+                            @if($reviews->rating == 1)
+                                <span class="text-yellow-400">★ - Poor</span>
+                            @elseif($reviews->rating == 2)
+                                <span class="text-yellow-400">★★ - Fair</span>
+                            @elseif($reviews->rating == 3)
+                                <span class="text-yellow-400">★★★ - Good</span>
+                            @elseif($reviews->rating == 4)
+                                <span class="text-yellow-400">★★★★ - Very Good</span>
+                            @elseif($reviews->rating == 5)
+                                <span class="text-yellow-400">★★★★★ - Excellent</span>
+                            @endif
+                        </p>
+                    </div>
+                </div>
+                <p class="block font-light leading-relaxed text-blue-gray-800">
+                    {{ucfirst(get_categories()->where('id', get_service_providers()->where('id', $reviews->service_provider_id)->first()->category_id)->first()->name)}}
+                </p>
+            </div>
+        </div>
+        <div class="p-0 mb-6">
+            <p class="block text-base antialiased font-light leading-relaxed text-inherit">
+                {{Str::limit($reviews->comment, 180)}}
+            </p>
+        </div>
+    </div>
+    </div>
+        @endforeach
+    </div>
 </x-layout>

@@ -18,4 +18,10 @@ if(!function_exists('get_users')) {
     {
         return \App\Models\User::where('role', 'user')->get();
     }
+    if (!function_exists('get_reviews')) {
+        function get_reviews($column, $value) {
+            return \App\Models\Review::where($column, $value)->avg('rating');
+        }
+    }
+
 }

@@ -80,7 +80,7 @@
             {{ $reviews->comment}}
         </p>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-lg text-gray-600">
             @if($reviews->rating == 1)
                 <span class="text-yellow-400">★ - Poor</span>
             @elseif($reviews->rating == 2)

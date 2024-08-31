@@ -46,6 +46,7 @@ class ReviewController extends Controller
     }
     public function show()
     {
-        return view('review-page');
+        $review = review::all();
+        return view('review-page', compact('review'));
     }
 }
