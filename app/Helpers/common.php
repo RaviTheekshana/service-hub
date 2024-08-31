@@ -20,7 +20,7 @@ if(!function_exists('get_users')) {
     }
     if (!function_exists('get_reviews')) {
         function get_reviews($column, $value) {
-            return \App\Models\Review::where($column, $value)->avg('rating');
+            return \App\Models\review::where($column, $value)->avg('rating');
         }
     }
 
