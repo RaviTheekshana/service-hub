@@ -1,5 +1,6 @@
 <x-guest-layout>
 @include('layouts.slidebar')
+    @include('test')
     <!-- Content -->
     <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
         <!-- your content goes here ... -->
@@ -14,6 +15,7 @@
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
             </button>
+            @livewire('UserNotification')
             <div class="ms-3 relative">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">

@@ -61,7 +61,9 @@ Route::get('/job/{id}', [BlogPostController::class, 'destroy'])->name('job.destr
 
 //Other
 Route::get('/api/users/{category_id}', [ServiceProviderController::class, 'getUsersByCategory'])->name('get-service-providers');
-
+Route::get('/test', function () {
+    return view('test');
+});
 use App\Http\Controllers\ProfilePhotoController;
 
 Route::post('/profile/photo', [ProfilePhotoController::class, 'update'])->name('profile.photo.update');

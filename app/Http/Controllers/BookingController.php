@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\BookNotification;
 use App\Models\Booking;
+use App\Models\User;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -52,6 +55,15 @@ class BookingController extends Controller
                 'email' => $request->input('email'),
                 'description' => $request->input('description'),
             ]);
+            event(new BookNotification([
+                'user_id' => $request->input('service_provider_id'),
+                'service_date' => $request->input('service_date'),
+                'service_time' => $request->input('service_time'),
+            ]));
+            $user = auth()->user();
+            $serviceProvider = User::find($request->service_provider_id);
+            $user->notify(new BookingNotification());
+            $serviceProvider->notify(new BookingNotification());
 
             return redirect()->route('bookings.success')->with('success', 'Booking successfully created!');
         }
