@@ -67,7 +67,7 @@ $markAsRead = function ($notification_id) {
             </svg>
             <!-- Blue Dot with Notification Count -->
             <span class="absolute top-0 right-0 flex items-center justify-center px-1.5 py-0.5 rounded-full bg-sky-500 text-white text-sm/[13px] font-bold min-w-[1rem]">
-                {{ $notifications->count() }}+
+                {{ $notifications->count() }}
                 <span class="ping"></span>
             <span class="relative inline-flex rounded-full h-full w-full bg-sky-500"></span>
         </span>

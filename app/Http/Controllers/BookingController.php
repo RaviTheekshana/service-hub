@@ -23,10 +23,6 @@ class BookingController extends Controller
     {
         return view('bookings.book');
     }
-    public function success()
-    {
-        return view('bookings.success');
-    }
     public function store(Request $request)
         {
             $request->validate([
@@ -64,7 +60,6 @@ class BookingController extends Controller
             $serviceProvider = User::find($request->service_provider_id);
             $user->notify(new BookingNotification());
             $serviceProvider->notify(new BookingNotification());
-
             return redirect()->route('dashboard')->with('success', 'Booking successfully created!');
         }
     public function update(Request $request, $id)
