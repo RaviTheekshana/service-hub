@@ -1,5 +1,6 @@
 <x-layout>
     <x-banner/>
+    @include('components.toast')
     <nav class="relative z-0 flex border rounded-xl overflow-hidden" aria-label="Tabs" role="tablist"
          aria-orientation="horizontal">
         <button type="button"
@@ -21,7 +22,6 @@
             Booking
         </button>
     </nav>
-
     <div>
         <div id="bar-with-underline-1" role="tabpanel" aria-labelledby="bar-with-underline-item-1">
             <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto min-h-screen">

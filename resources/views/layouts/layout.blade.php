@@ -24,8 +24,6 @@
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
-
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 

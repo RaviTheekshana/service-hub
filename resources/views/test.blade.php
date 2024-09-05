@@ -11,7 +11,7 @@
 
     var channel = pusher.subscribe('booking');
     channel.bind('book.notification', function(data) {
-        if (data.user_id === "{{ Auth::user()->id }}") {
+        if (data.user_id === "{{ auth()->id() }}") {
             toastr.success('New Book Created', 'Service Date: ' + data.service_date, 'Service Time: ' + data.service_time, {
                 timeOut: 0,
                 extendedTimeOut: 0,

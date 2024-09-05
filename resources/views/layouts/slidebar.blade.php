@@ -1,5 +1,6 @@
 <div class="w-full lg:ps-72">
 <x-banner />
+    <x-toast/>
 </div>
     <!-- ========== MAIN CONTENT ========== -->
 <!-- Breadcrumb -->

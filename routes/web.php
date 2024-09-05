@@ -39,7 +39,6 @@ use App\Http\Controllers\BookingController;
 Route::get('bookings/our-service', [BookingController::class, 'ourService'])->name('bookings.our-service');
 Route::get('bookings/book', [BookingController::class, 'bookForm'])->name('bookings.book');
 Route::post('/booking/book', [BookingController::class, 'store'])->name('bookings.store');
-Route::get('/bookings/success', [BookingController::class, 'success'])->name('bookings.success');
 Route::put('/bookings/{id}', [BookingController::class, 'update'])->name('bookings.update');
 Route::get('/bookings/portfolio', [ServiceProviderController::class, 'showProfile'])->name('portfolio');
 

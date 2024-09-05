@@ -65,7 +65,7 @@ class BookingController extends Controller
             $user->notify(new BookingNotification());
             $serviceProvider->notify(new BookingNotification());
 
-            return redirect()->route('bookings.success')->with('success', 'Booking successfully created!');
+            return redirect()->route('dashboard')->with('success', 'Booking successfully created!');
         }
     public function update(Request $request, $id)
     {

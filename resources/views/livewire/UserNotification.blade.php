@@ -33,7 +33,32 @@ $markAsRead = function ($notification_id) {
 ?>
 <div>
     <div class="relative" x-data="{ open: false }">
-        <!-- Bell Icon Button -->
+        <style>
+            .ping {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                border-radius: 100%;
+                background-color: rgba(56, 189, 248, 0.93);
+                animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            }
+
+            @keyframes ping {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                75% {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+                100% {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        </style>
+            <!-- Bell Icon Button -->
         <button @click="open = !open" class="relative inline-block text-gray-700 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-9" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor">
@@ -42,8 +67,8 @@ $markAsRead = function ($notification_id) {
             </svg>
             <!-- Blue Dot with Notification Count -->
             <span class="absolute top-0 right-0 flex items-center justify-center px-1.5 py-0.5 rounded-full bg-sky-500 text-white text-sm/[13px] font-bold min-w-[1rem]">
-                {{ $notifications->count() }}
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                {{ $notifications->count() }}+
+                <span class="ping"></span>
             <span class="relative inline-flex rounded-full h-full w-full bg-sky-500"></span>
         </span>
         </button>
