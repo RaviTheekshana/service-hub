@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chat;
 use App\Models\User;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -101,6 +102,16 @@ class ChatController extends Controller
                     'provider_id' => (int)$request->user_id,
                     'status' => true
                 ]);
+            $user = User::find($request->user_id);
+            $user->notify(new BookingNotification([
+                'message' => 'You have a new message from ' . auth()->user()->name,
+                'action' => route('chat.show', $chat->id)
+            ]));
+            event(new BookingNotification([
+                'user_id' => $request->user_id,
+                'message' => 'You have a new message from ' . auth()->user()->name,
+                'service_time' => 'Just Now',
+            ]));
         }
 
 

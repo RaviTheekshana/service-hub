@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Profile_Management;
+use App\Notifications\BookingNotification;
 use Livewire\Component;
 use App\Models\BlogPost;
 use App\Models\Approve;
@@ -52,9 +53,14 @@ class ApproveButton extends Component
                 'blog_post_id' => $this->post->id,
                 'user_id' => Auth::id(),
             ]);
-
             $this->hasApproved = true;
             $this->approveCount++;
+
+            $user = $this->post->user;
+            $user->notify(new bookingNotification([
+                'message' => 'Your job post interest someone!',
+                'action' => route('dashboard'),
+            ]));
         }
     }
 

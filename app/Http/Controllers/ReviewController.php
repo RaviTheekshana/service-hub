@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\review;
+use App\Models\User;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -40,9 +42,21 @@ class ReviewController extends Controller
             'rating' => $validated['rating'],
             'comment' => $validated['comment'],
         ]);
+        $user = auth()->user();
+        $serviceProvider = User::findOrFail($validated['service_provider_id']);
+        $user->notify(new BookingNotification([
+            'message' => 'You have successfully reviewed the service provider',
+            'action' => route('dashboard'),
+        ]));
+        $serviceProvider->notify(new BookingNotification([
+            'message' => 'You have received a review from ' . $user->name,
+            'action' => route('provider-review'),
+        ]));
+
+
 
 // Redirect back with a success message
-        return redirect('dashboard')->with('flash.bannerStyle', 'success')->with('flash.banner', 'Review submitted successfully');
+        return redirect('dashboard')->with('flash.bannerStyle', 'success')->with('flash.banner', 'Review submitted successfully')->with('success', 'Review submitted successfully');
     }
     public function show()
     {

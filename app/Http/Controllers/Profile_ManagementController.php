@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chat;
 use App\Models\Profile_Management;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -67,9 +68,13 @@ class Profile_ManagementController extends Controller
                 'category_id' => $request['category_id']
             ]
         );
+        $user->notify(new BookingNotification([
+            'message' => 'Your profile has been created successfully!',
+            'action' => url('/provider-dashboard'),
+        ]));
         return redirect()->route('profile_management.index')
             ->with('flash.bannerStyle', 'success')
-            ->with('flash.banner', 'Profile created successfully.');
+            ->with('flash.banner', 'Profile created successfully.')->with('success', 'Profile created successfully.');
     }
 
 

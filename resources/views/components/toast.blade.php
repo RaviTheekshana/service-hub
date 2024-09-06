@@ -4,19 +4,19 @@
         message: '{{ session('success') }}'
     }"
     x-show="show"
-    x-init="if (show) { setTimeout(() => show = false, 10000); }"
+    x-init="if (show) { setTimeout(() => show = false, 15000); }"
     x-transition
     id="toast-notification"
-    class="fixed top-32 z-2 right-4 w-full max-w-xs p-3 text-gray-900 bg-green-300 rounded-lg shadow dark:text-gray-300"
+    class="fixed top-32 z-10 right-4 w-full max-w-xs p-3 text-gray-900 bg-green-300 bg-opacity-75 hover:bg-green-300 rounded-lg shadow dark:text-gray-300"
     role="alert"
     style="display: none;"
 >
-    <div class="flex items-center mb-3">
-        <span class="mb-1 text-lg font-semibold text-gray-900">Notification</span>
+    <div class="flex items-center mb-1">
+        <span class="text-lg font-semibold text-gray-900">Notification</span>
         <button
             @click="show = false"
             type="button"
-            class="ms-auto -mx-1.5 -my-1.5 bg-white justify-center items-center flex-shrink-0 text-gray-500 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:bg-gray-800 dark:hover:bg-gray-700"
+            class="ms-auto -mx-1.5 -my-1.5 bg-white justify-center items-center flex-shrink-0 text-gray-500 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:bg-white dark:hover:bg-gray-700"
             aria-label="Close"
         >
             <span class="sr-only">Close</span>
@@ -35,4 +35,5 @@
             <span class="text-xs font-medium text-blue-600 dark:text-blue-500">just now</span>
         </div>
     </div>
+    <span class="text-xs font-medium text-gray-800">{{now()->format('d-m-Y H:i')}}</span>
 </div>

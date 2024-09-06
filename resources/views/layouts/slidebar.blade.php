@@ -1,6 +1,7 @@
 <div class="w-full lg:ps-72">
 <x-banner />
     <x-toast/>
+    @include('test')
 </div>
     <!-- ========== MAIN CONTENT ========== -->
 <!-- Breadcrumb -->

@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
+use App\Notifications\BookingNotification;
 use Livewire\Component;
 use App\Models\Chat;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +26,16 @@ class ChatComponent extends Component
             'sender_user_id' => Auth::id(),
             'message_content' => $this->messageContent,
         ]);
+        event(new BookingNotification([
+            'user_id' => $this->chat->customer_id,
+            'message' => 'You have a new message from ' . auth()->user()->name,
+            'service_time' => 'Just Now',
+        ]));
+        $user = User::findOrFail($this->chat->customer_id);
+        $user->notify(new BookingNotification([
+            'message' => 'You have a new message from ' . auth()->user()->name,
+            'action' => route('chat.show', $this->chat),
+        ]));
 
         $this->messageContent = '';
         // Emit an event to refresh messages for all users

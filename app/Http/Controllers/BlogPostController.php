@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
+use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -33,9 +34,14 @@ class BlogPostController extends Controller
             'description' => $request->description,
             'image_path' => $imagePath,
         ]);
+        $user = auth()->user();
+        $user->notify(new BookingNotification([
+            'message' => 'Blog post created successfully!',
+            'action' => route('job.index'),
+        ]));
 
         return redirect()->back()->with('flash.bannerStyle', 'success')
-            ->with('flash.banner', 'Blog post created successfully!');
+            ->with('flash.banner', 'Blog post created successfully!')->with('success', 'Blog post created successfully!');
     }
     public function destroy()
     {
@@ -44,6 +50,11 @@ class BlogPostController extends Controller
         if ($blogPost->image_path) {
             \Storage::disk('public')->delete($blogPost->image_path);
         }
+        $user = auth()->user();
+        $user->notify(new BookingNotification([
+            'message' => 'Blog post deleted successfully!',
+            'action' => route('dashboard'),
+        ]));
         return redirect()->back()->with('flash.bannerStyle', 'success')
             ->with('flash.banner', 'Blog post deleted successfully!');
     }
