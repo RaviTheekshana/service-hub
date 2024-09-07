@@ -65,7 +65,7 @@
 <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-        <img src="{{$portfolio->profile_bg_path}}" alt="" data-aos="fade-in" class="">
+        <img src="{{url($portfolio->profile_bg_path)}}" alt="" data-aos="fade-in" class="">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <h2>{{ ucfirst(get_service_providers()->where('id', $portfolio->service_provider_id)->first()->name)}}</h2>
             <p>I'm <span class="typed" data-typed-items="{{ ucfirst(get_categories()->where('id', $portfolio->category_id)->first()->name)}}, Professional, Freelancer, An Expert"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>

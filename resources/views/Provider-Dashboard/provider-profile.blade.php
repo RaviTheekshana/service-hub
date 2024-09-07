@@ -8,7 +8,7 @@
             <!-- Card -->
             <div class="bg-white rounded-xl shadow">
                 @if($profile)
-                    <div class="relative h-40 rounded-t-xl bg-no-repeat bg-cover bg-center" style="background-image: url('{{ $profile->profile_bg_path }}');">
+                    <div class="relative h-40 rounded-t-xl bg-no-repeat bg-cover bg-center" style="background-image: url('{{ url($profile->profile_bg_path) }}');">
                 @else
                             <div class="relative h-40 rounded-t-xl bg-[url('https://preline.co/assets/svg/examples/abstract-bg-1.svg')] bg-no-repeat bg-cover bg-center">
                 @endif
