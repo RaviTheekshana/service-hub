@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FeedbackResource\Pages;
 use App\Models\Feedback;
+use App\Models\Review;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -22,9 +23,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+
 class FeedbackResource extends Resource
 {
-    protected static ?string $model = Feedback::class;
+    protected static ?string $model = Review::class;
 
     protected static ?string $slug = 'feedback';
 
@@ -34,17 +36,21 @@ class FeedbackResource extends Resource
     {
         return $form
             ->schema([
+                TextInput::make('user_id')
+                    ->required()
+                    ->integer(),
                 TextInput::make('service_provider_id')
                     ->required()
                     ->integer(),
-
-                TextInput::make('rate')
+                TextInput::make('booking_id')
                     ->required()
                     ->integer(),
-
+                TextInput::make('rating')
+                    ->required()
+                    ->integer(),
                 TextInput::make('comment')
-                    ->required(),
-
+                    ->required()
+                    ->max(100),
                 Placeholder::make('created_at')
                     ->label('Created Date')
                     ->content(fn(?Feedback $record): string => $record?->created_at?->diffForHumans() ?? '-'),
@@ -59,7 +65,14 @@ class FeedbackResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id')
+                    ->sortable(),
+
+                TextColumn::make('user_id'),
+
                 TextColumn::make('service_provider_id'),
+
+                TextColumn::make('booking_id'),
 
                 TextColumn::make('rate'),
 
