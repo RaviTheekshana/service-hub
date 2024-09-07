@@ -12,7 +12,12 @@
                             <div class="sm:col-span-1">
                                 <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
                                 <div class="relative">
-                                    <input type="text" id="hs-as-table-product-review-search" name="hs-as-table-product-review-search" class="py-2 px-3 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Search">
+                                    <form method="GET" action="{{ route('portfolio') }}">
+                                        <input type="text" id="search-provider" name="search"
+                                               class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+                                               placeholder="Search" value="{{ request()->get('search') }}">
+                                        <button type="submit" class="hidden"></button> <!-- Optional, submit when typing or press enter -->
+                                    </form>
                                     <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
                                     </div>
                                 </div>
@@ -21,30 +26,18 @@
                             <div class="sm:col-span-2 md:grow">
                                 <div class="flex justify-end gap-x-2">
                                     <div class="hs-dropdown [--placement:bottom-right] relative inline-block" data-hs-dropdown-auto-close="inside">
-                                        <button id="hs-as-table-table-filter-dropdown" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                                            <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
-                                            Filter
-                                            <span class="ps-2 text-xs font-semibold text-blue-600 border-s border-gray-200">
-                        1
-                      </span>
-                                        </button>
-                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-48 z-10 bg-white shadow-md rounded-lg mt-2" role="menu" aria-orientation="vertical" aria-labelledby="hs-as-table-table-filter-dropdown">
-                                            <div class="divide-y divide-gray-200">
-                                                <label for="hs-as-filters-dropdown-all" class="flex py-2.5 px-3">
-                                                    <input type="checkbox" class="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-as-filters-dropdown-all" checked>
-                                                    <span class="ms-3 text-sm text-gray-800">All</span>
-                                                </label>
-                                                <label for="hs-as-filters-dropdown-published" class="flex py-2.5 px-3">
-                                                    <input type="checkbox" class="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-as-filters-dropdown-published">
-                                                    <span class="ms-3 text-sm text-gray-800">Published</span>
-                                                </label>
-                                                <label for="hs-as-filters-dropdown-pending" class="flex py-2.5 px-3">
-                                                    <input type="checkbox" class="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" id="hs-as-filters-dropdown-pending">
-                                                    <span class="ms-3 text-sm text-gray-800"></span>
-                                                </label>
-                                            </div>
-                                        </div>
+                                        <form method="GET" action="{{ route('portfolio') }}">
+                                        <select id="category" name="category" onchange="this.form.submit()" class="py-2 pl-2 pr-9 bg-blue-500 border-transparent rounded-lg text-md text-white font-semibold">
+                                            <option class="bg-white text-gray-950 font-semibold" value="">All Categories</option>
+                                            @foreach($categories as $category)
+                                                <option class="bg-white text-gray-950 font-semibold" value="{{ $category->id }}" {{ request()->input('category') == $category->id ? 'selected' : '' }}>
+                                                    {{ ucfirst($category->name) }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        </form>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -142,7 +135,7 @@
                                     </a>
                                 </td>
                                 <td class="size-px whitespace-nowrap align-top">
-                                        <div class="flex block p-6 gap-x-1 mb-2">
+                                        <div class="flex p-6 gap-x-1 mb-2">
                                             @php
                                                 $rate= number_format(get_reviews('service_provider_id', $profiles->service_provider_id), 1) ?? 'No reviews yet'
                                             @endphp
@@ -226,6 +219,18 @@
                 </div>
             </div>
         </div>
+        <script>
+            let typingTimer;
+            let debounceInterval = 500; // Delay time in milliseconds (0.5 seconds)
+
+            document.getElementById('search-provider').addEventListener('keyup', function() {
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(function() {
+                    document.getElementById('search-provider').form.submit();
+                }, debounceInterval);
+            });
+
+        </script>
         <!-- End Card -->
     </div>
     <!-- End Table Section -->
