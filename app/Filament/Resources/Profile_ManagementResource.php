@@ -53,9 +53,7 @@ class Profile_ManagementResource extends Resource
                     ->required()
                     ->numeric(),
                 FileUpload::make('certificate_path')
-                    ->downloadable()
-                    ->image()
-                    ->imageEditor(),
+                    ->downloadable(),
 
                 Select::make('status')
                     ->options([
@@ -79,8 +77,8 @@ class Profile_ManagementResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('service_provider_id'),
-
+                TextColumn::make('service_provider.name')
+                    ->label('Service Provider'),
 
                 TextColumn::make('personal_summary'),
                 TextColumn::make('experience_years'),
@@ -92,11 +90,6 @@ class Profile_ManagementResource extends Resource
                         'approved' => 'success',
                         'rejected' => 'danger',
                     }),
-
-                //Show the uploaded images in the table
-                ImageColumn::make('certificate_path')
-                    ->circular()
-                    ->stacked(),
             ])
             ->filters([
                 TrashedFilter::make(),

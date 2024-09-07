@@ -7,6 +7,8 @@ use App\Models\Profile_Management;
 use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 class Profile_ManagementController extends Controller
 {
@@ -27,6 +29,10 @@ class Profile_ManagementController extends Controller
     {
     }
 
+    /**
+     * @throws FileIsTooBig
+     * @throws FileDoesNotExist
+     */
     public function store(Request $request)
     {
         // Validate the request inputs
@@ -35,11 +41,11 @@ class Profile_ManagementController extends Controller
             'email' => 'required|email|max:255|unique:users,email,' . auth()->id(), // Ignore unique validation for the current user
             'phone' => 'required|string|max:15',
             'experience_years' => 'required|integer|min:0',
-            'hourly_rate' => 'required|numeric|min:0',
+            'hourly_rate' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
-            'certificate' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'personal_summary' => 'nullable|string|max:1000',
-            'work_experience' => 'nullable|string|max:1000',
+            'certificate' => 'required|file|mimes:pdf|max:2048',
+            'personal_summary' => 'required|string|max:1000',
+            'work_experience' => 'required|string|max:1000',
             'status' => 'nullable|in:pending,approved,rejected'
         ]);
         //Check if the users service provider profile already exists
@@ -47,17 +53,15 @@ class Profile_ManagementController extends Controller
         if ($profile) {
             return redirect()->route('profile_management.index')->with('error', 'Profile already exists.');
         }
-
-        // Handle the certificate file upload if provided
+        // Store the certificate file
         $certificatePath = null;
         if ($request->hasFile('certificate')) {
             $certificatePath = $request->file('certificate')->store('certificates', 'public');
         }
-
         // Fetch the service provider user
         $user = auth()->user();
 
-        Profile_Management::updateOrCreate(
+        $profile = Profile_Management::updateOrCreate(
             [
                 'service_provider_id' => $user->id,
                 'experience_years' => $request['experience_years'],
@@ -68,6 +72,9 @@ class Profile_ManagementController extends Controller
                 'category_id' => $request['category_id']
             ]
         );
+        $profile->addMediaFromRequest('certificate')->toMediaCollection('certificate_path');
+
+
         $user->notify(new BookingNotification([
             'message' => 'Your profile has been created successfully!',
             'action' => url('/provider-dashboard'),
@@ -86,6 +93,9 @@ class Profile_ManagementController extends Controller
             // Handle the case where the profile isn't found
             return redirect()->route('profile_management.index')->with('error', 'Profile not found.');
         }
+        // Retrieve all media from 'project_images' collection
+        $mediaItems = $profile_management->getMedia('project_images');
+        $mediaItems2 = $profile_management->getFirstMediaUrl('certificate_path');
         // Load the chats where the authenticated user is the customer
         $chats = Chat::where('customer_id', auth()->id())
             ->where('provider_id', $portfolio->service_provider_id)
@@ -102,26 +112,51 @@ class Profile_ManagementController extends Controller
             // Pass the new chat to the view
             $chats = collect([$newChat]);
         }
-        return view('Provider-Dashboard.portfolio', compact('chats','portfolio'));
+        return view('Provider-Dashboard.portfolio', compact('chats','portfolio', 'mediaItems', 'mediaItems2'));
     }
 
     public function edit(Profile_Management $profile_Management)
     {
     }
 
+    /**
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
+     */
     public function update(Request $request, Profile_Management $profile_Management)
     {
+        // Validate the incoming file array
+        $request->validate([
+            'project' => 'required|array',
+            'project.*' => 'image|max:2048', // Validate each file
+        ]);
+        $profile = Profile_Management::where('service_provider_id', auth()->id())->first();
+        if ($request->hasFile('project')) {
+            foreach ($request->file('project') as $file) {
+                if ($file->isValid()) {
+
+                    $profile->addMedia($file)->toMediaCollection('project_images');
+                }
+            }
+        }
+
+
+        return redirect()->back()->with('success', 'Images uploaded successfully!');
     }
     public function destroy(Profile_Management $profileManagement)
     {
         // If there's a file associated with the profile, delete it
-        if ($profileManagement->certificate_path) {
+        $profileManagement->clearMediaCollection('certificate_path');
+        $profileManagement->clearMediaCollection('project_images');
+
+        if($profileManagement->certificate_path){
             Storage::disk('public')->delete($profileManagement->certificate_path);
         }
-
         // Delete the profile from the database
+        if($profileManagement->profile_bg_path){
+            Storage::disk('public')->delete($profileManagement->profile_bg_path);
+        }
         $profileManagement->delete();
-
         // Redirect back with a success message
         return redirect()->route('profile_management.index')->with('success', 'Profile deleted successfully.');
     }

@@ -55,9 +55,9 @@
             <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
             <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
             <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-            <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-            <li><a href="{{ url('/bookings/portfolio')}}"><i class="bi bi-hdd-stack navicon"></i> Back</a></li>
+            <li><a href="#testimonials"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
             <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Message</a></li>
+            <li><a href="{{ url('/bookings/portfolio')}}"><i class="bi bi-arrow-left-circle navicon"></i> Back</a></li>
         </ul>
     </nav>
 
@@ -66,7 +66,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-        <img src="{{asset('assets/img/hero.png')}}" alt="" data-aos="fade-in" class="">
+        <img src="{{ asset($portfolio->profile_bg_path) }}" alt="" data-aos="fade-in" class="">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <h2>{{ ucfirst(get_service_providers()->where('id', $portfolio->service_provider_id)->first()->name)}}</h2>
@@ -251,6 +251,10 @@
         <div class="container">
 
             <div class="row">
+                <iframe src="{{ $mediaItems2 }}" width="100%" height="600px">
+                    This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset('path/to/your/file.pdf') }}">Download PDF</a>
+                </iframe>
+
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="resume-title">Sumary</h3>
@@ -336,228 +340,34 @@
                     <li data-filter=".filter-branding">Branding</li>
                     <li data-filter=".filter-books">Books</li>
                 </ul><!-- End Portfolio Filters -->
-
                 <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                    @foreach($mediaItems as $media)
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+                            <div class="portfolio-content h-100">
+                                <!-- Use the media URL to display the image -->
+                                <img src="{{ $media->getUrl() }}" class="img-fluid" alt="Project Image">
+                                <div class="portfolio-info">
+                                    <h4>{{ $media->name }}</h4> <!-- Media name -->
+                                    <p>{{ $media->custom_properties['description'] ?? 'No description available' }}</p> <!-- Optional description -->
 
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/app-1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 1</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                    <!-- Lightbox preview link -->
+                                    <a href="{{ $media->getUrl() }}" title="{{ $media->name }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+                                        <i class="bi bi-zoom-in"></i>
+                                    </a>
+{{--                                    <!-- Link to more details -->--}}
+{{--                                    <a href="{{ route('portfolio.details', ['id' => $media->id]) }}" title="More Details" class="details-link">--}}
+{{--                                        <i class="bi bi-link-45deg"></i>--}}
+{{--                                    </a>--}}
+                                </div>
                             </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/product-1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Product 1</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Branding 1</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/books-1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Books 1</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/app-2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 2</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/product-2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Product 2</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Branding 2</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/books-2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Books 2</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/app-3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>App 3</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/product-3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Product 3</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Branding 3</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-                        <div class="portfolio-content h-100">
-                            <img src="assets.portfolio/img/portfolio/books-3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Books 3</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                <a href="assets.portfolio/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-
+                        </div><!-- End Portfolio Item -->
+                    @endforeach
                 </div><!-- End Portfolio Container -->
-
             </div>
 
         </div>
 
     </section><!-- /Portfolio Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Services</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-            <div class="row gy-4">
-
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
-                    <div>
-                        <h4 class="title"><a href="service-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-                    </div>
-                </div>
-                <!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
-                    <div>
-                        <h4 class="title"><a href="service-details.html" class="stretched-link">Dolor Sitema</a></h4>
-                        <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
-                    <div>
-                        <h4 class="title"><a href="service-details.html" class="stretched-link">Sed ut perspiciatis</a></h4>
-                        <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                    <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
-                    <div>
-                        <h4 class="title"><a href="service-details.html" class="stretched-link">Magni Dolores</a></h4>
-                        <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-                    <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
-                    <div>
-                        <h4 class="title"><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
-                        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-                    <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
-                    <div>
-                        <h4 class="title"><a href="service-details.html" class="stretched-link">Eiusmod Tempor</a></h4>
-                        <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-                    </div>
-                </div><!-- End Service Item -->
-
-            </div>
-
-        </div>
-
-    </section><!-- /Services Section -->
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section light-background">

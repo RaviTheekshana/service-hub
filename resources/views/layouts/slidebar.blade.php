@@ -1,4 +1,4 @@
-<div class="w-full lg:ps-72">
+<div class="w-full lg:ps-64">
 <x-banner />
     <x-toast/>
     @include('test')

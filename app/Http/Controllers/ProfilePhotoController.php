@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile_Management;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -45,7 +46,21 @@ class ProfilePhotoController extends Controller
             $user->save();
         }
 
-        return redirect()->back()->with('flash.bannerStyle', 'success')->with('flash.banner', 'Profile photo updated successfully.');
+        return redirect()->back()->with('flash.bannerStyle', 'success')->with('flash.banner', 'Profile photo updated successfully.')->with('success', 'Profile photo updated successfully.');
+    }
+    public function updateBg(Request $request)
+    {
+        $request -> validate([
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // 2MB max size
+        ]);
+
+        $user = Auth::user();
+        $profile = Profile_Management::where('service_provider_id', $user->id)->first();
+        $path = $request->file('cover')->store('profile-bg', 'public');
+        $profile->profile_bg_path = $path;
+        $profile->save();
+        return redirect()->back()->with('success', 'Profile background updated successfully.');
+
     }
 }
 

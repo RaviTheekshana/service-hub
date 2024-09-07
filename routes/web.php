@@ -66,3 +66,4 @@ Route::get('/test', function () {
 use App\Http\Controllers\ProfilePhotoController;
 
 Route::post('/profile/photo', [ProfilePhotoController::class, 'update'])->name('profile.photo.update');
+Route::post('/provider/update', [ProfilePhotoController::class, 'updateBg'])->name('profile.bg.update');

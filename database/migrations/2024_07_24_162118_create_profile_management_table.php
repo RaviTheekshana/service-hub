@@ -14,6 +14,7 @@ class CreateProfileManagementTable extends Migration
             $table->integer('experience_years');
             $table->double('hourly_rate');
             $table->string('certificate_path')->nullable();
+            $table->string('profile_bg_path')->nullable();
             $table->longText('personal_summary');
             $table->longText('work_experience');
             $table->foreignId('category_id')->constrained('categories');
