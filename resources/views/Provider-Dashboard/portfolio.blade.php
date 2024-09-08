@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@include('components.guestvisibility')
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
