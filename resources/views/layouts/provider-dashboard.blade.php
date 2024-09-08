@@ -5,12 +5,12 @@
         <!-- your content goes here ... -->
         <div class="flex justify-end space-x-4">
             <!-- Home Button -->
-            <a href="{{ url('/') }}" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+            <a href="{{ url('/') }}" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-[20px] border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                 Home
             </a>
 
             <!-- Logout Button -->
-            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+            <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-[20px] border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
             </button>

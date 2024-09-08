@@ -61,6 +61,16 @@ class ChatController extends Controller
                 ->with('messages')
                 ->get();
         }
+        event(new BookingNotification([
+            'user_id' => $chat->customer_id,
+            'message' => 'You have a new message from ' . auth()->user()->name,
+            'service_time' => 'Just Now',
+        ]));
+        $customer = User::find($chat->customer_id);
+        $customer->notify(new BookingNotification([
+            'message' => 'You have a new message from ' . auth()->user()->name,
+            'action' => route('chat.show', $chat->id)
+        ]));
 
         // load the messages for the chat
         $chat->load('messages');

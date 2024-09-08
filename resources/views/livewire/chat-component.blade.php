@@ -9,7 +9,7 @@
                             <div class="col-start-6 col-end-13 p-3 rounded-lg">
                                 <div class="flex items-center justify-start flex-row-reverse">
                                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-                                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text={{ $message->sender->name }}" alt="User Avatar" class="w-8 h-8 rounded-full">
+                                        <img src="{{ $message->sender->profile_photo_url }}" alt="User Avatar" class="w-8 h-8 rounded-full">
                                     </div>
                                     <div class="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl">
                                         <div>{{ $message->message_content }}</div>
@@ -20,7 +20,7 @@
                             <div class="col-start-1 col-end-8 p-3 rounded-lg">
                                 <div class="flex flex-row items-center">
                                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-                                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text={{ $message->sender->name }}" alt="User Avatar" class="w-8 h-8 rounded-full">
+                                        <img src="{{ $message->sender->profile_photo_url }}" alt="User Avatar" class="w-8 h-8 rounded-full">
                                     </div>
                                     <div class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
                                         <div>{{ $message->message_content }}</div>

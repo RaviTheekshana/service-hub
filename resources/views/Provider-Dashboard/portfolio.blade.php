@@ -1,5 +1,4 @@
-@include('components.guestvisibility')
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -43,10 +42,10 @@
     </a>
 
     <div class="social-links text-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=someone@example.com" class="twitter"><i class="bi bi-envelope"></i></a>
+        <a href="tel:" class="facebook"><i class="bi bi-telephone"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-whatsapp"></i></a>
+        <a href="#" class="google-plus"><i class="bi bi-facebook"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
     </div>
 
@@ -56,7 +55,7 @@
             <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
             <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
             <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-            <li><a href="#testimonials"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+            <li><a href="#testimonials"><i class="bi bi-star navicon"></i>Review</a></li>
             <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Message</a></li>
             <li><a href="{{ url('/bookings/portfolio')}}"><i class="bi bi-arrow-left-circle navicon"></i> Back</a></li>
         </ul>
@@ -67,7 +66,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
         <img src="{{ asset('storage/' . $portfolio->profile_bg_path) }}" alt="" data-aos="fade-in" class="">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="container bg-black bg-opacity-50" data-aos="fade-up" data-aos-delay="100">
             <h2>{{ ucfirst(get_service_providers()->where('id', $portfolio->service_provider_id)->first()->name)}}</h2>
             <p>I'm <span class="typed" data-typed-items="{{ ucfirst(get_categories()->where('id', $portfolio->category_id)->first()->name)}}, Professional, Freelancer, An Expert"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
         </div>
@@ -80,14 +79,14 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>About</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>{{$portfolio->personal_summary}}</p>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
             <div class="row gy-4 justify-content-center">
                 <div class="col-lg-4">
-                    <img src="assets.portfolio/img/my-profile-img.jpg" class="img-fluid" alt="">
+                    <img src="{{get_service_providers()->where('id', $portfolio->service_provider_id)->first()->profile_photo_url}}" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-8 content">
                     <h2>UI/UX Designer &amp; Web Developer.</h2>
@@ -253,8 +252,6 @@
                 <iframe src="{{ $mediaItems2 }}" width="100%" height="600px">
                     This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset('path/to/your/file.pdf') }}">Download PDF</a>
                 </iframe>
-
-
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="resume-title">Sumary</h3>
 
@@ -267,22 +264,6 @@
                             <li>alice.barkley@example.com</li>
                         </ul>
                     </div><!-- Edn Resume Item -->
-
-                    <h3 class="resume-title">Education</h3>
-                    <div class="resume-item">
-                        <h4>Master of Fine Arts &amp; Graphic Design</h4>
-                        <h5>2015 - 2016</h5>
-                        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                        <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-                    </div><!-- Edn Resume Item -->
-
-                    <div class="resume-item">
-                        <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-                        <h5>2010 - 2014</h5>
-                        <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-                        <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-                    </div><!-- Edn Resume Item -->
-
                 </div>
 
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
@@ -298,19 +279,6 @@
                             <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
                         </ul>
                     </div><!-- Edn Resume Item -->
-
-                    <div class="resume-item">
-                        <h4>Graphic design specialist</h4>
-                        <h5>2017 - 2018</h5>
-                        <p><em>Stepping Stone Advertising, New York, NY</em></p>
-                        <ul>
-                            <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                            <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                            <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                            <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-                        </ul>
-                    </div><!-- Edn Resume Item -->
-
                 </div>
 
             </div>

@@ -53,9 +53,9 @@
                                 <button class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
                                     <div class="flex items-center justify-center h-8 w-8 bg-indigo-200 rounded-full">
                                         @if(auth()->user()->role === 'service_provider')
-                                            <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text={{ $primary_chat->provider->name }}" alt="{{ $primary_chat->provider->name }}" class="w-full h-full object-cover">
+                                            <img src="{{ $primary_chat->customer->profile_photo_url }}" alt="{{ $primary_chat->customer->name }}" class="w-full h-full rounded-full object-cover">
                                         @else
-                                            <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text={{ $primary_chat->provider->name }}" alt="{{ $primary_chat->provider->name }}" class="w-full h-full object-cover">
+                                            <img src="{{ $primary_chat->provider->profile_photo_url }}" alt="{{ $primary_chat->provider->name }}" class="w-full h-full rounded-full object-cover">
                                         @endif
                                     </div>
                                     <div class="ml-2 text-sm font-semibold">

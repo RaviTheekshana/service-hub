@@ -3,10 +3,78 @@
     @auth
     @include('layouts.slidebar')
     <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
+        <div class="flex justify-end space-x-4 mb-2">
+            <!-- Home Button -->
+            <a href="{{ url('/') }}" class=" flex py-4 px-4 items-center text-sm font-medium rounded-[20px] border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                Home
+            </a>
+            @livewire('UserNotification')
+            <div class="ms-3 relative">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <button
+                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                <img class="h-10 w-10 rounded-full object-cover"
+                                     src="{{ Auth::user()->profile_photo_url }}"
+                                     alt="{{ Auth::user()->name }}"/>
+                            </button>
+                        @else
+                            <span class="inline-flex rounded-md">
+                                    <button type="button"
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                        {{ Auth::user()->name }}
+
+                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                        </svg>
+                                    </button>
+                                </span>
+                        @endif
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <!-- Account Management -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Manage Account') }}
+                        </div>
+
+                        <x-dropdown-link href="{{ route('profile.show') }}">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
+
+                        @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                            <x-dropdown-link href="{{ route('api-tokens.index') }}">
+                                {{ __('API Tokens') }}
+                            </x-dropdown-link>
+                        @endif
+
+                        <div class="border-t border-gray-200"></div>
+
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+
+                            <x-dropdown-link href="{{ route('logout') }}"
+                                             @click.prevent="$root.submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            </div>
+
+            <!-- Hidden Logout Form -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
         <form id="profile-form" action="{{route('profile_management.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Card -->
-            <div class="bg-white rounded-xl shadow">
+            <div class="bg-white rounded-xl shadow-xl">
                 @if($profile)
                     <div class="relative h-40 rounded-t-xl bg-no-repeat bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $profile->profile_bg_path) }}');">
                 @else
@@ -208,7 +276,7 @@
         <form class="py-2 lg:ps-72" action="{{ route('profile_management.destroy', $profile->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this profile?');">
             @csrf
             @method('DELETE')
-            <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-red-500 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+            <button type="submit" class="py-2 px-3 inline-flex items-center shadow-md gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-red-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                 </svg>
@@ -222,10 +290,11 @@
             @csrf
             @method('PUT')
 
-            <div class="bg-transparent h-screen w-full sm:px-8 md:px-16 sm:py-8 lg:ps-72">
+            <div class="bg-transparent border-2 border-gray-200 h-screen w-full sm:px-8 md:px-16 sm:py-8 lg:ps-72">
+                <h2 class="text-2xl font-semibold text-gray-800">Project Images</h2>
                 <main class="container mx-auto max-w-screen-lg h-full">
                     <!-- file upload modal -->
-                    <article aria-label="File Upload Modal" class="relative h-full flex flex-col bg-white shadow-xl rounded-md" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);" ondragenter="dragEnterHandler(event);">
+                    <article aria-label="File Upload Modal" class="relative h-full flex flex-col bg-white shadow-2xl rounded-md" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);" ondragenter="dragEnterHandler(event);">
                         <!-- overlay -->
                         <div id="overlay" class="w-full h-full absolute top-0 left-0 pointer-events-none z-50 flex flex-col items-center justify-center rounded-md">
                             <i>

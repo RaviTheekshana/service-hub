@@ -52,24 +52,24 @@ class BookingController extends Controller
                 'description' => $request->input('description'),
             ]);
 
-        event(new BookNotification([
-            'user_id' => $request->input('service_provider_id'),
-            'service_date' => $request->input('service_date'),
-            'service_time' => $request->input('service_time'),
-        ]));
         $user = auth()->user();
         $serviceProvider = User::find($request->service_provider_id);
 
         // Send notification to the user
         $user->notify(new BookNotification([
             'message' => 'Your booking has been created successfully!',
-            'action' => url('/'),
+            'action' => url('dashboard'),
         ]));
 
         // Send notification to the service provider
         $serviceProvider->notify(new BookNotification([
             'message' => 'You have a new booking request!',
             'action' => url('/provider-booking'),
+        ]));
+        event(new BookNotification([
+            'user_id' => $request->input('service_provider_id'),
+            'service_date' => $request->input('service_date'),
+            'service_time' => $request->input('service_time'),
         ]));
 
             return redirect()->route('dashboard')->with('success', 'Booking successfully created!');
@@ -90,25 +90,25 @@ class BookingController extends Controller
         $book->status = $request->status;
         $book->save();
 
-        //Realtime notification
-        event(new BookNotification([
-            'user_id' => "$book->user_id",
-            'service_provider_id' => $book->service_provider_id,
-            'service_date' => $book->service_date,
-            'service_time' => $book->service_time,
-        ]));
         // Get the user who made the booking
-        $user = get_users('id', $book->user_id)->first();
+        $user = User::findOrFail($book->user_id);
         $serviceProvider = auth()->user();
+
         $user->notify(new BookingNotification([
-            'message' => 'Your booking updated by Service Provider!',
-            'action' => url('/'),
+            'message' => 'Your booking updated by ' .$serviceProvider->name,
+            'action' => url('dashboard'),
         ]));
 
         // Send notification to the service provider
         $serviceProvider->notify(new BookingNotification([
             'message' => 'Your booking has been updated successfully!',
             'action' => url('/provider-booking'),
+        ]));
+        //Realtime notification
+        event(new BookNotification([
+            'user_id' => "$book->user_id",
+            'message' => 'Your booking has been updated by ' .$serviceProvider->name,
+            'service_time' => 'Just Now',
         ]));
 
         // Redirect back with a success message

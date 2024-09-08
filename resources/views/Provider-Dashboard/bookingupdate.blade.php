@@ -2,14 +2,14 @@
     @include('components.guestvisibility')
     @auth
     @include('layouts.slidebar')
-    <!-- component -->
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-    <section class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
+    <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-28">
+        <div class="flex justify-end space-x-4 mb-2">
+        @livewire('UserNotification')
+        </div>
         <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
-            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-                <div class="rounded-t bg-white mb-0 px-6 py-6">
+            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-2xl rounded-lg bg-blue-200 border-0">
+                <div class="rounded-t bg-blue-50 border-2 border-blue-300 shadow-blue-200 mb-0 px-6 py-6">
                     <div class="text-center flex justify-between">
                         <h6 class="text-blueGray-700 text-xl font-bold">
                             Booking Form
@@ -85,6 +85,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     @endauth
 </x-guest-layout>

@@ -27,7 +27,7 @@
                                 <div class="flex justify-end gap-x-2">
                                     <div class="hs-dropdown [--placement:bottom-right] relative inline-block" data-hs-dropdown-auto-close="inside">
                                         <form method="GET" action="{{ route('portfolio') }}">
-                                        <select id="category" name="category" onchange="this.form.submit()" class="py-2 pl-2 pr-9 bg-blue-500 border-transparent rounded-lg text-md text-white font-semibold">
+                                        <select id="category" name="category" onchange="this.form.submit()" class="py-2 pl-2 pr-9 appearance-none bg-blue-500 border-transparent rounded-lg text-md text-white font-semibold">
                                             <option class="bg-white text-gray-950 font-semibold" value="">All Categories</option>
                                             @foreach($categories as $category)
                                                 <option class="bg-white text-gray-950 font-semibold" value="{{ $category->id }}" {{ request()->input('category') == $category->id ? 'selected' : '' }}>
@@ -35,6 +35,11 @@
                                                 </option>
                                             @endforeach
                                         </select>
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                                <svg class="w-6 h-6 fill-white text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
                                         </form>
                                     </div>
 

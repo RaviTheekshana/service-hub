@@ -55,7 +55,7 @@
         if (data.user_id === "{{ auth()->id() }}" || data.user_id === {{ auth()->id() }}) {
             toastr.success(
                 `<div class="notification-content">
-                        <i class="fas fa-user"></i> <span>  Service Date: ${data.message}</span>
+                        <i class="fas fa-user"></i> <span>  Message: ${data.message}</span>
                         <i class="fas fa-book" style="margin-left: 20px;"></i> <span> ${data.service_time}</span>
                     </div>`,
                 'New Notification',

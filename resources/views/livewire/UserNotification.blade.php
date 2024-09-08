@@ -5,14 +5,17 @@ use function Livewire\Volt\{state, mount};
 state([
     'notifications' => []
 ]);
-
 mount(function () {
+    $this->loadNotifications();
+});
+
+$loadNotifications = function () {
     $this->notifications = auth()
         ->user()
         ->notifications()
         ->where('read_at', null)
         ->get();
-});
+};
 
 $markAsRead = function ($notification_id) {
     $notification = auth()
@@ -31,8 +34,23 @@ $markAsRead = function ($notification_id) {
 };
 
 ?>
-<div>
-    <div class="relative" x-data="{ open: false }">
+
+<div x-data="{
+    init(){
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('c379edfdce44785732d0', {
+            cluster: 'ap2'
+        });
+
+        var channel = pusher.subscribe('booking');
+        channel.bind('book.notification', function(data) {
+            @this.call('loadNotifications');
+        });
+    }
+}">
+    <x-dropdown align="right" width="48">
         <style>
             .ping {
                 position: absolute;
@@ -58,9 +76,10 @@ $markAsRead = function ($notification_id) {
                 }
             }
         </style>
+        <x-slot name="trigger">
             <!-- Bell Icon Button -->
-        <button @click="open = !open" class="relative inline-block text-gray-700 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-9" fill="none" viewBox="0 0 24 24"
+        <button class="relative inline-block text-gray-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-9" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
@@ -72,8 +91,10 @@ $markAsRead = function ($notification_id) {
             <span class="relative inline-flex rounded-full h-full w-full bg-sky-500"></span>
         </span>
         </button>
+        </x-slot>
 
         <!-- Dropdown Menu -->
+        <x-slot name="content">
         <div x-show="open" @click.away="open = false"
              class="absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg z-20"
              x-cloak>
@@ -109,5 +130,6 @@ $markAsRead = function ($notification_id) {
                 </ul>
             </div>
         </div>
-    </div>
+        </x-slot>
+    </x-dropdown>
 </div>

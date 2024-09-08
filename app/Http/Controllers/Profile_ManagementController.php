@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chat;
 use App\Models\Profile_Management;
+use App\Models\User;
 use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -79,6 +80,11 @@ class Profile_ManagementController extends Controller
             'message' => 'Your profile has been created successfully!',
             'action' => url('/provider-dashboard'),
         ]));
+        event(new BookingNotification([
+            'user_id' => $user->id,
+            'message' => 'You Profile has been created successfully!',
+            'service_time' => 'Just Now',
+        ]));
         return redirect()->route('profile_management.index')
             ->with('flash.bannerStyle', 'success')
             ->with('flash.banner', 'Profile created successfully.')->with('success', 'Profile created successfully.');
@@ -87,6 +93,10 @@ class Profile_ManagementController extends Controller
 
     public function show(Profile_Management $profile_management)
     {
+        //if the user guest, redirect to login page
+        if (auth()->guest()) {
+            return view('components.guestvisibility');
+        }
        //Get Selected Profile detail from All Profiles
         $portfolio = Profile_Management::where('id', $profile_management->id)->first();
         if (!$portfolio) {
@@ -157,6 +167,18 @@ class Profile_ManagementController extends Controller
             Storage::disk('public')->delete($profileManagement->profile_bg_path);
         }
         $profileManagement->delete();
+
+        $serviceProvider = User::find($profileManagement->service_provider_id);
+        $serviceProvider->notify(new BookingNotification([
+            'message' => 'Your profile has been deleted successfully!',
+            'action' => url('/provider-dashboard'),
+        ]));
+
+        event(new BookingNotification([
+            'user_id' => $profileManagement->service_provider_id,
+            'message' => 'You Profile has been created successfully!',
+            'service_time' => 'Just Now',
+        ]));
         // Redirect back with a success message
         return redirect()->route('profile_management.index')->with('success', 'Profile deleted successfully.');
     }

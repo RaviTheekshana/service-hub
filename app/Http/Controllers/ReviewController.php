@@ -52,6 +52,11 @@ class ReviewController extends Controller
             'message' => 'You have received a review from ' . $user->name,
             'action' => route('provider-review'),
         ]));
+        event(new BookingNotification([
+            'user_id' => $validated['service_provider_id'],
+            'message' => 'You have received a review from ' . $user->name,
+            'service_time' => 'Just Now',
+        ]));
 
 
 
