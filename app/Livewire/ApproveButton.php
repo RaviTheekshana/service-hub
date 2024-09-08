@@ -61,6 +61,11 @@ class ApproveButton extends Component
                 'message' => 'Your job post interest someone!',
                 'action' => route('dashboard'),
             ]));
+            event(new bookingNotification([
+                'user_id' => $user->id,
+                'message' => 'Your job post interest someone!',
+                'service_time' => 'Just Now',
+            ]));
         }
     }
 

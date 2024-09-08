@@ -25,6 +25,10 @@ class BookingController extends Controller
     }
     public function store(Request $request)
         {
+            if (auth()->user()->role === 'service_provider') {
+                return redirect()->back()->with('flash.bannerStyle', 'danger')
+                    ->with('flash.banner', 'You are not authorized to create a booking!');
+            }
             $request->validate([
                 'service_date' => 'required|date',
                 'service_time' => 'required',

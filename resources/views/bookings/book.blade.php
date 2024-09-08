@@ -1,5 +1,6 @@
 <x-layout>
 @include('components.guestvisibility')
+    <x-banner/>
     @auth
     <!-- component -->
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
