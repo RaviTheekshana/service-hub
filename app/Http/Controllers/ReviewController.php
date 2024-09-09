@@ -15,7 +15,7 @@ class ReviewController extends Controller
         $booking_id = Booking::findOrFail($id);
         $service_provider_id = Booking::where('id', $id)->first()->service_provider_id;
         //Check if the user already reviewed the service provider and booking status is Completed
-        if (review::where('user_id', auth()->user()->id)->where('service_provider_id', $service_provider_id)->where('booking_id', $id)->exists()) {
+        if (Review::where('user_id', auth()->user()->id)->where('service_provider_id', $service_provider_id)->where('booking_id', $id)->exists()) {
             return redirect('dashboard')->with('flash.bannerStyle', 'danger')->with('flash.banner', 'You have already reviewed this service provider');
         }
         if (Booking::where('id', $id)->where('status', 'Completed')->doesntExist()) {
