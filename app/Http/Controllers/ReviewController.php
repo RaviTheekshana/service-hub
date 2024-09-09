@@ -35,7 +35,7 @@ class ReviewController extends Controller
         ]);
 
 // Create a new feedback
-        review::create([
+        Review::create([
             'user_id' => auth()->user()->id,
             'service_provider_id' => $validated['service_provider_id'],
             'booking_id' => $validated['booking_id'],
