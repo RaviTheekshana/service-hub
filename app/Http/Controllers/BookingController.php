@@ -35,9 +35,9 @@ class BookingController extends Controller
                 'category_id' => 'required|exists:categories,id',
                 'service_provider_id' => 'required|exists:users,id',
                 'address' => 'required|string|max:255',
-                'city' => 'required|string|max:100',
-                'phone' => 'required|string|max:12',
-                'phone_two' => 'required|string|max:12|different:phone',
+                'city' => 'required|string|max:20',
+                'phone' => 'required|regex:/^\+94[0-9]{9}$/',
+                'phone_two' => 'required|regex:/^\+94[0-9]{9}$/|different:phone',
                 'email' => 'required|email|max:255',
                 'description' => 'required|string',
             ]);
@@ -72,7 +72,7 @@ class BookingController extends Controller
         ]));
         event(new BookNotification([
             'user_id' => $request->input('service_provider_id'),
-            'service_date' => $request->input('service_date'),
+            'message' => 'You have a new booking request!' . $user->name,
             'service_time' => $request->input('service_time'),
         ]));
 

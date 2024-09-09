@@ -6,7 +6,26 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-    <section class="pt-4 bg-blueGray-50">
+        <section class="pt-4 bg-blueGray-50" x-data="{
+        email: '',
+        phone: '',
+        phoneTwo: '',
+        validEmail: true,
+        validPhone: true,
+        validPhoneTwo: true,
+        validateEmail() {
+            const emailPattern = /^[^@]+@[^@]+\.[^@]+$/;
+            this.validEmail = emailPattern.test(this.email);
+        },
+        validatePhone(field) {
+            const phonePattern = /^\+94[0-9]{9}$/;
+            if(field === 'phone') {
+                this.validPhone = phonePattern.test(this.phone);
+            } else {
+                this.validPhoneTwo = phonePattern.test(this.phoneTwo);
+            }
+        }
+    }">
         <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
                 <div class="rounded-2xl bg-white mb-0 px-6 py-6">
@@ -45,14 +64,6 @@
                                     <input type="date" name="service_date" id="service_date" min="{{ \Carbon\Carbon::now()->toDateString() }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
-{{--                            <div class="w-full lg:w-6/12 px-4">--}}
-{{--                                <div class="relative w-full mb-3">--}}
-{{--                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_time">--}}
-{{--                                        Service Time--}}
-{{--                                    </label>--}}
-{{--                                    <input type="time" name="service_time" id="service_time" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_time">
@@ -64,11 +75,6 @@
                                             <option value="{{ sprintf('%02d:00', $hour) }}">
                                                 {{ date('h:i A', strtotime(sprintf('%02d:00', $hour))) }}
                                             </option>
-{{--                                            @if ($hour < 16)--}}
-{{--                                                <option value="{{ sprintf('%02d:30', $hour) }}">--}}
-{{--                                                    {{ date('h:i A', strtotime(sprintf('%02d:30', $hour))) }}--}}
-{{--                                                </option>--}}
-{{--                                            @endif--}}
                                         @endfor
                                     </select>
                                 </div>
@@ -111,7 +117,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="address">
                                         Address
                                     </label>
-                                    <input type="text" name="address" id="address" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                    <input type="text" name="address" id="address" value="{{ old('address') }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
@@ -119,7 +125,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="city">
                                         City
                                     </label>
-                                    <input type="text" name="city" id="city" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                    <input type="text" name="city" id="city" value="{{ old('city') }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
@@ -127,15 +133,22 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone">
                                         Phone Number 1
                                     </label>
-                                    <input type="tel" name="phone" id="phone" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" maxlength="12" required>
+                                    <input type="tel" name="phone" x-model="phone" @input="validatePhone('phone')" id="phone" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" maxlength="12" required>
+                                    <template x-if="!validPhone">
+                                        <p class="text-red-500 text-xs italic">Invalid phone number. Must be 10-12 digits.</p>
+                                    </template>
                                 </div>
                             </div>
+
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone_two">
                                         Phone Number 2
                                     </label>
-                                    <input type="tel" name="phone_two" id="phone_two" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" maxlength="12" required>
+                                    <input type="tel" name="phone_two" x-model="phoneTwo" @input="validatePhone('phoneTwo')" id="phone_two" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" maxlength="12" required>
+                                    <template x-if="!validPhoneTwo">
+                                        <p class="text-red-500 text-xs italic">Invalid phone number. Must be 10-12 digits.</p>
+                                    </template>
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
@@ -143,7 +156,10 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="email">
                                         Email Address
                                     </label>
-                                    <input type="email" name="email" id="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                    <input type="email" name="email" x-model="email" @input="validateEmail" id="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
+                                    <template x-if="!validEmail">
+                                        <p class="text-red-500 text-xs italic">Invalid email address format.</p>
+                                    </template>
                                 </div>
                             </div>
                             <div class="w-full lg:w-8/12 px-4">
@@ -156,9 +172,7 @@
                                 </div>
                             </div>
                         </div>
-
                         <hr class="mt-3 border-b-1 border-blueGray-300">
-
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                             About Service
                         </h6>
@@ -168,7 +182,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="description">
                                         Service Details
                                     </label>
-                                    <textarea name="description" id="description" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4" placeholder="Say Something about Your job" required></textarea>
+                                    <textarea name="description" id="description" value="{{old('description')}}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4" placeholder="Say Something about Your job" required></textarea>
                                 </div>
                             </div>
                         </div>

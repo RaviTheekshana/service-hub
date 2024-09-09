@@ -171,7 +171,7 @@
                                 Experience Years
                             </label>
 
-                            <input name="experience_years" id="experience_years" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Experience Years" required>
+                            <input name="experience_years" id="experience_years" type="text" value="{{ old('experience_years') }}" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Experience Years" required>
                         </div>
 
                         <div class="space-y-2">
@@ -179,7 +179,7 @@
                                 Hourly Average Rate
                             </label>
 
-                            <input name="hourly_rate" id="hourly_rate_price" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="LKR" required>
+                            <input name="hourly_rate" id="hourly_rate_price" type="text" value="{{ old('hourly_rate') }}" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="LKR" required>
                         </div>
                         <!-- Section -->
                         <div class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
@@ -210,7 +210,7 @@
                             </div>
                             <!-- End Col -->
                             <div class="sm:col-span-9">
-                                <textarea id="af-submit-application-bio" name="personal_summary" class="pt-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" rows="6" placeholder="Briefly add your personal information and service details" required></textarea>
+                                <textarea id="af-submit-application-bio" name="personal_summary" value="{{ old('personal_summary') }}" class="pt-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" rows="6" placeholder="Briefly add your personal information and service details" required></textarea>
                             </div>
                             <!-- End Col -->
                         </div>
@@ -234,7 +234,7 @@
                             <label for="work_experience" class="inline-block text-sm font-medium text-gray-800 mt-2.5">
                                 Work Experience
                             </label>
-                            <textarea id="work_experience" name="work_experience" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" rows="6" placeholder="A detailed summary will better explain your project to the audiences. Our users will see this in your dedicated Portfolio page." required></textarea>
+                            <textarea id="work_experience" name="work_experience" value="{{ old('work_experience') }}" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" rows="6" placeholder="A detailed summary will better explain your project to the audiences. Our users will see this in your dedicated Portfolio page." required></textarea>
                         </div>
                     </div>
                     <!-- End Grid -->

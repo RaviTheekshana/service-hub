@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BookNotification;
 use App\Models\BlogPost;
+use App\Models\User;
 use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
 
