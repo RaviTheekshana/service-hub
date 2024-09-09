@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
-use App\Models\review;
+use App\Models\Review;
 use App\Models\User;
 use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
