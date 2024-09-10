@@ -77,7 +77,7 @@ class Profile_ManagementController extends Controller
 
 
         $user->notify(new BookingNotification([
-            'message' => 'Your profile has been created successfully!',
+            'message' => 'Your profile has been created successfully and expect admin approval in a few days!',
             'action' => url('/provider-dashboard'),
         ]));
         event(new BookingNotification([

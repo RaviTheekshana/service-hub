@@ -72,7 +72,7 @@ class BookingController extends Controller
         ]));
         event(new BookNotification([
             'user_id' => $request->input('service_provider_id'),
-            'message' => 'You have a new booking request!' . $user->name,
+            'message' => 'You have a new booking request! '. $user->name,
             'service_time' => $request->input('service_time'),
         ]));
 

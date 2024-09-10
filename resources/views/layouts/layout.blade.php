@@ -35,28 +35,34 @@
             <img src="{{asset('images/logo2.jpg')}}" width="80" alt="">
         </a>
         <a href="#" class=" logo d-flex align-items-center me-auto">
-            <h1 class="sitename">Service Hub</h1>
+            <h1 class="sitename">{{ _t('Service Hub') }}</h1>
         </a>
+
+
+
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="{{ url('/') }}" class="active">Home</a></li>
-                <li class="dropdown"><a href="{{ url('/bookings/our-service') }}"><span>Our Services</span> <i
+                <li><a href="{{ url('/') }}" class="active">{{ _t('Home') }}</a></li>
+                <li class="dropdown"><a href="{{ url('/bookings/our-service') }}"><span>{{ _t('Our Services') }}</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
-                        <li><a href="#">Electrician</a></li>
-                        <li><a href="#">Plumber</a></li>
-                        <li><a href="#">Gardner</a></li>
-                        <li><a href="#">Welder</a></li>
+                        <li><a href="#">{{ _t('Electrician') }}</a></li>
+                        <li><a href="#">{{ _t('Plumber') }}</a></li>
+                        <li><a href="#">{{ _t('Gardner') }}</a></li>
+                        <li><a href="#">{{ _t('Welder') }}</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ url('/job') }}">Booking</a></li>
-                <li><a href="{{ url('/bookings/portfolio') }}">Service Providers</a></li>
-                <li><a href="{{ url('/review-page') }}">Reviews</a></li>
-                <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+                <li><a href="{{ url('/job') }}">{{ _t('Booking') }}</a></li>
+                <li><a href="{{ url('/bookings/portfolio') }}">{{ _t('Service Providers') }}</a></li>
+                <li><a href="{{ url('/review-page') }}">{{ _t('Reviews') }}</a></li>
+                <li><a href="{{ url('/contact') }}">{{ _t('Contact Us') }}</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
+
+
         @auth
             <a class="btn-getstarted" href="{{ route('dashboard') }}">Dashboard</a>
         @else

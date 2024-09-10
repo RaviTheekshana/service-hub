@@ -83,4 +83,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(Chat::class, 'customer_id');
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile_Management::class, 'service_provider_id');
+    }
 }

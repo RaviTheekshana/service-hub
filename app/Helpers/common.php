@@ -13,6 +13,43 @@ if(!function_exists('get_service_providers')) {
         return \App\Models\User::where('role', 'service_provider')->get();
     }
 }
+if (!function_exists('get_approved_service_providers')){
+
+        function get_approved_service_providers()
+        {
+            return \App\Models\User::where('role', 'service_provider')
+                ->whereHas('profile', function($query) {
+                    $query->where('status', 'approved');
+                })
+                ->get();
+        }
+}
+
+if (!function_exists('_t')){
+
+        function _t($key)
+        {
+            // check if the key exists in the database
+            $language = \App\Models\Language::where('key', $key)
+                ->where('language', app()->getLocale())
+                ->first();
+
+            if($language) {
+                return $language->value;
+            }
+
+            // if the key does not exist in the database, create it
+            \App\Models\Language::create([
+                'key' => $key,
+                'value' => $key,
+                'language' => app()->getLocale()
+            ]);
+
+
+            return $key;
+        }
+}
+
 if(!function_exists('get_users')) {
     function get_users()
     {

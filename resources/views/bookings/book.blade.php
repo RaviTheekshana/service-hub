@@ -3,10 +3,10 @@
     <x-banner/>
     @auth
     <!-- component -->
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+{{--    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">--}}
+{{--    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">--}}
 
-        <section class="pt-4 bg-blueGray-50" x-data="{
+        <section class="pt-4 bg-blue-100" x-data="{
         email: '',
         phone: '',
         phoneTwo: '',
@@ -31,10 +31,10 @@
                 <div class="rounded-2xl bg-white mb-0 px-6 py-6">
                     <div class="text-center flex justify-between">
                         <h6 class="text-blueGray-800 text-3xl font-bold">
-                            Booking Form
+                            {{_t('Booking Form')}}
                         </h6>
                         <button form="booking-form" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="submit">
-                            Confirm
+                            {{_t('Confirm')}}
                         </button>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                         category : null
                     }">
                         @csrf
-                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                            Booking Information
+                        <h6 class="text-blueGray-400 text-lg mt-3 mb-6 font-bold uppercase">
+                            {{_t('Booking Information')}}
                         </h6>
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -58,16 +58,16 @@
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_date">
-                                        Service Date
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="service_date">
+                                        {{_t('Service Date')}}
                                     </label>
                                     <input type="date" name="service_date" id="service_date" min="{{ \Carbon\Carbon::now()->toDateString() }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_time">
-                                        Service Time
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="service_time">
+                                        {{_t('Service Time')}}
                                     </label>
                                     <select name="service_time" id="service_time" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                         <!-- Options for times between 8 AM and 4 PM -->
@@ -81,8 +81,8 @@
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="category_id">
-                                        Category
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="category_id">
+                                        {{_t('Category')}}
                                     </label>
                                     <select id="category" x-model="category" name="category_id" id="category_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                         <option value="">Select</option>
@@ -94,12 +94,12 @@
                             </div>
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="service_provider_id">
-                                        Provider Name
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="service_provider_id">
+                                        {{_t('Service Provider')}}
                                     </label>
                                     <select name="service_provider_id" id="service_provider_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                         <option value="">Select</option>
-                                        @foreach(get_service_providers() as $provider)
+                                        @foreach(get_approved_service_providers() as $provider)
                                             <option value="{{ $provider->id }}" x-show="category == {{ $provider->category_id }}">{{ ucfirst($provider->name) }}</option>
                                         @endforeach
                                     </select>
@@ -108,30 +108,30 @@
                         </div>
                         <hr class="mt-6 border-b-1 border-blueGray-300">
 
-                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                            Contact Information
+                        <h6 class="text-blueGray-400 text-lg mt-3 mb-6 font-bold uppercase">
+                            {{_t('Contact Information')}}
                         </h6>
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-12/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="address">
-                                        Address
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="address">
+                                        {{_t('Address')}}
                                     </label>
                                     <input type="text" name="address" id="address" value="{{ old('address') }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="city">
-                                        City
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="city">
+                                        {{_t('City')}}
                                     </label>
                                     <input type="text" name="city" id="city" value="{{ old('city') }}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                 </div>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone">
-                                        Phone Number 1
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="phone">
+                                        {{_t('Phone Number')}}
                                     </label>
                                     <input type="tel" name="phone" x-model="phone" @input="validatePhone('phone')" id="phone" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" maxlength="12" required>
                                     <template x-if="!validPhone">
@@ -142,8 +142,8 @@
 
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone_two">
-                                        Phone Number 2
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="phone_two">
+                                        {{_t('Phone Number 2')}}
                                     </label>
                                     <input type="tel" name="phone_two" x-model="phoneTwo" @input="validatePhone('phoneTwo')" id="phone_two" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" maxlength="12" required>
                                     <template x-if="!validPhoneTwo">
@@ -153,8 +153,8 @@
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="email">
-                                        Email Address
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="email">
+                                        {{_t('Email')}}
                                     </label>
                                     <input type="email" name="email" x-model="email" @input="validateEmail" id="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" required>
                                     <template x-if="!validEmail">
@@ -163,8 +163,8 @@
                                 </div>
                             </div>
                             <div class="w-full lg:w-8/12 px-4">
-                                <div class="bg-gray-100 rounded">
-                                    <h2 class="font-bold text-xl">Instructions</h2>
+                                <div class="bg-red-100 rounded">
+                                    <h2 class="font-bold text-xl">{{_t('Instructions')}}</h2>
                                     <ul class="list-disc mt-1 list-inside">
                                         <li>All users must provide a valid email address and password to create an account.</li>
                                         <li>Users must not use offensive, vulgar, or otherwise inappropriate language in their username or profile information.</li>
@@ -173,14 +173,14 @@
                             </div>
                         </div>
                         <hr class="mt-3 border-b-1 border-blueGray-300">
-                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                            About Service
+                        <h6 class="text-blueGray-400 text-lg mt-3 mb-6 font-bold uppercase">
+                            {{_t('About Service')}}
                         </h6>
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-12/12 px-4">
                                 <div class="relative w-full mb-3">
-                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="description">
-                                        Service Details
+                                    <label class="block uppercase text-blueGray-600 text-sm font-bold mb-2" for="description">
+                                        {{_t('Service Description')}}
                                     </label>
                                     <textarea name="description" id="description" value="{{old('description')}}" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4" placeholder="Say Something about Your job" required></textarea>
                                 </div>

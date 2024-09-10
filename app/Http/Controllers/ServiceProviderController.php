@@ -25,7 +25,7 @@ class ServiceProviderController extends Controller
 //        }
         $searchQuery = $request->input('search');
         $query->whereHas('service_provider', function ($query) use ($searchQuery) {
-            $query->where('name', 'LIKE', '%' . $searchQuery . '%');
+            $query->where('name', 'LIKE', $searchQuery . '%');
         })->get();
 
         // Filter by category

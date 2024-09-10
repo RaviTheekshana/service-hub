@@ -2,11 +2,23 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiceProviderController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/switch-language', function (Request $request) {
+
+    $language = $request->language;
+
+    session()->put('language', $language);
+
+    app()->setLocale($language);
+
+    return back();
+})->name('switch-language');
 
 Route::middleware([
     'auth:sanctum',
@@ -21,21 +33,25 @@ Route::middleware([
 
 //Chat
 use App\Http\Controllers\ChatController;
+
 Route::resource('/chat', ChatController::class);
 Route::get('/chat/{chat}/messages', [ChatController::class, 'messages']);
 
 use App\Http\Controllers\DashboardController;
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 //Review
 use App\Http\Controllers\ReviewController;
+
 Route::post('review', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/review/{id}', [ReviewController::class, 'showReview'])->name('bookings.review');
 Route::get('/review-page', [ReviewController::class, 'show'])->name('review-page');
 
 //Booking
 use App\Http\Controllers\BookingController;
+
 Route::get('bookings/our-service', [BookingController::class, 'ourService'])->name('bookings.our-service');
 Route::get('bookings/book', [BookingController::class, 'bookForm'])->name('bookings.book');
 Route::post('/booking/book', [BookingController::class, 'store'])->name('bookings.store');
@@ -50,10 +66,12 @@ Route::get('/provider-review', [DashboardController::class, 'review'])->name('pr
 
 //Profile Management
 use App\Http\Controllers\Profile_ManagementController;
+
 Route::resource('profile_management', Profile_ManagementController::class);
 
 //Job Post
 use App\Http\Controllers\BlogPostController;
+
 Route::post('/job', [BlogPostController::class, 'store'])->name('job.store');
 Route::get('/job', [BlogPostController::class, 'index'])->name('job.index');
 Route::get('/job/{id}', [BlogPostController::class, 'destroy'])->name('job.destroy');
@@ -63,6 +81,7 @@ Route::get('/api/users/{category_id}', [ServiceProviderController::class, 'getUs
 Route::get('/test', function () {
     return view('test');
 });
+
 use App\Http\Controllers\ProfilePhotoController;
 
 Route::post('/profile/photo', [ProfilePhotoController::class, 'update'])->name('profile.photo.update');

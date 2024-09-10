@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\ProfileApprovedNotification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
@@ -43,5 +44,24 @@ class Profile_Management extends Model implements HasMedia
     public function format()
     {
 
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saved(function ($profile) {
+            if ($profile->status == 'approved') {
+                $profile->service_provider->notify(new ProfileApprovedNotification([
+                    'message' => 'Your profile has been approved!',
+                    'action' => route('profile_management.index'),
+                    event(new ProfileApprovedNotification([
+                        'user_id' => $profile->service_provider_id,
+                        'message' => 'Your profile has been approved!',
+                        'service_time' => now()->format('Y-m-d H:i:s'),
+                    ]))
+                ]));
+            }
+        });
     }
 }
