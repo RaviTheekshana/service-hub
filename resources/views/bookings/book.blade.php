@@ -163,11 +163,13 @@
                                 </div>
                             </div>
                             <div class="w-full lg:w-8/12 px-4">
-                                <div class="bg-red-100 rounded">
+                                <div class="bg-red-100 rounded pl-2">
                                     <h2 class="font-bold text-xl">{{_t('Instructions')}}</h2>
                                     <ul class="list-disc mt-1 list-inside">
-                                        <li>All users must provide a valid email address and password to create an account.</li>
-                                        <li>Users must not use offensive, vulgar, or otherwise inappropriate language in their username or profile information.</li>
+                                        <li>All users must provide a valid email address and phone number</li>
+                                        <li>Provide a valid address and city for the service provider to reach you.</li>
+                                        <li>Provide a meaningful description of the service you require.</li>
+                                        <li>Review the details and confirm your booking.</li>
                                     </ul>
                                 </div>
                             </div>

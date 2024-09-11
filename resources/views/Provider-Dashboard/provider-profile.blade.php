@@ -187,6 +187,10 @@
                                 <h2 class="text-lg font-semibold text-gray-800">
                                     Qualifications
                                 </h2>
+                                <label class="inline-block text-xs text-red-700">
+                                    *Please upload your certificates as a PDF file.
+                                </label>
+
                             </div>
                             <!-- End Col -->
                             <div class="sm:col-span-3">

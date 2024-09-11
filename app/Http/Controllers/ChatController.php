@@ -41,13 +41,8 @@ class ChatController extends Controller
 
     public function show(Request $request, $id)
     {
-//        $user = BlogPost::where('user_id', auth()->id())->first();
-//        dd($user);
-//        //Check if auth user has blog post has approve this provider
-//        $apporove = approve::find($id)->where('user_id', $user->id)->first();
-//        dd($apporove);
-//        // load the chat ID
-//        $chat = (new Chat())->find($id);
+        // load the chat ID
+        $chat = (new Chat())->find($id);
 
         if (auth()->user()->role === 'service_provider') {
             // check if the chat belong to the current user
