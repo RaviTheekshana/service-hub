@@ -2,6 +2,7 @@
     <x-banner/>
     @include('components.toast')
     @include('test')
+    @include('components.review')
     <nav class="relative z-0 flex border rounded-xl overflow-hidden" aria-label="Tabs" role="tablist"
          aria-orientation="horizontal">
         <button type="button"

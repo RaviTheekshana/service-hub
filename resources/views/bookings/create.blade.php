@@ -33,7 +33,7 @@
                     <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5" href="#">
                         <div class="aspect-w-16 aspect-h-11">
                             @if($post->image_path)
-                                <img class="h-80% w-100% object-cover rounded-xl" src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
+                                <img class="h-[190px] w-[280px] object-cover rounded-xl" src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
                             @else
                                 <img class="w-full object-cover rounded-xl" src="https://via.placeholder.com/560x315.png?text=No+Image" alt="{{ $post->title }}">
                             @endif

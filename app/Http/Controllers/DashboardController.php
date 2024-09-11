@@ -22,18 +22,34 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         \Log::info('User logged in:', ['user_id' => $user->id, 'role' => $user->role]);
+
         if (!auth()->user() || auth()->user()->role === 'service_provider') {
             return view('layouts.provider-dashboard');
         }
-        // Render the normal dashboard for regular users
-        //Get the all booking data from db to the view belongs to the authenticated Service Provider
-        $book = Booking::where('user_id', auth()->user()->id)->get();
-        //Pass the Blogpost data to the view
-        $blog = Blogpost::where('user_id', auth()->user()->id)->get();
+
+        // Get all bookings of the authenticated user with completed status
+        $book = Booking::where('user_id', $user->id)->get();
+
+        // Get all reviewed booking IDs by the user
+        $reviewedBookingIds = Review::where('user_id', $user->id)->pluck('booking_id')->toArray();
+
+        // Get completed bookings that are not yet reviewed
+        $unreviewedBookings = Booking::where('user_id', $user->id)
+            ->where('status', 'completed')
+            ->whereNotIn('id', $reviewedBookingIds)
+            ->get();
+
+        // Check if there are any unreviewed bookings
+        $showReviewPopup = $unreviewedBookings->isNotEmpty();
+
+        // Pass data to the view
+        $blog = Blogpost::where('user_id', $user->id)->get();
         $blogIds = $blog->pluck('id')->toArray();
         $approves = Approve::whereIn('blog_post_id', $blogIds)->get();
-        return view('dashboard', compact('book','blog', 'approves'));
+
+        return view('dashboard', compact('book', 'blog', 'approves', 'unreviewedBookings', 'showReviewPopup'));
     }
+
     public function bookingView()
     {
         //Get the all booking data from db to the view belongs to the authenticated Service Provider
