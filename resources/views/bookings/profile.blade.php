@@ -1,6 +1,6 @@
 <x-layout>
     <!-- Table Section -->
-    <div class="max-w-[85rem] min-h-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-2 mx-auto">
+    <div class="max-w-[85rem] pt-24 min-h-screen px-4 py-10 sm:px-6 lg:px-8 lg:py-2 mx-auto">
         <!-- Card -->
         <div class="flex flex-col">
             <div class="-m-1.5 overflow-x-auto">

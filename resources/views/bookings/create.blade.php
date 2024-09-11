@@ -4,7 +4,7 @@
 </head>
 <x-layout>
     <!-- Card Blog -->
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:pt-2 mx-auto">
+    <div class="max-w-[85rem] pt-20 px-4 py-10 sm:px-6 lg:px-8 lg:pt-2 mx-auto">
         <!-- Title -->
         <div class="max-w-2xl mx-auto text-center mb-3 lg:mb-10">
             <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Jobs !</h2>

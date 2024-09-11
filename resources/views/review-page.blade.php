@@ -1,6 +1,6 @@
 <x-layout>
     <section class="relative py-10">
-        <div class="w-full max-w-7xl px-4 md:px-5 lg:px-6 mx-auto">
+        <div class="w-full max-w-7xl pt-24 px-4 md:px-5 lg:px-6 mx-auto">
             <div class="">
                 <h2 class="font-manrope font-bold text-3xl sm:text-4xl leading-10 text-black mb-8 text-center">
                     Customer Reviews &
