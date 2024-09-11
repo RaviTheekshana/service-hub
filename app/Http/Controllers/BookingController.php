@@ -9,14 +9,9 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function ourService()
-    {
-        return view('bookings.our-service');
-    }
-
     public function create()
     {
-        return view('bookings.create');
+
     }
 
     public function bookForm()

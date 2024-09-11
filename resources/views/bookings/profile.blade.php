@@ -135,7 +135,7 @@
                                 <td class="size-px whitespace-nowrap align-top">
                                     <a class="block p-6" href="#">
                                         <div class="flex gap-x-1 mt-1 mb-2">
-                                            <span class="block text-sm text-gray-500">{{ Str::limit($profiles->personal_summary, 160) }}</span>
+                                            <span class="block text-sm text-gray-500">{{ Str::limit($profiles->personal_summary, 20) }}</span>
                                         </div>
                                     </a>
                                 </td>

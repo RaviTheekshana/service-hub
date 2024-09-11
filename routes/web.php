@@ -10,13 +10,9 @@ Route::get('/', function () {
 });
 
 Route::get('/switch-language', function (Request $request) {
-
     $language = $request->language;
-
     session()->put('language', $language);
-
     app()->setLocale($language);
-
     return back();
 })->name('switch-language');
 
@@ -52,11 +48,14 @@ Route::get('/review-page', [ReviewController::class, 'show'])->name('review-page
 //Booking
 use App\Http\Controllers\BookingController;
 
-Route::get('bookings/our-service', [BookingController::class, 'ourService'])->name('bookings.our-service');
+Route::get('bookings/our-service', function () {
+    return view('bookings.our-service');
+})->name('bookings.our-service');
 Route::get('bookings/book', [BookingController::class, 'bookForm'])->name('bookings.book');
 Route::post('/booking/book', [BookingController::class, 'store'])->name('bookings.store');
 Route::put('/bookings/{id}', [BookingController::class, 'update'])->name('bookings.update');
 Route::get('/bookings/portfolio', [ServiceProviderController::class, 'showProfile'])->name('portfolio');
+Route::get('/bookings/book/{id}', [BookingController::class, 'create'])->name('bookings.portfolio');
 
 //Provider-Dashboard
 Route::get('/provider-dashboard', [DashboardController::class, 'providerDashboard'])->middleware('auth')->name('provider-dashboard');

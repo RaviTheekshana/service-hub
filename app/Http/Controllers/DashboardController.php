@@ -26,10 +26,8 @@ class DashboardController extends Controller
         if (!auth()->user() || auth()->user()->role === 'service_provider') {
             return view('layouts.provider-dashboard');
         }
-
         // Get all bookings of the authenticated user with completed status
         $book = Booking::where('user_id', $user->id)->get();
-
         // Get all reviewed booking IDs by the user
         $reviewedBookingIds = Review::where('user_id', $user->id)->pluck('booking_id')->toArray();
 
@@ -38,7 +36,6 @@ class DashboardController extends Controller
             ->where('status', 'completed')
             ->whereNotIn('id', $reviewedBookingIds)
             ->get();
-
         // Check if there are any unreviewed bookings
         $showReviewPopup = $unreviewedBookings->isNotEmpty();
 

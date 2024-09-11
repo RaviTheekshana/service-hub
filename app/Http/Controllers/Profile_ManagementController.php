@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chat;
 use App\Models\Profile_Management;
+use App\Models\Review;
 use App\Models\User;
 use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
@@ -103,6 +104,7 @@ class Profile_ManagementController extends Controller
             // Handle the case where the profile isn't found
             return redirect()->route('profile_management.index')->with('error', 'Profile not found.');
         }
+        $reviews = Review::where('service_provider_id', $portfolio->service_provider_id)->get();
         // Retrieve all media from 'project_images' collection
         $mediaItems = $profile_management->getMedia('project_images');
         $mediaItems2 = $profile_management->getFirstMediaUrl('certificate_path');
@@ -122,7 +124,7 @@ class Profile_ManagementController extends Controller
             // Pass the new chat to the view
             $chats = collect([$newChat]);
         }
-        return view('Provider-Dashboard.portfolio', compact('chats','portfolio', 'mediaItems', 'mediaItems2'));
+        return view('Provider-Dashboard.portfolio', compact('chats','portfolio', 'mediaItems', 'mediaItems2', 'reviews'));
     }
 
     public function edit(Profile_Management $profile_Management)

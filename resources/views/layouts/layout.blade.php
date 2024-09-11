@@ -34,12 +34,9 @@
         <a>
             <img src="{{asset('images/logo2.jpg')}}" width="80" alt="">
         </a>
-        <a href="#" class=" logo d-flex align-items-center me-auto">
+        <a href="{{url('/')}}" class=" logo d-flex align-items-center me-auto">
             <h1 class="sitename">{{ _t('Service Hub') }}</h1>
         </a>
-
-
-
 
         <nav id="navmenu" class="navmenu">
             <ul>
@@ -60,9 +57,6 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
-
-
         @auth
             <a class="btn-getstarted" href="{{ route('dashboard') }}">Dashboard</a>
         @else

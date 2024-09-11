@@ -30,27 +30,18 @@
 </head>
 
 <body class="index-page">
-
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
         <a>
             <img src="{{asset('images/logo2.jpg')}}" width="80" alt="">
         </a>
-        <a href="#" class=" logo d-flex align-items-center me-auto">
+        <a href="{{url('/')}}" class=" logo d-flex align-items-center me-auto">
             <h1 class="sitename">{{ _t('Service Hub') }}</h1>
         </a>
         <nav id="navmenu" class="navmenu">
             <ul>
                 <li><a href="#" class="active">{{ _t('Home') }}</a></li>
-                <li class="dropdown"><a href="{{ url('/bookings/our-service') }}"><span>{{ _t('Our Services') }}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                    <ul>
-                        <li><a href="#">{{ _t('Electrician') }}</a></li>
-                    {{--<ul> <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>--}}
-                        <li><a href="#">{{ _t('Plumber') }}</a></li>
-                        <li><a href="#">{{ _t('Gardner') }}</a></li>
-                        <li><a href="#">{{ _t('Welder') }}</a></li>
-                    </ul>
-                </li>
+                <li><a href="{{ url('/bookings/our-service') }}">{{ _t('Our Services') }}</a></li>
                 <li><a href="{{ url('/job') }}">
                        {{ _t('Booking') }}
                     </a></li>
@@ -73,8 +64,8 @@
         <a class="btn-getstarted" href="{{ route('register') }}">{{ _t('Register') }}</a>
         @endauth
     </div>
+{{--    <x-language-switcher/>--}}
 </header>
-
 <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section">
@@ -855,10 +846,10 @@
                     <span class="sitename">Service Hub</span>
                 </a>
                 <div class="footer-contact pt-3">
-                    <p>A108 union Place</p>
+                    <p>APIIT Union Place</p>
                     <p>Colombo 02, NY 535022</p>
                     <p class="mt-3"><strong>Phone:</strong> <span>+94 5589 8855</span></p>
-                    <p><strong>Email:</strong> <span>info@example.com</span></p>
+                    <p><strong>Email:</strong> <span>info@servicehub.com</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -882,17 +873,17 @@
             <div class="col-lg-2 col-md-3 footer-links">
                 <h4>Our Services</h4>
                 <ul>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Web Development</a></li>
-                    <li><a href="#">Product Management</a></li>
-                    <li><a href="#">Marketing</a></li>
-                    <li><a href="#">Graphic Design</a></li>
+                    <li><a href="#">Electrician</a></li>
+                    <li><a href="#">Plumbers</a></li>
+                    <li><a href="#">Gardeners</a></li>
+                    <li><a href="#">Welders</a></li>
+                    <li><a href="#">Coming Soon</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-4 col-md-12 footer-newsletter">
                 <h4>Our Newsletter</h4>
-                <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+                <p>Subscribe to our newsletter and receive the latest news about our services!</p>
                 <form action="{{asset('forms/newsletter.php')}}" method="post" class="php-email-form">
                     <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
                     <div class="loading">Loading</div>

@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\Summarizers\Concerns\BelongsToColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -83,11 +84,14 @@ class UserResource extends Resource
 
                 TextColumn::make('category.name')
 
-
-
             ])
             ->filters([
-                //
+                SelectFilter::make('role')
+                    ->options([
+                        'admin' => 'Admin',
+                        'user' => 'User',
+                        'service_provider' => 'Service Provider',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
