@@ -166,10 +166,10 @@
                                 <div class="bg-red-100 rounded pl-2">
                                     <h2 class="font-bold text-xl">{{_t('Instructions')}}</h2>
                                     <ul class="list-disc mt-1 list-inside">
-                                        <li>All users must provide a valid email address and phone number</li>
-                                        <li>Provide a valid address and city for the service provider to reach you.</li>
-                                        <li>Provide a meaningful description of the service you require.</li>
-                                        <li>Review the details and confirm your booking.</li>
+                                        <li>{{_t('All users must provide a valid email address and phone number')}}</li>
+                                        <li>{{_t('Provide a valid address and city for the service provider to reach you.')}}</li>
+                                        <li>{{_t('Provide a meaningful description of the service you require.')}}</li>
+                                        <li>{{_t('Review the details and confirm your booking.')}}</li>
                                     </ul>
                                 </div>
                             </div>

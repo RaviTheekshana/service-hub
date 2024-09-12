@@ -116,7 +116,15 @@
                         {{ session('success') }}
                     </div>
                 @endif
-
+                @if ($errors->any())
+                    <div class="alert alert-danger text-red-700">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{ route('job.store') }}" method="POST" enctype="multipart/form-data"
                       x-data="{ title: '', description: '', image: null, imagePreview: '' }">
                     @csrf
@@ -153,7 +161,6 @@
                                class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                                required>
                         @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-
                         <!-- Image Preview -->
                         <template x-if="imagePreview">
                             <img :src="imagePreview" alt="Image Preview" class="mt-4 w-full object-cover rounded-lg">

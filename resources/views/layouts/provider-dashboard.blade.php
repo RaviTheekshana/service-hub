@@ -149,11 +149,40 @@
         <!-- About -->
         <div class="mt-8">
             <p class="text-sm text-gray-600">
-                Hi, I'm Eliana Garcia, a freelance designer based in New York City. I specialize in creating clean, elegant, and functional designs that help businesses succeed. I've designed a variety of websites and user interfaces for companies and individuals over the past 10 years.
-            </p>
+                @if($portfolio === null)
+                    <li class="text-red-700">Step-by-Step Instructions:</li>
+                    <li>1. Profile Creation and Certification Upload:
+                    </li>
+                    Include fields for:
+                    Full name (e.g., Pabasara de Alwis)
+                    Contact information (email, phone number, etc.)
+                    Professional bio
+                    Years of experience
+                    Skillset (e.g., wiring, installation, repairs)
+                    Profile picture (optional)
+                    Create a section to upload necessary certifications (e.g., electrician license, training certificates).
+                    Add a prompt for the provider to submit their information for review.
+                    <li>2. Admin Approval:</li>
+                    Once the profile is created and certifications are uploaded, an Admin will review the submission.
+                    Admin verifies:
+                    The validity of the certifications
+                    Completeness and accuracy of the profile
+                    If everything is in order, the Admin will approve the service provider’s profile.
+                    If not, the Admin can reject the profile and notify the provider to make necessary adjustments.
+                    <li>3. Access to Booking and Job Posts:</li>
+                    After Admin approval, the service provider will receive a notification via email or within the platform, confirming their profile is now live.
+                    The provider will now be granted access to the Booking Page and can view available jobs.
+                    This page should list all active job postings (e.g., wiring houses, electrical repairs).
+                    The service provider can express interest by selecting job posts that match their skills.
+                    4. Express Interest in Jobs:
 
-            <p class="mt-3 text-sm text-gray-600">
-                Currently, I work remotely for Notion, where I design template UIs, convert them into HTML and CSS, and provide comprehensive support to our users. I am passionate about crafting elegant and functional designs that enhance user experiences.
+                    Once on the Job Postings page, the service provider can:
+                    Browse available job listings
+                    Filter jobs by category (e.g., residential wiring, lighting installation)
+                    Click on individual jobs to view details like location, job description, timeline, and compensation.
+                @else
+                {{$portfolio->personal_summary}}
+                @endif
             </p>
 
             <ul class="mt-5 flex flex-col gap-y-3">

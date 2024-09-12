@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Approve;
 use App\Models\BlogPost;
 use App\Models\Booking;
+use App\Models\Profile_Management;
 use App\Models\review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,9 +23,9 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         \Log::info('User logged in:', ['user_id' => $user->id, 'role' => $user->role]);
-
+        $portfolio = Profile_Management::where('service_provider_id', $user->id)->first();
         if (!auth()->user() || auth()->user()->role === 'service_provider') {
-            return view('layouts.provider-dashboard');
+            return view('layouts.provider-dashboard', compact('portfolio'));
         }
         // Get all bookings of the authenticated user with completed status
         $book = Booking::where('user_id', $user->id)->get();

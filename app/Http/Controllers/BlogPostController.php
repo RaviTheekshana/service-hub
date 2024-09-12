@@ -21,7 +21,7 @@ class BlogPostController extends Controller
             'title' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $imagePath = null;
@@ -38,12 +38,12 @@ class BlogPostController extends Controller
         ]);
         $user = auth()->user();
         $user->notify(new BookingNotification([
-            'message' => 'Blog post created successfully!',
+            'message' => 'Job post created successfully!',
             'action' => route('job.index'),
         ]));
 
         return redirect()->back()->with('flash.bannerStyle', 'success')
-            ->with('flash.banner', 'Blog post created successfully!')->with('success', 'Blog post created successfully!');
+            ->with('flash.banner', 'Job post created successfully!')->with('success', 'Job post created successfully!');
     }
     public function destroy()
     {

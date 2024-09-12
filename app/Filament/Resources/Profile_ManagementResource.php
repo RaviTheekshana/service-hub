@@ -81,7 +81,8 @@ class Profile_ManagementResource extends Resource
                 TextColumn::make('service_provider.name')
                     ->label('Service Provider'),
 
-                TextColumn::make('personal_summary'),
+                TextColumn::make('personal_summary')
+            ->limit(50),
                 TextColumn::make('experience_years'),
                 TextColumn::make('hourly_rate'),
                 TextColumn::make('status')

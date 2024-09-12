@@ -82,6 +82,9 @@
 @endif
 <!-- Page Content -->
 <div class="font-sans text-gray-900 antialiased">
+    @guest()
+    <x-language-switcher/>
+    @endguest
     {{ $slot }}
 </div>
 @stack('modals')

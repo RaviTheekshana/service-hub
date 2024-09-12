@@ -1,7 +1,7 @@
-<head>
-        <title>Booking</title>{{-- ... --}}
-        @vite('resources/js/app.js')
-</head>
+{{--<head>--}}
+{{--        <title>Booking</title>--}}
+{{--        @vite('resources/js/app.js')--}}
+{{--</head>--}}
 <x-layout>
     <!-- Card Blog -->
     <div class="max-w-[85rem] pt-20 px-4 py-10 sm:px-6 lg:px-8 lg:pt-2 mx-auto">
@@ -30,7 +30,7 @@
                     <!-- Loop through filtered blog posts -->
                 @foreach($filteredPosts as $post)
                     <!-- Card -->
-                    <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5" href="#">
+                    <a class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5">
                         <div class="aspect-w-16 aspect-h-11">
                             @if($post->image_path)
                                 <img class="h-[190px] w-[280px] object-cover rounded-xl" src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}">
