@@ -6,7 +6,7 @@ use App\Models\Approve;
 use App\Models\BlogPost;
 use App\Models\Booking;
 use App\Models\Profile_Management;
-use App\Models\review;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function Pest\Laravel\get;
@@ -68,7 +68,7 @@ class DashboardController extends Controller
     public function review()
     {
         if (auth()->user()->role === 'service_provider') {
-            $review = review::where('service_provider_id', auth()->user()->id)->get();
+            $review = Review::where('service_provider_id', auth()->user()->id)->get();
             return view('Provider-Dashboard.provider-review', compact('review'));
         }
         return view('components.uservisibility');
