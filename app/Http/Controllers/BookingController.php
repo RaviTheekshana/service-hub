@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Events\BookNotification;
 use App\Models\Booking;
+use App\Models\Profile_Management;
 use App\Models\User;
 use App\Notifications\BookingNotification;
 use Illuminate\Http\Request;
@@ -112,6 +113,14 @@ class BookingController extends Controller
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Booking updated successfully!');
+    }
+
+    public function portfolioBook($id)
+    {
+        $profile = Profile_Management::findOrFail($id);
+        $book = User::findOrFail($profile->service_provider_id);
+
+        return view('bookings.portfolio-book', compact('book'));
     }
 
 }

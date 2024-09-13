@@ -302,7 +302,7 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="d-flex justify-content-center">
-                        <form action="{{ route('bookings.book') }}" method="GET">
+                        <form action="{{ route('bookings.portfolio.book', ['id' => $portfolio->id]) }}" method="GET">
                             <button type="submit" class="btn btn-success btn-lg rounded-pill px-5 py-3">
                                 Book Now
                             </button>

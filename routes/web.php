@@ -52,6 +52,7 @@ Route::get('bookings/our-service', function () {
     return view('bookings.our-service');
 })->name('bookings.our-service');
 Route::get('bookings/book', [BookingController::class, 'bookForm'])->name('bookings.book');
+Route::get('bookings/portfolio/book/{id}', [BookingController::class, 'portfolioBook'])->name('bookings.portfolio.book');
 Route::post('/booking/book', [BookingController::class, 'store'])->name('bookings.store');
 Route::put('/bookings/{id}', [BookingController::class, 'update'])->name('bookings.update');
 Route::get('/bookings/portfolio', [ServiceProviderController::class, 'showProfile'])->name('portfolio');
